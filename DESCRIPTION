@@ -1,0 +1,26 @@
+Package: pipian
+Type: Package
+Title: Tiny Interface to CaboCha
+Version: 0.1.0
+Authors@R: person("Nakazato", "Subaru", email = "am11.44@gmail.com", role = c("aut", "cre"))
+Author: paithiov909
+Maintainer: Subaru Nakazato <am11.44@gmail.com>
+Description: Call CaboCha -f3 command via shell().
+Depends:
+    R (>= 3.2.0)
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    R6,
+    readr,
+    xml2,
+    rvest,
+    purrr,
+    stringr,
+    tibble,
+    dplyr,
+    igraph,
+    flatxml,
+    graphics
+RoxygenNote: 6.1.1
