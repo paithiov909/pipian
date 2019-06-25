@@ -4,12 +4,14 @@
 \alias{cabochaFlatXML}
 \title{Call cabocha -f3 command}
 \usage{
-cabochaFlatXML(texts, rcpath = NULL)
+cabochaFlatXML(texts, rcpath = NULL, as.tibble = TRUE)
 }
 \arguments{
 \item{texts}{characters that you want to pass to CaboCha.}
 
 \item{rcpath}{fullpath to MECABRC if any.}
+
+\item{as.tibble}{boolean. if false, then return flatXML dataframe.}
 }
 \value{
 flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}

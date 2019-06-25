@@ -146,6 +146,7 @@ CabochaTbl <- function(texts, rcpath = NULL)
 #'
 #' @param texts characters that you want to pass to CaboCha.
 #' @param rcpath fullpath to MECABRC if any.
+#' @param as.tibble boolean. if false, then return flatXML dataframe.
 #'
 #' @return flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
 #'
@@ -154,7 +155,7 @@ CabochaTbl <- function(texts, rcpath = NULL)
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
-cabochaFlatXML <- function(texts, rcpath = NULL) {
+cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = TRUE) {
 
     ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
 
@@ -174,12 +175,17 @@ cabochaFlatXML <- function(texts, rcpath = NULL) {
     readr::write_lines(iconv(xml, to = "UTF-8"), tmp, append = TRUE)
     readr::write_lines("</sentences>", tmp, append = TRUE)
 
-    flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp)) %>%
-        tibble::as_tibble()
-
+    flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
 
     unlink(tmp_file_txt)
     unlink(tmp)
 
-    return(flatdf)
+    if (as.tibble == TRUE) {
+        flatdf %>%
+            tibble::as_tibble() %>%
+            return()
+    } else {
+        flatdf %>%
+            return()
+    }
 }
