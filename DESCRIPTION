@@ -1,7 +1,7 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -10,8 +10,8 @@ Depends:
     R (>= 3.2.0)
 License: file LICENSE
 SystemRequirements:
-	MeCab,
-	CaboCha
+    MeCab,
+    CaboCha
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -25,5 +25,6 @@ Imports:
     dplyr,
     igraph,
     flatxml,
-    graphics
+    graphics,
+    tidyr
 RoxygenNote: 6.1.1

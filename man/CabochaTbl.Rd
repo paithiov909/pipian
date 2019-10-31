@@ -4,12 +4,14 @@
 \alias{CabochaTbl}
 \title{Call cabocha -f3 command}
 \usage{
-CabochaTbl(texts, rcpath = NULL)
+CabochaTbl(texts, rcpath = NULL, force.utf8 = FALSE)
 }
 \arguments{
 \item{texts}{characters that you want to pass to CaboCha.}
 
 \item{rcpath}{fullpath to MECABRC if any.}
+
+\item{force.utf8}{boolean. If true, it will read cabocha output xml with UTF-8.}
 }
 \value{
 R6 class object having fields and methods below.

@@ -5,6 +5,7 @@
 #'
 #' @param texts characters that you want to pass to CaboCha.
 #' @param rcpath fullpath to MECABRC if any.
+#' @param force.utf8 boolean. If true, it will read cabocha output xml with UTF-8.
 #'
 #' @return R6 class object having fields and methods below.
 #' \itemize{
@@ -35,12 +36,13 @@
 #' @importFrom dplyr %>%
 #'
 #' @export
-CabochaTbl <- function(texts, rcpath = NULL)
+CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE)
 {
     ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
+    if (force.utf8) { ENC <- "UTF-8" }
 
     tmp_file_txt <- tempfile(fileext = ".txt")
-    writeLines(texts, con = tmp_file_txt)
+    writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
 
     if (!is.null(rcpath)) {
         shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml"), "-b", rcpath))
@@ -49,20 +51,18 @@ CabochaTbl <- function(texts, rcpath = NULL)
     }
 
     out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
-    tmp <- tempfile(fileext = ".xml")
-
-    readr::write_lines("<sentences>", tmp)
-    readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
-    readr::write_lines("</sentences>", tmp, append = TRUE)
 
     # Parse xml
-    xml <- tempfile(fileext = ".xml")
-    readr::write_lines("<body>", xml, append = TRUE)
-    readr::write_lines(out, xml, append = TRUE)
-    readr::write_lines("</body>", xml, append = TRUE)
+    tmp <- tempfile(fileext = ".xml")
+    readr::write_lines("<body>", tmp, append = TRUE)
+    readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
+    readr::write_lines("</body>", tmp, append = TRUE)
 
-    o <- xml2::read_xml(xml, encoding = "UTF-8")
-    unlink(xml)
+    o <- xml2::read_xml(tmp, encoding = "UTF-8")
+
+    # Clean up
+    unlink(tmp_file_txt)
+    unlink(tmp)
 
     # xml2df
     chunks <- o %>%
@@ -74,7 +74,7 @@ CabochaTbl <- function(texts, rcpath = NULL)
         info <- rvest::html_attrs(chunk) %>% unlist()
 
         morphs <- xml2::xml_children(chunk) %>%
-            sapply(as_mapper(~ rvest::html_text(.))) %>%
+            sapply(purrr::as_mapper(~ rvest::html_text(.))) %>%
             stringr::str_c(collapse = "")
 
         tibble::tibble(
@@ -146,7 +146,8 @@ CabochaTbl <- function(texts, rcpath = NULL)
 #'
 #' @param texts characters that you want to pass to CaboCha.
 #' @param rcpath fullpath to MECABRC if any.
-#' @param as.tibble boolean. if false, then return flatXML dataframe.
+#' @param as.tibble boolean. If false, then return flatXML dataframe.
+#' @param force.utf8 boolean. If true, it will read cabocha output xml with UTF-8.
 #'
 #' @return flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
 #'
@@ -155,12 +156,13 @@ CabochaTbl <- function(texts, rcpath = NULL)
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
-cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = TRUE) {
+cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE) {
 
     ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
+    if (force.utf8) { ENC <- "UTF-8" }
 
     tmp_file_txt <- tempfile(fileext = ".txt")
-    writeLines(texts, con = tmp_file_txt)
+    writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
 
     if (!is.null(rcpath)) {
         shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml"), "-b", rcpath))
@@ -168,11 +170,11 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = TRUE) {
         shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml")))
     }
 
-    xml <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
+    out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
     tmp <- tempfile(fileext = ".xml")
 
     readr::write_lines("<sentences>", tmp)
-    readr::write_lines(iconv(xml, to = "UTF-8"), tmp, append = TRUE)
+    readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
     readr::write_lines("</sentences>", tmp, append = TRUE)
 
     flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))

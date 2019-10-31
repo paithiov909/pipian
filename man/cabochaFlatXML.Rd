@@ -4,7 +4,8 @@
 \alias{cabochaFlatXML}
 \title{Call cabocha -f3 command}
 \usage{
-cabochaFlatXML(texts, rcpath = NULL, as.tibble = TRUE)
+cabochaFlatXML(texts, rcpath = NULL, as.tibble = FALSE,
+  force.utf8 = FALSE)
 }
 \arguments{
 \item{texts}{characters that you want to pass to CaboCha.}
@@ -12,6 +13,8 @@ cabochaFlatXML(texts, rcpath = NULL, as.tibble = TRUE)
 \item{rcpath}{fullpath to MECABRC if any.}
 
 \item{as.tibble}{boolean. if false, then return flatXML dataframe.}
+
+\item{force.utf8}{boolean. If true, it will read cabocha output xml with UTF-8.}
 }
 \value{
 flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
