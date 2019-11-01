@@ -58,19 +58,23 @@ CabochaR <- function(fxml) {
                 tok_id <- fxml %>%
                     as.data.frame() %>%
                     flatxml::fxml_getAttribute(morph_ids, "id")
+                surface_form <- fxml %>%
+                    as.data.frame() %>%
+                    flatxml::fxml_getValue(morph_ids)
                 morph <- fxml %>%
                     as.data.frame() %>%
                     flatxml::fxml_getAttribute(morph_ids, "feature") %>%
                     stringr::str_split(",", simplify = TRUE) %>%
                     as.data.frame(stringsAsFactors = FALSE)
-               tibble::tibble(
+                tibble::tibble(
                    chunk_id = id,
-                   tok_id = as.numeric(tok_id)
+                   tok_id = as.numeric(tok_id),
+                   surface_form = surface_form
                ) %>%
                    dplyr::bind_cols(morph) %>%
                    return()
             })
-        colnames(df) <- c("chunk_id", "tok_id", "POS1", "POS2", "POS3", "POS4", "X5StageUse1", "X5StageUse2", "Original", "Yomi1", "Yomi2")
+        colnames(df) <- c("chunk_id", "tok_id", "word", "POS1", "POS2", "POS3", "POS4", "X5StageUse1", "X5StageUse2", "Original", "Yomi1", "Yomi2")
         return(df)
     })
 
