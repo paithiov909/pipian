@@ -19,7 +19,7 @@ R6 class object having fields and methods below.
   \item texts
   \item rcpath
   \item tbl: tibble that each rows represents a phrase.
-  \item tbl2graph(): convert tbl to igrph graph object.
+  \item tbl2graph(): convert tbl to igraph graph object.
   \item plot(): simplely plot the syntactic tree.
 }
 }

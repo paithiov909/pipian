@@ -12,7 +12,7 @@
 #'   \item texts
 #'   \item rcpath
 #'   \item tbl: tibble that each rows represents a phrase.
-#'   \item tbl2graph(): convert tbl to igrph graph object.
+#'   \item tbl2graph(): convert tbl to igraph graph object.
 #'   \item plot(): simplely plot the syntactic tree.
 #' }
 #'
@@ -156,8 +156,8 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE)
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
-cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE) {
-
+cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE)
+{
     ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
     if (force.utf8) { ENC <- "UTF-8" }
 

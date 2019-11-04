@@ -12,7 +12,7 @@ cabochaFlatXML(texts, rcpath = NULL, as.tibble = FALSE,
 
 \item{rcpath}{fullpath to MECABRC if any.}
 
-\item{as.tibble}{boolean. if false, then return flatXML dataframe.}
+\item{as.tibble}{boolean. If false, then return flatXML dataframe.}
 
 \item{force.utf8}{boolean. If true, it will read cabocha output xml with UTF-8.}
 }

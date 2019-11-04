@@ -9,12 +9,14 @@
 #' @importFrom stringr str_c
 #' @importFrom dplyr %>%
 #' @export
-pluckAttrs <- function(str, idx) {
+pluckAttrs <- function(str, idx)
+{
     split <- stringr::str_split(str, ",")
     split %>%
         lapply(function(split){return(split[[1]][[idx]])}) %>%
         unlist() %>%
-        stringr::str_c(collapse = "")
+        stringr::str_c(collapse = "") %>%
+        return()
 }
 
 #' Utility for parsing CaboCha output
@@ -43,8 +45,8 @@ pluckAttrs <- function(str, idx) {
 #' @importFrom tibble tibble
 #' @importFrom tidyr drop_na
 #' @export
-CabochaR <- function(fxml) {
-
+CabochaR <- function(fxml)
+{
     chunk_ids <- fxml %>%
         as.data.frame() %>%
         dplyr::filter(elem. == "chunk") %>%
@@ -82,11 +84,11 @@ CabochaR <- function(fxml) {
                           public = list(
                               attributes = NULL,
                               morphs = NULL,
-                              initialize = function(attributes, morphs) {
+                              initialize = function(attributes, morphs){
                                   self$attributes <- attributes
                                   self$morphs <- morphs
                               },
-                              as.tibble = function(attr = self$attributes, dfs = self$morphs) {
+                              as.tibble = function(attr = self$attributes, dfs = self$morphs){
                                   purrr::imap_dfr(dfs, as_mapper(~
                                       tibble::tibble(
                                           chunk_id = attr[[.y]][[1]],
