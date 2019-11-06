@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE)
 
-A tiny interface to CaboCha
+Tiny Interface to CaboCha
 
 ## Installation
 
@@ -59,7 +59,7 @@ remotes::install_github("paithiov909/pipian")
 6     chunk       3   rel      D sentences sentence  chunk   <NA>
 ```
 
-### Convert flatXML into tibble compatible with CabochaR 
+### Converting flatXML into tibble compatible with CabochaR 
 
 ```R
 > library(dplyr)
