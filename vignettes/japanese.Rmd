@@ -1,6 +1,6 @@
 ---
 title: "About pipian package"
-author: "Kato Akriru"
+author: "Kato Akiru"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
