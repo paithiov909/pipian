@@ -3,6 +3,10 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-^.travis\.yml$
+^\.travis\.yml$
 ^packrat/
 ^\.Rprofile$
+^CRF\+\+\-0\.58$
+^cabocha\-0\.69$
+^doc$
+^Meta$

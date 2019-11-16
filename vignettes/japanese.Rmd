@@ -3,8 +3,11 @@ title: "About pipian package"
 author: "Kato Akiru"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+geometry: no
+header-includes:
+  - \usepackage[utf8]{inputenc}
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{About pipian package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

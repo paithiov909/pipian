@@ -76,7 +76,7 @@ Source: CRAN
 Version: 0.8.0.1
 Hash: 61622995e32970a772e895bec2b4a305
 Requires: BH, R6, Rcpp, assertthat, glue, magrittr, pkgconfig, plogr,
-    rlang, tibble, tidyselect
+    rlang, tidyselect, tibble
 
 Package: evaluate
 Source: CRAN
@@ -92,7 +92,7 @@ Package: flatxml
 Source: CRAN
 Version: 0.0.2
 Hash: 508e019a8dcde57901b0f54135af7b2f
-Requires: RCurl, xml2
+Requires: xml2, RCurl
 
 Package: glue
 Source: CRAN
@@ -137,7 +137,7 @@ Package: knitr
 Source: CRAN
 Version: 1.22
 Hash: d7581079d36fa69f84ff721384355734
-Requires: evaluate, highr, markdown, stringr, xfun, yaml
+Requires: evaluate, highr, xfun, yaml, markdown, stringr
 
 Package: magrittr
 Source: CRAN
@@ -170,7 +170,7 @@ Package: pillar
 Source: CRAN
 Version: 1.3.1
 Hash: 9ed4c2a5d3047bfba3e852ad5e806d91
-Requires: cli, crayon, fansi, rlang, utf8
+Requires: crayon, fansi, rlang, utf8, cli
 
 Package: pkgconfig
 Source: CRAN
@@ -208,14 +208,14 @@ Package: rmarkdown
 Source: CRAN
 Version: 1.12
 Hash: 241424e590a32decf6e9f0cd32a5760b
-Requires: base64enc, evaluate, htmltools, jsonlite, knitr, mime,
-    stringr, tinytex, yaml
+Requires: base64enc, evaluate, jsonlite, mime, yaml, htmltools,
+    stringr, tinytex, knitr
 
 Package: rvest
 Source: CRAN
 Version: 0.3.3
 Hash: 26cbe586097662b0c1fcbc583123a6bb
-Requires: httr, magrittr, selectr, xml2
+Requires: magrittr, xml2, selectr, httr
 
 Package: selectr
 Source: CRAN
@@ -243,26 +243,26 @@ Package: testthat
 Source: CRAN
 Version: 2.0.1
 Hash: 777eb6e94f5a62bf6320fecf0175bbbb
-Requires: R6, cli, crayon, digest, magrittr, praise, rlang, withr
+Requires: R6, crayon, digest, magrittr, praise, rlang, withr, cli
 
 Package: tibble
 Source: CRAN
 Version: 2.1.1
 Hash: e9d844f966bd4d40556b50c3b2239646
-Requires: cli, crayon, fansi, pillar, pkgconfig, rlang
+Requires: crayon, fansi, pkgconfig, rlang, cli, pillar
 
 Package: tidyr
 Source: CRAN
 Version: 0.8.3
 Hash: abb47affef711a0d4965f25cfdeb4df0
-Requires: Rcpp, dplyr, glue, magrittr, purrr, rlang, stringi, tibble,
-    tidyselect
+Requires: Rcpp, glue, magrittr, rlang, stringi, purrr, tidyselect,
+    tibble, dplyr
 
 Package: tidyselect
 Source: CRAN
 Version: 0.2.5
 Hash: ce32c88efe672d565819caa17238b04c
-Requires: Rcpp, glue, purrr, rlang
+Requires: Rcpp, glue, rlang, purrr
 
 Package: tinytex
 Source: CRAN
