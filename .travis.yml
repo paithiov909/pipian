@@ -8,7 +8,9 @@ notifications:
 git:
   depth: 3
 
-dist: trusty
+os:
+  - linux
+  - osx
 
 r:
   - release
@@ -30,6 +32,11 @@ addons:
       - libmecab-dev
       - mecab-ipadic-utf8
       - libxml2-dev
+  homebrew:
+    packages:
+      - mecab
+      - mecab-ipadic
+      - libxml2
 
 warnings_are_errors: true
 
