@@ -1,0 +1,56 @@
+language: r
+
+notifications:
+  email: false
+
+git:
+  depth: 3
+
+dist: trusty
+
+r:
+  - release
+  
+addons:
+  apt:
+    packages:
+      - mecab
+      - libmecab-dev
+      - mecab-ipadic-utf8
+
+warnings_are_errors: true
+
+before_install:
+  - wget "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ" -O CRF++-0.58.tar.gz
+  - tar zxfv CRF++-0.58.tar.gz CRF++-0.58/
+  - cd CRF++-0.58/
+  - ./configure
+  - make
+  - sudo make install
+  - sudo ldconfig
+  - cd ../
+  - curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU" > /dev/null
+  - CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"  
+  - curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU" -o cabocha-0.69.tar.bz2
+  - tar -jxvf cabocha-0.69.tar.bz2 cabocha-0.69/
+  - cd cabocha-0.69/
+  - ./configure --with-mecab-config=`which mecab-config` --with-charset=UTF8
+  - make
+  - make check
+  - sudo make install
+  - sudo ldconfig
+  - cd ../
+
+install:
+  - R -e "0" --args --bootstrap-packrat
+  - R -e "packrat::restore(restart = FALSE)"
+
+script:
+  - R CMD build .
+  - R CMD check *tar.gz
+
+cache:
+  directories:
+    - $TRAVIS_BUILD_DIR/packrat/src
+    - $TRAVIS_BUILD_DIR/packrat/lib
+  packages: true

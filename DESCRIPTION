@@ -14,6 +14,8 @@ SystemRequirements:
     CaboCha
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/paithiov909/pipian
+BugReports: https://github.com/paithiov909/pipian/issues 
 Imports: 
     R6,
     readr,
@@ -27,6 +29,10 @@ Imports:
     flatxml,
     graphics,
     tidyr
-Suggests: knitr, rmarkdown
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat,
+    magrittr
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
