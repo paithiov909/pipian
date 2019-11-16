@@ -45,9 +45,9 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE)
     writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
 
     if (!is.null(rcpath)) {
-        shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml"), "-b", rcpath))
+        system(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml"), "-b", rcpath))
     } else {
-        shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml")))
+        system(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml")))
     }
 
     out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
@@ -165,9 +165,9 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 =
     writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
 
     if (!is.null(rcpath)) {
-        shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml"), "-b", rcpath))
+        system(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml"), "-b", rcpath))
     } else {
-        shell(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml")))
+        system(paste("cabocha -f3", file.path(tmp_file_txt), "-o", file.path(tempdir(), "data.xml")))
     }
 
     out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)

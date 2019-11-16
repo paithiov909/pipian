@@ -9,7 +9,7 @@ describe("Output Verification", {
 
     describe("Check cabocha is available", {
         it("Available?", {
-            version <- try(shell("cabocha --version", intern = TRUE))
+            version <- try(system("cabocha --version", intern = TRUE))
             expect_equivalent(version, intern)
         })
     })
