@@ -8,7 +8,7 @@ Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: Call CaboCha -f3 command via shell().
 Depends:
     R (>= 3.2.0)
-License: file LICENSE
+License: MIT + file LICENSE
 SystemRequirements:
     MeCab,
     CaboCha
