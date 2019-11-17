@@ -10,7 +10,6 @@ git:
 
 os:
   - linux
-  - osx
 
 r:
   - release
@@ -32,13 +31,8 @@ addons:
       - libmecab-dev
       - mecab-ipadic-utf8
       - libxml2-dev
-  homebrew:
-    packages:
-      - mecab
-      - mecab-ipadic
-      - libxml2
 
-warnings_are_errors: true
+warnings_are_errors: false
 
 before_install:
   - wget "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ" -O CRF++-0.58.tar.gz
