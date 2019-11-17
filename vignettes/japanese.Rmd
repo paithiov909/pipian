@@ -24,7 +24,7 @@ require(magrittr)
 
 [paithiov909/pipian: Tiny Interface to CaboCha](https://github.com/paithiov909/pipian)
 
-RからCaboChaを呼ぶためのライブラリ。`shell()`から`cabocha -f3`コマンドを呼んで出力した一時ファイル（XML）を読みに行っている。Rcpp経由ではないため大規模に実行するには不向きだが、CaboChaとMeCabのパスが通っていれば使えるはずなので導入は楽。mecabrcは渡せるようにした気がする。
+RからCaboChaを呼ぶためのライブラリ。`system()`から`cabocha -f3`コマンドを呼んで出力した一時ファイル（XML）を読みに行っている。Rcpp経由ではないため大規模に実行するには不向きだが、CaboChaとMeCabのパスが通っていれば使えるはずなので導入は楽。mecabrcは渡せるようにした気がする。
 
 これで使えるようになる。
 
