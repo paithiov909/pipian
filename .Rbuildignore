@@ -10,3 +10,4 @@
 ^cabocha\-0\.69$
 ^doc$
 ^Meta$
+^*\.log$
