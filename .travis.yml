@@ -21,11 +21,12 @@ jobs:
   include:
   - os: linux
     addons:
-      apt_packages:
-        - mecab
-        - libmecab-dev
-        - mecab-ipadic-utf8
-        - libxml2-dev
+      apt:
+        packages:
+          - mecab
+          - libmecab-dev
+          - mecab-ipadic-utf8
+          - libxml2-dev
     before_install:
       - wget "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ" -O CRF++-0.58.tar.gz
       - tar -zxvf CRF++-0.58.tar.gz CRF++-0.58/
@@ -48,12 +49,13 @@ jobs:
       - cd ../
   - os: osx
     addons:
-      brew_packages:
-        - mecab
-        - mecab-ipadic
-        - crf++
-        - cabocha
-        - libxml2
+      homebrew:
+        packages:
+          - mecab
+          - mecab-ipadic
+          - crf++
+          - cabocha
+          - libxml2
 
 env:
   global:
