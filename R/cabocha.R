@@ -1,6 +1,6 @@
 #' Call cabocha -f3 command
 #'
-#' Call cabocha -f3 command via shell(), then return results as a tibble.
+#' Call cabocha -f3 command via system(), then return results as a tibble.
 #' It requires that CaboCha has already been installed and available.
 #'
 #' @param texts characters that you want to pass to CaboCha.
@@ -139,7 +139,7 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE)
 
 #' Call cabocha -f3 command
 #'
-#' Call cabocha -f3 command via shell(), then return results as a flat XML.
+#' Call cabocha -f3 command via system(), then return results as a flat XML.
 #' It requires that CaboCha has already been installed and available.
 #'
 #' @seealso \url{https://www.rdocumentation.org/packages/flatxml/versions/0.0.2}

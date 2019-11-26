@@ -5,17 +5,17 @@ Version: 0.1.4
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
 Maintainer: Kato Akiru <paithiov909@gmail.com>
-Description: Call CaboCha -f3 command via shell().
+Description: Call CaboCha -f3 command via system().
 Depends:
     R (>= 3.2.0)
-License: MIT + file LICENSE
 SystemRequirements:
     MeCab,
     CaboCha
-Encoding: UTF-8
-LazyData: true
+License: MIT + file LICENSE
 URL: https://github.com/paithiov909/pipian
 BugReports: https://github.com/paithiov909/pipian/issues 
+Encoding: UTF-8
+LazyData: true
 Imports: 
     R6,
     readr,

@@ -20,7 +20,7 @@ cabochaFlatXML(texts, rcpath = NULL, as.tibble = FALSE,
 flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
 }
 \description{
-Call cabocha -f3 command via shell(), then return results as a flat XML.
+Call cabocha -f3 command via system(), then return results as a flat XML.
 It requires that CaboCha has already been installed and available.
 }
 \seealso{

@@ -24,6 +24,6 @@ R6 class object having fields and methods below.
 }
 }
 \description{
-Call cabocha -f3 command via shell(), then return results as a tibble.
+Call cabocha -f3 command via system(), then return results as a tibble.
 It requires that CaboCha has already been installed and available.
 }
