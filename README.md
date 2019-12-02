@@ -2,7 +2,7 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#) [![Build Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian) [![GitHub license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE)
 
-Tiny Interface to CaboCha
+> Tiny Interface to CaboCha
 
 ## Installation
 

@@ -18,17 +18,17 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     R6,
-    readr,
     xml2,
+    flatxml,
     rvest,
-    purrr,
-    stringr,
     tibble,
     dplyr,
+    readr,
+    purrr,
+    tidyr,
+    stringr,
     igraph,
-    flatxml,
-    graphics,
-    tidyr
+    graphics
 Suggests:
     knitr,
     rmarkdown,
