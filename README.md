@@ -1,6 +1,7 @@
 # pipian <img src='man/figures/logo.png' align="right" height="139" />
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#) [![Build Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian) [![GitHub license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#) [![Build Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian) [![GitHub license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
 
 > Tiny Interface to CaboCha
 
