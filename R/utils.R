@@ -78,6 +78,16 @@ CabochaR <- function(fxml)
                     dplyr::bind_cols(morph) %>%
                     return()
             })
+        if (ncol(df) < 12) {
+            df <- dplyr::bind_cols(
+                df,
+                data.frame(
+                    a = c(NA),
+                    b = c(NA),
+                    stringsAsFactors = FALSE
+                )
+            )
+        }
         colnames(df) <-
             c(
                 "chunk_id",

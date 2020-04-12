@@ -88,7 +88,7 @@ res$as.tibble()
 
 ## License
 
-Copyright (c) 2019 Kato Akiru
+Copyright (c) 2020 Kato Akiru
 
 Released under the MIT license https://github.com/paithiov909/pipian/blob/master/LICENSE
 
