@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pipian</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -110,7 +110,7 @@
 <div id="parsing-dependency" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parsing-dependency" class="anchor"></a>Parsing dependency</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">res &lt;-<span class="st"> </span>pipian<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/pipian/topics/CabochaTbl">CabochaTbl</a></span>(<span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>)</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">res &lt;-<span class="st"> </span>pipian<span class="op">::</span><span class="kw">CabochaTbl</span>(<span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>)</a>
 <a class="sourceLine" id="cb2-2" title="2">res<span class="op">$</span>tbl</a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt; # A tibble: 37 x 4</span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;    id    link  score     morphs      </span></a>
@@ -136,7 +136,7 @@
 <div id="getting-dependency-as-flatxml" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-dependency-as-flatxml" class="anchor"></a>Getting dependency as flatXML</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(pipian<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/pipian/topics/cabochaFlatXML">cabochaFlatXML</a></span>(<span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>))</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(pipian<span class="op">::</span><span class="kw">cabochaFlatXML</span>(<span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>))</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt;       elem. elemid. attr. value.    level1   level2 level3 level4</span></a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; 1 sentences       1  &lt;NA&gt;   &lt;NA&gt; sentences     &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;</span></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; 2  sentence       2  &lt;NA&gt;   &lt;NA&gt; sentences sentence   &lt;NA&gt;   &lt;NA&gt;</span></a>
@@ -149,8 +149,8 @@
 <h3 class="hasAnchor">
 <a href="#converting-flatxml-into-tibble-compatible-with-cabochar" class="anchor"></a>Converting flatXML into tibble compatible with CabochaR</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(magritrr)</a>
-<a class="sourceLine" id="cb5-2" title="2">res &lt;-<span class="st"> </span>pipian<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/pipian/topics/cabochaFlatXML">cabochaFlatXML</a></span>(<span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span>pipian<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/pipian/topics/CabochaR">CabochaR</a></span>()</a>
+<a class="sourceLine" id="cb5-2" title="2">res &lt;-<span class="st"> </span>pipian<span class="op">::</span><span class="kw">cabochaFlatXML</span>(<span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span>pipian<span class="op">::</span><span class="kw">CabochaR</span>()</a>
 <a class="sourceLine" id="cb5-4" title="4"></a>
 <a class="sourceLine" id="cb5-5" title="5">res<span class="op">$</span><span class="kw">as.tibble</span>()</a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; # A tibble: 78 x 18</span></a>
@@ -174,7 +174,7 @@
 <div id="license" class="section level2">
 <h2 class="hasAnchor">
 <a href="#license" class="anchor"></a>License</h2>
-<p>Copyright (c) 2019 Kato Akiru</p>
+<p>Copyright (c) 2020 Kato Akiru</p>
 <p>Released under the MIT license <a href="https://github.com/paithiov909/pipian/blob/master/LICENSE" class="uri">https://github.com/paithiov909/pipian/blob/master/LICENSE</a></p>
 <p>Icons made by <a href="https://www.flaticon.com/authors/catkuro">catkuro</a> from <a href="https://www.flaticon.com/">Flaticon</a></p>
 </div>
