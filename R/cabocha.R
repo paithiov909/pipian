@@ -98,8 +98,7 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
       return()
   })
 
-  CabochaTbl <- R6::R6Class(
-    "CabochaTbl",
+  CabochaTbl <- R6::R6Class("CabochaTbl",
     public = list(
       texts = NULL,
       rcpath = NULL,
@@ -169,50 +168,50 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 #' @importFrom dplyr %>%
 #' @export
 cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE) {
-    ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
-    if (force.utf8) {
-      ENC <- "UTF-8"
-    }
-
-    tmp_file_txt <- tempfile(fileext = ".txt")
-    writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
-
-    if (!is.null(rcpath)) {
-      system(paste(
-        "cabocha -f3",
-        file.path(tmp_file_txt),
-        "-o",
-        file.path(tempdir(), "data.xml"),
-        "-b",
-        rcpath
-      ))
-    } else {
-      system(paste(
-        "cabocha -f3",
-        file.path(tmp_file_txt),
-        "-o",
-        file.path(tempdir(), "data.xml")
-      ))
-    }
-
-    out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
-    tmp <- tempfile(fileext = ".xml")
-
-    readr::write_lines("<sentences>", tmp)
-    readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
-    readr::write_lines("</sentences>", tmp, append = TRUE)
-
-    flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
-
-    unlink(tmp_file_txt)
-    unlink(tmp)
-
-    if (as.tibble == TRUE) {
-      flatdf %>%
-        tibble::as_tibble() %>%
-        return()
-    } else {
-      flatdf %>%
-        return()
-    }
+  ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
+  if (force.utf8) {
+    ENC <- "UTF-8"
   }
+
+  tmp_file_txt <- tempfile(fileext = ".txt")
+  writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
+
+  if (!is.null(rcpath)) {
+    system(paste(
+      "cabocha -f3",
+      file.path(tmp_file_txt),
+      "-o",
+      file.path(tempdir(), "data.xml"),
+      "-b",
+      rcpath
+    ))
+  } else {
+    system(paste(
+      "cabocha -f3",
+      file.path(tmp_file_txt),
+      "-o",
+      file.path(tempdir(), "data.xml")
+    ))
+  }
+
+  out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
+  tmp <- tempfile(fileext = ".xml")
+
+  readr::write_lines("<sentences>", tmp)
+  readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
+  readr::write_lines("</sentences>", tmp, append = TRUE)
+
+  flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
+
+  unlink(tmp_file_txt)
+  unlink(tmp)
+
+  if (as.tibble == TRUE) {
+    flatdf %>%
+      tibble::as_tibble() %>%
+      return()
+  } else {
+    flatdf %>%
+      return()
+  }
+}
