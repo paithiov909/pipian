@@ -36,118 +36,117 @@
 #' @importFrom dplyr %>%
 #'
 #' @export
-CabochaTbl <- function(texts,
-                       rcpath = NULL,
-                       force.utf8 = FALSE)
-{
-    ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
-    if (force.utf8) {
-        ENC <- "UTF-8"
-    }
+CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
+  ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
+  if (force.utf8) {
+    ENC <- "UTF-8"
+  }
 
-    tmp_file_txt <- tempfile(fileext = ".txt")
-    writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
+  tmp_file_txt <- tempfile(fileext = ".txt")
+  writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
 
-    if (!is.null(rcpath)) {
-        system(paste(
-            "cabocha -f3",
-            file.path(tmp_file_txt),
-            "-o",
-            file.path(tempdir(), "data.xml"),
-            "-b",
-            rcpath
-        ))
-    } else {
-        system(paste(
-            "cabocha -f3",
-            file.path(tmp_file_txt),
-            "-o",
-            file.path(tempdir(), "data.xml")
-        ))
-    }
+  if (!is.null(rcpath)) {
+    system(paste(
+      "cabocha -f3",
+      file.path(tmp_file_txt),
+      "-o",
+      file.path(tempdir(), "data.xml"),
+      "-b",
+      rcpath
+    ))
+  } else {
+    system(paste(
+      "cabocha -f3",
+      file.path(tmp_file_txt),
+      "-o",
+      file.path(tempdir(), "data.xml")
+    ))
+  }
 
-    out <-
-        readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
+  out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
 
-    # Parse xml
-    tmp <- tempfile(fileext = ".xml")
-    readr::write_lines("<body>", tmp, append = TRUE)
-    readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
-    readr::write_lines("</body>", tmp, append = TRUE)
+  # Parse xml
+  tmp <- tempfile(fileext = ".xml")
+  readr::write_lines("<body>", tmp, append = TRUE)
+  readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
+  readr::write_lines("</body>", tmp, append = TRUE)
 
-    o <- xml2::read_xml(tmp, encoding = "UTF-8")
+  o <- xml2::read_xml(tmp, encoding = "UTF-8")
 
-    # Clean up
-    unlink(tmp_file_txt)
-    unlink(tmp)
+  # Clean up
+  unlink(tmp_file_txt)
+  unlink(tmp)
 
-    # xml2df
-    chunks <- o %>%
-        xml2::xml_child("sentence") %>%
-        xml2::xml_children()
+  # xml2df
+  chunks <- o %>%
+    xml2::xml_child("sentence") %>%
+    xml2::xml_children()
 
-    df <- purrr::map_dfr(chunks, function(chunk) {
-        info <- rvest::html_attrs(chunk) %>% unlist()
+  df <- purrr::map_dfr(chunks, function(chunk) {
+    info <- rvest::html_attrs(chunk) %>% unlist()
 
-        morphs <- xml2::xml_children(chunk) %>%
-            sapply(purrr::as_mapper( ~ rvest::html_text(.))) %>%
-            stringr::str_c(collapse = "")
+    morphs <- xml2::xml_children(chunk) %>%
+      sapply(purrr::as_mapper(~ rvest::html_text(.))) %>%
+      stringr::str_c(collapse = "")
 
-        tibble::tibble(
-            id = info["id"],
-            link = info["link"],
-            score = info["score"],
-            morphs = morphs
-        ) %>%
-            return()
-    })
+    tibble::tibble(
+      id = info["id"],
+      link = info["link"],
+      score = info["score"],
+      morphs = morphs
+    ) %>%
+      return()
+  })
 
-    CabochaTbl <- R6::R6Class(
-        "CabochaTbl",
-        public = list(
-            texts = NULL,
-            rcpath = NULL,
-            tbl = NULL,
-            initialize = function(texts, rcpath, tbl) {
-                self$texts <- texts
-                self$rcpath <- rcpath
-                self$tbl <- tbl
-            },
-            tbl2graph = function(df = self$tbl,
-                                 directed = TRUE) {
-                tail <- length(df$id)
-                to <- stringr::str_replace(df$link, "-1", as.character(tail))
-                vertices <- tibble::tibble(name = c(df$id, as.character(tail)),
-                                           morph = c(df$morphs, "EOS"))
-                relations <- tibble::tibble(from = df$id,
-                                            to = to,
-                                            score = df$score)
-                g <- igraph::graph_from_data_frame(relations,
-                                                  directed = directed,
-                                                  vertices = vertices)
-                return(g)
-            },
-            plot = function(g = self$tbl2graph(),
-                            directed = TRUE) {
-                pagerank <- igraph::page.rank(g, directed = directed)
-                g %>%
-                    plot(
-                        vertex.size = pagerank$vector * 50,
-                        vertex.color = "steelblue",
-                        vertex.label = igraph::V(g)$morph,
-                        vertex.label.cex = 0.8,
-                        vertex.label.color = "black",
-                        edge.width = 0.4,
-                        edge.arrow.size = 0.4,
-                        edge.color = "gray80",
-                        layout = igraph::layout_as_tree(g, mode = "in", flip.y = FALSE)
-                    )
-            }
+  CabochaTbl <- R6::R6Class(
+    "CabochaTbl",
+    public = list(
+      texts = NULL,
+      rcpath = NULL,
+      tbl = NULL,
+      initialize = function(texts, rcpath, tbl) {
+        self$texts <- texts
+        self$rcpath <- rcpath
+        self$tbl <- tbl
+      },
+      tbl2graph = function(df = self$tbl, directed = TRUE) {
+        tail <- length(df$id)
+        to <- stringr::str_replace(df$link, "-1", as.character(tail))
+        vertices <- tibble::tibble(
+          name = c(df$id, as.character(tail)),
+          morph = c(df$morphs, "EOS")
         )
+        relations <- tibble::tibble(
+          from = df$id,
+          to = to,
+          score = df$score
+        )
+        g <- igraph::graph_from_data_frame(relations,
+          directed = directed,
+          vertices = vertices
+        )
+        return(g)
+      },
+      plot = function(g = self$tbl2graph(), directed = TRUE) {
+        pagerank <- igraph::page.rank(g, directed = directed)
+        g %>%
+          plot(
+            vertex.size = pagerank$vector * 50,
+            vertex.color = "steelblue",
+            vertex.label = igraph::V(g)$morph,
+            vertex.label.cex = 0.8,
+            vertex.label.color = "black",
+            edge.width = 0.4,
+            edge.arrow.size = 0.4,
+            edge.color = "gray80",
+            layout = igraph::layout_as_tree(g, mode = "in", flip.y = FALSE)
+          )
+      }
     )
+  )
 
-    tbl <- CabochaTbl$new(texts, rcpath, df)
-    return(tbl)
+  tbl <- CabochaTbl$new(texts, rcpath, df)
+  return(tbl)
 }
 
 #' Call cabocha -f3 command
@@ -169,57 +168,51 @@ CabochaTbl <- function(texts,
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
-cabochaFlatXML <-
-    function(texts,
-             rcpath = NULL,
-             as.tibble = FALSE,
-             force.utf8 = FALSE)
-    {
-        ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
-        if (force.utf8) {
-            ENC <- "UTF-8"
-        }
-
-        tmp_file_txt <- tempfile(fileext = ".txt")
-        writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
-
-        if (!is.null(rcpath)) {
-            system(paste(
-                "cabocha -f3",
-                file.path(tmp_file_txt),
-                "-o",
-                file.path(tempdir(), "data.xml"),
-                "-b",
-                rcpath
-            ))
-        } else {
-            system(paste(
-                "cabocha -f3",
-                file.path(tmp_file_txt),
-                "-o",
-                file.path(tempdir(), "data.xml")
-            ))
-        }
-
-        out <-
-            readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
-        tmp <- tempfile(fileext = ".xml")
-
-        readr::write_lines("<sentences>", tmp)
-        readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
-        readr::write_lines("</sentences>", tmp, append = TRUE)
-
-        flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
-
-        unlink(tmp_file_txt)
-        unlink(tmp)
-
-        if (as.tibble == TRUE) {
-            flatdf %>%
-                tibble::as_tibble() %>%
-                return()
-        } else {
-            flatdf %>%
-                return()
-        }
+cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE) {
+    ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
+    if (force.utf8) {
+      ENC <- "UTF-8"
     }
+
+    tmp_file_txt <- tempfile(fileext = ".txt")
+    writeLines(texts, con = tmp_file_txt, useBytes = TRUE)
+
+    if (!is.null(rcpath)) {
+      system(paste(
+        "cabocha -f3",
+        file.path(tmp_file_txt),
+        "-o",
+        file.path(tempdir(), "data.xml"),
+        "-b",
+        rcpath
+      ))
+    } else {
+      system(paste(
+        "cabocha -f3",
+        file.path(tmp_file_txt),
+        "-o",
+        file.path(tempdir(), "data.xml")
+      ))
+    }
+
+    out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
+    tmp <- tempfile(fileext = ".xml")
+
+    readr::write_lines("<sentences>", tmp)
+    readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
+    readr::write_lines("</sentences>", tmp, append = TRUE)
+
+    flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
+
+    unlink(tmp_file_txt)
+    unlink(tmp)
+
+    if (as.tibble == TRUE) {
+      flatdf %>%
+        tibble::as_tibble() %>%
+        return()
+    } else {
+      flatdf %>%
+        return()
+    }
+  }
