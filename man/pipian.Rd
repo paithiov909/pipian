@@ -6,5 +6,19 @@
 \alias{pipian-package}
 \title{pipian: Tiny Interface to CaboCha}
 \description{
-pipian: Tiny Interface to CaboCha
+\if{html}{\figure{logo.png}{options: align='right'}}
+
+Call CaboCha -f3 command via system().
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/paithiov909/pipian}
+  \item Report bugs at \url{https://github.com/paithiov909/pipian/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Kato Akiru \email{paithiov909@gmail.com}
+
 }

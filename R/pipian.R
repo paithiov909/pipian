@@ -2,4 +2,4 @@
 #'
 #' @docType package
 #' @name pipian
-NULL
+"_PACKAGE"

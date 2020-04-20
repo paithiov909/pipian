@@ -36,7 +36,7 @@ RからCaboChaを呼ぶためのライブラリ。`system()`から`cabocha -f3`�
 
 ## モチベーション
 
-以前つくった[Rからkuromoji.jsで形態素解析するオレオレパッケージ](https://github.com/paithiov909/tangela)から機能を切り分けたかった。
+以前つくったRからkuromoji.jsで形態素解析するオレオレパッケージから機能を切り分けたかった。
 
 ## 使い方
 
