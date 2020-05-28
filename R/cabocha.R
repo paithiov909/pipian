@@ -17,23 +17,24 @@
 #' }
 #'
 #' @import R6
+#' @import dplyr
 #' @importFrom graphics plot
-#' @importFrom readr write_lines
 #' @importFrom xml2 read_xml
+#' @importFrom xml2 xml_find_all
 #' @importFrom xml2 xml_child
 #' @importFrom xml2 xml_children
 #' @importFrom purrr map_dfr
-#' @importFrom purrr as_mapper
+#' @importFrom purrr map_chr
 #' @importFrom rvest html_attrs
 #' @importFrom rvest html_text
 #' @importFrom stringr str_c
 #' @importFrom stringr str_replace
+#' @importFrom stringi stri_enc_toutf8
 #' @importFrom tibble tibble
 #' @importFrom igraph graph_from_data_frame
 #' @importFrom igraph page.rank
 #' @importFrom igraph V
 #' @importFrom igraph layout_as_tree
-#' @importFrom dplyr %>%
 #'
 #' @export
 CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
@@ -66,27 +67,29 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
   out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
 
   # Parse xml
-  tmp <- tempfile(fileext = ".xml")
-  readr::write_lines("<body>", tmp, append = TRUE)
-  readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
-  readr::write_lines("</body>", tmp, append = TRUE)
-
-  o <- xml2::read_xml(tmp, encoding = "UTF-8")
+  o <- xml2::read_xml(
+    stringr::str_c(
+      "<sentences>",
+      stringr::str_c(stringi::stri_enc_toutf8(out), collapse = ""),
+      "</sentences>",
+      collapse = ""
+    )
+  )
 
   # Clean up
   unlink(tmp_file_txt)
-  unlink(tmp)
 
   # xml2df
   chunks <- o %>%
-    xml2::xml_child("sentence") %>%
+    xml2::xml_find_all(".//sentence") %>%
     xml2::xml_children()
 
   df <- purrr::map_dfr(chunks, function(chunk) {
-    info <- rvest::html_attrs(chunk) %>% unlist()
+    info <- rvest::html_attrs(chunk) %>%
+      unlist()
 
     morphs <- xml2::xml_children(chunk) %>%
-      sapply(purrr::as_mapper(~ rvest::html_text(.))) %>%
+      purrr::map_chr(~ rvest::html_text(.)) %>%
       stringr::str_c(collapse = "")
 
     tibble::tibble(
@@ -159,15 +162,17 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 #' @param rcpath fullpath to MECABRC if any.
 #' @param as.tibble boolean. If false, then return flatXML dataframe.
 #' @param force.utf8 boolean. If true, it will read cabocha output xml with UTF-8.
+#' @param ... other arguments are passed to `tibble::as_tibble`.
 #'
 #' @return flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
 #'
 #' @importFrom readr write_lines
 #' @importFrom flatxml fxml_importXMLFlat
+#' @importFrom stringi stri_enc_toutf8
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
-cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE) {
+cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE, ...) {
   ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
   if (force.utf8) {
     ENC <- "UTF-8"
@@ -187,7 +192,7 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 =
     ))
   } else {
     system(paste(
-      "cabocha -f3",
+      "cabocha -f3 -n 1",
       file.path(tmp_file_txt),
       "-o",
       file.path(tempdir(), "data.xml")
@@ -198,7 +203,7 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 =
   tmp <- tempfile(fileext = ".xml")
 
   readr::write_lines("<sentences>", tmp)
-  readr::write_lines(iconv(out, to = "UTF-8"), tmp, append = TRUE)
+  readr::write_lines(stringi::stri_enc_toutf8(out), tmp, append = TRUE)
   readr::write_lines("</sentences>", tmp, append = TRUE)
 
   flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
@@ -206,9 +211,9 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 =
   unlink(tmp_file_txt)
   unlink(tmp)
 
-  if (as.tibble == TRUE) {
+  if (as.tibble) {
     flatdf %>%
-      tibble::as_tibble() %>%
+      tibble::as_tibble(...) %>%
       return()
   } else {
     flatdf %>%

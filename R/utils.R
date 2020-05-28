@@ -1,27 +1,5 @@
 #' Utility for parsing CaboCha output
 #'
-#' Pluck a value from feature attribute of CaboCha output tok.
-#'
-#' @param str strings representing feature attribute of CaboCha output tok.
-#' @param idx index to pluck.
-#'
-#' @importFrom stringr str_split
-#' @importFrom stringr str_c
-#' @importFrom dplyr %>%
-#' @export
-pluckAttrs <- function(str, idx) {
-  split <- stringr::str_split(str, ",")
-  split %>%
-    lapply(function(split) {
-      return(split[[1]][[idx]])
-    }) %>%
-    unlist() %>%
-    stringr::str_c(collapse = "") %>%
-    return()
-}
-
-#' Utility for parsing CaboCha output
-#'
 #' convert flat XML into CabochaR compatible output.
 #'
 #' @param fxml flat XML that comes out from \code{cabochaFlatXML(as.tibble = FALSE)}
@@ -30,7 +8,7 @@ pluckAttrs <- function(str, idx) {
 #' \itemize{
 #'   \item attributes: list of list. Each elements consist of the element id and attributes of chunk.
 #'   \item morphs: list of tibble. Each elements represent morphemes of which the chunk is made.
-#'   \item as.tibble(): return a tibble compatible with CabochaR output.
+#'   \item as_tibble(): return a tibble compatible with CabochaR output.
 #' }
 #'
 #' @seealso \url{https://minowalab.org/cabochar/}
@@ -39,6 +17,7 @@ pluckAttrs <- function(str, idx) {
 #' @import dplyr
 #' @importFrom purrr map
 #' @importFrom purrr map_dfr
+#' @importFrom purrr imap_dfr
 #' @importFrom flatxml fxml_getChildren
 #' @importFrom flatxml fxml_getAttribute
 #' @importFrom flatxml fxml_getAttributesAll
@@ -47,63 +26,105 @@ pluckAttrs <- function(str, idx) {
 #' @importFrom tidyr drop_na
 #' @export
 CabochaR <- function(fxml) {
+  sentence_ids <- fxml %>%
+    as.data.frame(stringsAsFactors = FALSE) %>%
+    dplyr::filter(elem. == "sentence") %>%
+    dplyr::distinct(elemid.)
+
   chunk_ids <- fxml %>%
-    as.data.frame() %>%
+    as.data.frame(stringsAsFactors = FALSE) %>%
     dplyr::filter(elem. == "chunk") %>%
     dplyr::distinct(elemid.)
 
-  morphs <- purrr::map(chunk_ids$elemid., function(id) {
-    df <- fxml %>%
-      as.data.frame() %>%
-      flatxml::fxml_getChildren(id) %>%
-      purrr::map_dfr(function(morph_ids) {
-        tok_id <- fxml %>%
-          as.data.frame() %>%
-          flatxml::fxml_getAttribute(morph_ids, "id")
-        surface_form <- fxml %>%
-          as.data.frame() %>%
-          flatxml::fxml_getValue(morph_ids)
-        morph <- fxml %>%
-          as.data.frame() %>%
-          flatxml::fxml_getAttribute(morph_ids, "feature") %>%
-          stringr::str_split(",", simplify = TRUE) %>%
-          as.data.frame(stringsAsFactors = FALSE)
-        tibble::tibble(
-          chunk_id = id,
-          tok_id = as.numeric(tok_id),
-          surface_form = surface_form
-        ) %>%
-          dplyr::bind_cols(morph) %>%
-          return()
-      })
-    if (ncol(df) < 12) {
-      df <- dplyr::bind_cols(
-        df,
-        data.frame(
-          a = c(NA),
-          b = c(NA),
-          stringsAsFactors = FALSE
+  # Sentence level
+  morphs <- purrr::map(sentence_ids$elemid., function(sid) {
+
+    # Chunk level
+    purrr::map_dfr(chunk_ids$elemid., function(cid) {
+
+      # Parse morphs
+      df <- fxml %>%
+        as.data.frame(stringsAsFactors = FALSE) %>%
+        flatxml::fxml_getChildren(cid) %>%
+        purrr::map_dfr(function(morph_ids) {
+          tok_id <- fxml %>%
+            as.data.frame(stringsAsFactors = FALSE) %>%
+            flatxml::fxml_getAttribute(morph_ids, "id")
+          ne_value <- fxml %>%
+            as.data.frame(stringsAsFactors = FALSE) %>%
+            flatxml::fxml_getAttribute(morph_ids, "ne")
+          surface_form <- fxml %>%
+            as.data.frame(stringsAsFactors = FALSE) %>%
+            flatxml::fxml_getValue(morph_ids)
+          morph <- fxml %>%
+            as.data.frame(stringsAsFactors = FALSE) %>%
+            flatxml::fxml_getAttribute(morph_ids, "feature") %>%
+            stringr::str_split(",", simplify = TRUE) %>%
+            as.data.frame(stringsAsFactors = FALSE)
+          tibble::tibble(
+            chunk_id = cid,
+            tok_id = as.numeric(tok_id),
+            ne_value = ne_value,
+            surface_form = surface_form,
+          ) %>%
+            dplyr::bind_cols(morph) %>%
+            return()
+        })
+
+      # Set colnames
+      if (ncol(df) < 13) {
+        df <- dplyr::bind_cols(
+          df,
+          data.frame(
+            a = c(NA),
+            b = c(NA),
+            stringsAsFactors = FALSE
+          )
         )
-      )
-    }
-    colnames(df) <-
-      c(
-        "chunk_id",
-        "tok_id",
-        "word",
-        "POS1",
-        "POS2",
-        "POS3",
-        "POS4",
-        "X5StageUse1",
-        "X5StageUse2",
-        "Original",
-        "Yomi1",
-        "Yomi2"
-      )
-    return(df)
+      }
+      colnames(df) <-
+        c(
+          "chunk_idx",
+          "tok_idx",
+          "ne_value",
+          "word",
+          "POS1",
+          "POS2",
+          "POS3",
+          "POS4",
+          "X5StageUse1",
+          "X5StageUse2",
+          "Original",
+          "Yomi1",
+          "Yomi2"
+        )
+      return(df)
+    })
   })
 
+  # Parse attributes of elements
+  attributes <- purrr::map_dfr(chunk_ids$elemid., function(id) {
+    chunk_ids <- fxml %>%
+      as.data.frame(stringsAsFactors = FALSE) %>%
+      tidyr::drop_na(elem., elemid., attr., value.) %>%
+      dplyr::distinct(elemid.) %>%
+      dplyr::filter(elemid. == id)
+    value <- fxml %>%
+      as.data.frame(stringsAsFactors = FALSE) %>%
+      tidyr::drop_na(elem., elemid., attr., value.) %>%
+      flatxml::fxml_getAttributesAll(id)
+    return(tibble::tibble(
+      chunk_idx = chunk_ids$elemid.,
+      D1 = value[["id"]],
+      D2 = value[["link"]],
+      rel = value[["rel"]],
+      score = value[["score"]],
+      head = value[["head"]],
+      func = value[["func"]]
+    ))
+  })
+
+  # Class object
   CabochaR <- R6::R6Class(
     "CabochaR",
     public = list(
@@ -113,42 +134,38 @@ CabochaR <- function(fxml) {
         self$attributes <- attributes
         self$morphs <- morphs
       },
-      as.tibble = function(attr = self$attributes, dfs = self$morphs) {
-        purrr::imap_dfr(
-          dfs,
-          as_mapper(
-            ~
-            tibble::tibble(
-              chunk_id = attr[[.y]][[1]],
-              D1 = as.numeric(attr[[.y]][[2]][["id"]]),
-              D2 = as.numeric(attr[[.y]][[2]][["link"]]),
-              rel = attr[[.y]][[2]][["rel"]],
-              score = as.double(attr[[.y]][[2]][["score"]]),
-              head = as.numeric(attr[[.y]][[2]][["head"]]),
-              func = as.numeric(attr[[.y]][[2]][["func"]])
-            ) %>%
-              dplyr::left_join(.x, by = "chunk_id") %>%
-              return()
-          )
-        ) %>%
-          return()
+      as_tibble = function(attr = self$attributes, dfs = self$morphs) {
+        purrr::imap_dfr(dfs, function(df, idx) {
+          df %>%
+            dplyr::mutate(sentence_idx = idx) %>%
+            dplyr::right_join(attr, by = "chunk_idx") %>%
+            dplyr::select(
+              sentence_idx,
+              chunk_idx,
+              D1,
+              D2,
+              rel,
+              score,
+              head,
+              func,
+              tok_idx,
+              ne_value,
+              word,
+              POS1,
+              POS2,
+              POS3,
+              POS4,
+              X5StageUse1,
+              X5StageUse2,
+              Original,
+              Yomi1,
+              Yomi2
+            )
+        })
       }
     )
   )
 
-  attributes <- purrr::map(chunk_ids$elemid., function(id) {
-    chunk_ids <- fxml %>%
-      as.data.frame() %>%
-      tidyr::drop_na(elem., elemid., attr., value.) %>%
-      dplyr::distinct(elemid.) %>%
-      dplyr::filter(elemid. == id)
-    attr <- fxml %>%
-      as.data.frame() %>%
-      tidyr::drop_na(elem., elemid., attr., value.) %>%
-      flatxml::fxml_getAttributesAll(id)
-    return(list(chunk_ids$elemid., attr))
-  })
   obj <- CabochaR$new(attributes, morphs)
-
   return(obj)
 }

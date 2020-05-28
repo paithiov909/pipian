@@ -48,10 +48,10 @@ describe("Output Verification", {
       it("res$morphs?", {
         expect_type(res3$morphs, "list")
       })
-      it("res$as.tibble()?", {
-        expect_equivalent(res3$as.tibble()$chunk_id[1], 3)
+      it("res$as_tibble()?", {
+        expect_equivalent(res3$as_tibble()$chunk_idx[1], 3)
         expect_equivalent(
-          res3$as.tibble()$word[5],
+          res3$as_tibble()$word[5],
           enc2utf8("\u305F\u304F\u3055\u3093")
         )
       })

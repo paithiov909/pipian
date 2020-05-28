@@ -62,14 +62,16 @@ head(pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がい
 
 `pipian::cabochaFlatXML(as.tibble = FALSE)`で出力したflat XMLをtibbleに整形できる。このtibbleは[CabochaR](https://minowalab.org/cabochar/)が出力する形式を参考にしたもので、次のカラムからなる。
 
-- chunk_id: 文節に対応するelemid.
-- D1: 文節のインデックス
-- D2: 文節の係り先のインデックス
+- sentence_id: 文番号
+- chunk_idx: 文節のインデックス.
+- D1: 文節番号
+- D2: 係り先の文節の文節番号
 - rel:（よくわからない値）
 - score: 係り関係のスコア
-- head: 主辞の形態素のインデックス
-- func: 機能語の形態素のインデックス
-- tok_id: 形態素のインデックス
+- head: 主辞の形態素の番号
+- func: 機能語の形態素の番号
+- tok_idx: 形態素の番号
+- ne_value: 固有表現解析の結果の値（`-n 1`オプションを使用している）
 - word: 表層形
 - POS1~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
 - X5StageUse1: 活用形
@@ -81,7 +83,7 @@ head(pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がい
 res <- pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした") %>%
   pipian::CabochaR()
 
-res$as.tibble()
+res$as_tibble()
 ```
 
 ## 参考にしたはずの記事

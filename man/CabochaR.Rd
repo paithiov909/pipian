@@ -14,7 +14,7 @@ R6 class object having fields and methods below.
 \itemize{
   \item attributes: list of list. Each elements consist of the element id and attributes of chunk.
   \item morphs: list of tibble. Each elements represent morphemes of which the chunk is made.
-  \item as.tibble(): return a tibble compatible with CabochaR output.
+  \item as_tibble(): return a tibble compatible with CabochaR output.
 }
 }
 \description{
