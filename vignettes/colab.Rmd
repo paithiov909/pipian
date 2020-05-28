@@ -88,21 +88,3 @@ res$tbl
 #> 1 0     1     0.000000 ふつうに
 #> 2 1     -1    0.000000 動くよ  
 ```
-
-使用例その２。
-
-``` r
-%%R
-res2 <- pipian::cabochaFlatXML("これも動くはず")
-pipian::CabochaR(res2)$as.tibble()
-#> # A tibble: 4 x 18
-#>   chunk_id    D1    D2 rel   score  head  func tok_id word  POS1  POS2  POS3 
-#>      <dbl> <dbl> <dbl> <chr> <dbl> <dbl> <dbl>  <dbl> <chr> <chr> <chr> <chr>
-#> 1        3     0     1 D         0     0     1      0 これ  名詞  代名詞… 一般 
-#> 2        3     0     1 D         0     0     1      1 も    助詞  係助詞… *    
-#> 3        6     1    -1 D         0     3     3      2 動く  動詞  自立  *    
-#> 4        6     1    -1 D         0     3     3      3 はず  名詞  非自立… 一般 
-#> # … with 6 more variables: POS4 <chr>, X5StageUse1 <chr>, X5StageUse2 <chr>,
-#> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
-```
-
