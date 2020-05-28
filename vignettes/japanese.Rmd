@@ -48,9 +48,7 @@ res$tbl
 
 これで`res$plot()`するとグラフが描ける。
 
-```{r}
-res$plot()
-```
+![Rplot.png](https://qiita-image-store.s3.amazonaws.com/0/228173/60b9dc99-954e-82a0-b428-9dba6ffd0520.png)
 
 ### XMLをflat XMLとして読み込む
 
