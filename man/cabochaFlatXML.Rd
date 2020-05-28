@@ -4,8 +4,13 @@
 \alias{cabochaFlatXML}
 \title{Call cabocha -f3 command}
 \usage{
-cabochaFlatXML(texts, rcpath = NULL, as.tibble = FALSE,
-  force.utf8 = FALSE)
+cabochaFlatXML(
+  texts,
+  rcpath = NULL,
+  as.tibble = FALSE,
+  force.utf8 = FALSE,
+  ...
+)
 }
 \arguments{
 \item{texts}{characters that you want to pass to CaboCha.}
@@ -15,6 +20,8 @@ cabochaFlatXML(texts, rcpath = NULL, as.tibble = FALSE,
 \item{as.tibble}{boolean. If false, then return flatXML dataframe.}
 
 \item{force.utf8}{boolean. If true, it will read cabocha output xml with UTF-8.}
+
+\item{...}{other arguments are passed to `tibble::as_tibble`.}
 }
 \value{
 flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}

@@ -6,7 +6,7 @@
 \alias{pipian-package}
 \title{pipian: Tiny Interface to CaboCha}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Call CaboCha -f3 command via system().
 }

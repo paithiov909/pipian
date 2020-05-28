@@ -1,7 +1,7 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha
-Version: 0.1.5
+Version: 0.2.0
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -21,12 +21,13 @@ Imports:
     xml2,
     flatxml,
     rvest,
-    tibble,
     dplyr,
     readr,
     purrr,
     tidyr,
+    tibble,
     stringr,
+    stringi,
     igraph,
     graphics
 Suggests:
@@ -35,4 +36,4 @@ Suggests:
     testthat,
     magrittr
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
