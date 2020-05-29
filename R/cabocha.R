@@ -183,7 +183,7 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 =
 
   if (!is.null(rcpath)) {
     system(paste(
-      "cabocha -f3",
+      "cabocha -f3 -n 1",
       file.path(tmp_file_txt),
       "-o",
       file.path(tempdir(), "data.xml"),
