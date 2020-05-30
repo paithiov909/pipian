@@ -1,1 +1,6 @@
 destination: docs
+
+template:
+  opengraph:
+    twitter:
+      creator: "@paithiov909"
