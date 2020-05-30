@@ -1,4 +1,5 @@
 library(usethis)
+library(pkgdown)
 library(hexSticker)
 
 img <- file.path(getwd(),
@@ -22,6 +23,5 @@ hexSticker::sticker(
 )
 
 use_logo("man/figures/logo-origin.png")
-
-
+build_favicons()
 

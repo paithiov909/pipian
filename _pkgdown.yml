@@ -1,5 +1,7 @@
 destination: docs
 
+url: https://paithiov909.github.io/pipian
+
 template:
   opengraph:
     twitter:
