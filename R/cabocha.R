@@ -13,7 +13,7 @@
 #'   \item rcpath
 #'   \item tbl: tibble that each rows represents a phrase.
 #'   \item tbl2graph(): convert tbl to igraph graph object.
-#'   \item plot(): simplely plot the syntactic tree.
+#'   \item plot(): simply plot the syntactic tree.
 #' }
 #'
 #' @import R6
