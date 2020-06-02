@@ -15,9 +15,11 @@
 #'
 #' @import R6
 #' @import dplyr
-#' @importFrom purrr map
+#' @importFrom purrr imap
 #' @importFrom purrr map_dfr
 #' @importFrom purrr imap_dfr
+#' @importFrom purrr keep
+#' @importFrom tidyr drop_na
 #' @importFrom flatxml fxml_getChildren
 #' @importFrom flatxml fxml_getAttribute
 #' @importFrom flatxml fxml_getAttributesAll
@@ -37,39 +39,81 @@ CabochaR <- function(fxml) {
     dplyr::distinct(elemid.)
 
   # Sentence level
-  morphs <- purrr::map(sentence_ids$elemid., function(sid) {
+  morphs <- purrr::imap(sentence_ids$elemid., function(sid, i) {
 
     # Chunk level
-    purrr::map_dfr(chunk_ids$elemid., function(cid) {
+    if (i < nrow(sentence_ids)) {
+      targets_chunk_ids <- chunk_ids$elemid. %>%
+        purrr::keep(sid <= .) %>%
+        purrr::keep(. < sentence_ids$elemid.[i + 1])
+    } else {
+      targets_chunk_ids <- chunk_ids$elemid. %>%
+        purrr::keep(sid <= .)
+    }
+
+    purrr::imap_dfr(targets_chunk_ids, function(cid, idx) {
 
       # Parse morphs
-      df <- fxml %>%
-        as.data.frame(stringsAsFactors = FALSE) %>%
-        flatxml::fxml_getChildren(cid) %>%
-        purrr::map_dfr(function(morph_ids) {
-          tok_id <- fxml %>%
-            as.data.frame(stringsAsFactors = FALSE) %>%
-            flatxml::fxml_getAttribute(morph_ids, "id")
-          ne_value <- fxml %>%
-            as.data.frame(stringsAsFactors = FALSE) %>%
-            flatxml::fxml_getAttribute(morph_ids, "ne")
-          surface_form <- fxml %>%
-            as.data.frame(stringsAsFactors = FALSE) %>%
-            flatxml::fxml_getValue(morph_ids)
-          morph <- fxml %>%
-            as.data.frame(stringsAsFactors = FALSE) %>%
-            flatxml::fxml_getAttribute(morph_ids, "feature") %>%
-            stringr::str_split(",", simplify = TRUE) %>%
-            as.data.frame(stringsAsFactors = FALSE)
-          tibble::tibble(
-            chunk_id = cid,
-            tok_id = as.numeric(tok_id),
-            ne_value = ne_value,
-            surface_form = surface_form,
-          ) %>%
-            dplyr::bind_cols(morph) %>%
-            return()
-        })
+      if (idx < length(targets_chunk_ids)) {
+        df <- fxml %>%
+          as.data.frame(stringsAsFactors = FALSE) %>%
+          flatxml::fxml_getChildren(cid) %>%
+          purrr::keep(cid <= .) %>%
+          purrr::keep(. < targets_chunk_ids[idx + 1]) %>%
+          purrr::map_dfr(function(morph_ids) {
+            tok_id <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getAttribute(morph_ids, "id")
+            ne_value <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getAttribute(morph_ids, "ne")
+            surface_form <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getValue(morph_ids)
+            morph <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getAttribute(morph_ids, "feature") %>%
+              stringr::str_split(",", simplify = TRUE) %>%
+              as.data.frame(stringsAsFactors = FALSE)
+            tibble::tibble(
+              chunk_id = cid,
+              tok_id = as.numeric(tok_id),
+              ne_value = ne_value,
+              surface_form = surface_form,
+            ) %>%
+              dplyr::bind_cols(morph) %>%
+              return()
+          })
+      } else {
+        df <- fxml %>%
+          as.data.frame(stringsAsFactors = FALSE) %>%
+          flatxml::fxml_getChildren(cid) %>%
+          purrr::keep(cid <= .) %>%
+          purrr::map_dfr(function(morph_ids) {
+            tok_id <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getAttribute(morph_ids, "id")
+            ne_value <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getAttribute(morph_ids, "ne")
+            surface_form <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getValue(morph_ids)
+            morph <- fxml %>%
+              as.data.frame(stringsAsFactors = FALSE) %>%
+              flatxml::fxml_getAttribute(morph_ids, "feature") %>%
+              stringr::str_split(",", simplify = TRUE) %>%
+              as.data.frame(stringsAsFactors = FALSE)
+            tibble::tibble(
+              chunk_id = cid,
+              tok_id = as.numeric(tok_id),
+              ne_value = ne_value,
+              surface_form = surface_form,
+            ) %>%
+              dplyr::bind_cols(morph) %>%
+              return()
+          })
+      }
 
       # Set colnames
       if (ncol(df) < 13) {
@@ -140,27 +184,28 @@ CabochaR <- function(fxml) {
             dplyr::mutate(sentence_idx = idx) %>%
             dplyr::right_join(attr, by = "chunk_idx") %>%
             dplyr::select(
-              sentence_idx,
-              chunk_idx,
-              D1,
-              D2,
-              rel,
-              score,
-              head,
-              func,
-              tok_idx,
-              ne_value,
-              word,
-              POS1,
-              POS2,
-              POS3,
-              POS4,
-              X5StageUse1,
-              X5StageUse2,
-              Original,
-              Yomi1,
-              Yomi2
-            )
+              "sentence_idx",
+              "chunk_idx",
+              "D1",
+              "D2",
+              "rel",
+              "score",
+              "head",
+              "func",
+              "tok_idx",
+              "ne_value",
+              "word",
+              "POS1",
+              "POS2",
+              "POS3",
+              "POS4",
+              "X5StageUse1",
+              "X5StageUse2",
+              "Original",
+              "Yomi1",
+              "Yomi2"
+            ) %>%
+            tidyr::drop_na()
         })
       }
     )
