@@ -29,7 +29,6 @@
 #' @importFrom rvest html_text
 #' @importFrom stringr str_c
 #' @importFrom stringr str_replace
-#' @importFrom stringi stri_enc_toutf8
 #' @importFrom tibble tibble
 #' @importFrom igraph graph_from_data_frame
 #' @importFrom igraph page.rank
@@ -69,9 +68,8 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
   # Parse xml
   o <- xml2::read_xml(
     stringr::str_c(
-      "<sentences>",
-      stringr::str_c(stringi::stri_enc_toutf8(out), collapse = ""),
-      "</sentences>",
+      iconv(c("<sentences>", out, "</sentences>"), from = ENC, to = "UTF-8"),
+      sep = "",
       collapse = ""
     )
   )
@@ -168,7 +166,6 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 #'
 #' @importFrom readr write_lines
 #' @importFrom flatxml fxml_importXMLFlat
-#' @importFrom stringi stri_enc_toutf8
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
@@ -203,7 +200,7 @@ cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 =
   tmp <- tempfile(fileext = ".xml")
 
   readr::write_lines("<sentences>", tmp)
-  readr::write_lines(stringi::stri_enc_toutf8(out), tmp, append = TRUE)
+  readr::write_lines(iconv(out, from = ENC, to = "UTF-8"), tmp, append = TRUE)
   readr::write_lines("</sentences>", tmp, append = TRUE)
 
   flatdf <- flatxml::fxml_importXMLFlat(file.path(tmp))
