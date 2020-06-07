@@ -23,5 +23,5 @@ hexSticker::sticker(
 )
 
 use_logo("man/figures/logo-origin.png")
-build_favicons()
+build_favicons(overwrite = TRUE)
 
