@@ -1,4 +1,4 @@
-#' pipian: Tiny Interface to CaboCha
+#' pipian: Tiny Interface to CaboCha for R
 #'
 #' @docType package
 #' @name pipian

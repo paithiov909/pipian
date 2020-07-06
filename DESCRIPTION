@@ -1,6 +1,6 @@
 Package: pipian
 Type: Package
-Title: Tiny Interface to CaboCha
+Title: Tiny Interface to CaboCha for R
 Version: 0.2.1
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909
