@@ -4,7 +4,7 @@
 \name{pipian}
 \alias{pipian}
 \alias{pipian-package}
-\title{pipian: Tiny Interface to CaboCha}
+\title{pipian: Tiny Interface to CaboCha for R}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 

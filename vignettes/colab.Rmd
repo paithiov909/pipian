@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 header-includes:
   - \usepackage[utf8]{inputenc}
 vignette: >
-  %\VignetteIndexEntry{How to use on Colab}
+  %\VignetteIndexEntry{Setup for Google Colaboratory}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

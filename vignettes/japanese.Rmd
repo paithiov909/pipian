@@ -17,17 +17,15 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-require(magrittr)
-if(!require(pipian)){
-  devtools::load_all()
-}
+stopifnot(require(magrittr))
+stopifnot(require(pipian))
 ```
 
 ## これは何？
 
-[paithiov909/pipian: Tiny Interface to CaboCha](https://github.com/paithiov909/pipian)
+[paithiov909/pipian: Tiny Interface to CaboCha for R](https://github.com/paithiov909/pipian)
 
-RからCaboChaを呼ぶためのライブラリ。`system()`から`cabocha -f3`コマンドを呼んで出力した一時ファイル（XML）を読みに行っている。Rcpp経由ではないためとくに速くはないが、CaboChaとMeCabのパスが通っていれば使えるはずなので導入は楽。mecabrcは渡せるようにした気がする。
+RからCaboChaを呼ぶためのライブラリ。`base::system()`から`cabocha -f3`コマンドを呼んで出力した一時ファイル（XML）を読みに行っている。Rcpp経由ではないためとくに速くはないが、CaboChaとMeCabのパスが通っていれば使えるはずなので導入は楽。mecabrcは渡せるようにした気がする。
 
 これで使えるようになる。
 
