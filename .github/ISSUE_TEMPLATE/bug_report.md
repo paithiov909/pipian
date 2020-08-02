@@ -4,7 +4,6 @@ about: 英語でなく日本語でお願いします
 title: ''
 labels: bug
 assignees: ''
-
 ---
 
 **Describe the bug**

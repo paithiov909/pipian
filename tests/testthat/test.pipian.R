@@ -8,7 +8,6 @@ sentence <-
 
 #### Specs ####
 
-
 describe("Output Verification", {
   describe("Check cabocha is available", {
     it("Available?", {
