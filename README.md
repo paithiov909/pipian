@@ -2,7 +2,6 @@
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#) [![Build Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian) [![GitHub license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-
 > Tiny Interface to CaboCha for R
 
 ## Installation
@@ -103,6 +102,10 @@ res$as_tibble()
 #> #   POS2 <chr>, POS3 <chr>, POS4 <chr>, X5StageUse1 <chr>, X5StageUse2 <chr>,
 #> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
 ```
+
+## Contributing
+
+ガイドなどはありません。ご自由にどうぞ
 
 ## License
 

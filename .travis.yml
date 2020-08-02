@@ -6,7 +6,7 @@ r:
 warnings_are_errors: false
 
 git:
-  depth: 2
+  depth: 1
 
 jobs:
   include:
@@ -57,13 +57,6 @@ env:
 # do not build vignettes...takes too long and times out on travis
 r_build_args: --no-build-vignettes --no-manual
 r_check_args: --no-build-vignettes --no-manual --timings
-
-r_github_packages:
-  - jimhester/lintr
-
-after_success:
-  - R CMD INSTALL $PKG_TARBALL
-  - Rscript -e 'lintr::lint_package()'
 
 cache:
   packages: true

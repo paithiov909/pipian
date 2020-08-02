@@ -4,7 +4,6 @@
 ^docs$
 ^pkgdown$
 ^\.travis\.yml$
-^packrat/
 ^\.Rprofile$
 ^CRF\+\+\-0\.58$
 ^cabocha\-0\.69$
