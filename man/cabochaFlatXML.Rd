@@ -21,15 +21,12 @@ cabochaFlatXML(
 
 \item{force.utf8}{boolean. If true, it will read cabocha output xml with UTF-8.}
 
-\item{...}{other arguments are passed to `tibble::as_tibble`.}
+\item{...}{other arguments are passed to \code{tibble::as_tibble()}.}
 }
 \value{
 flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
 }
 \description{
-Call cabocha -f3 command via system(), then return results as a flat XML.
+Call cabocha -f3 command via \code{system()}, then return results as a flat XML.
 It requires that CaboCha has already been installed and available.
-}
-\seealso{
-\url{https://www.rdocumentation.org/packages/flatxml/versions/0.0.2}
 }

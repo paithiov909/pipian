@@ -1,6 +1,6 @@
 #' Call cabocha -f3 command
 #'
-#' Call cabocha -f3 command via system(), then return results as a tibble.
+#' Call cabocha -f3 command via \code{system()}, then return results as a tibble.
 #' It requires that CaboCha has already been installed and available.
 #'
 #' @param texts characters that you want to pass to CaboCha.
@@ -151,16 +151,14 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 
 #' Call cabocha -f3 command
 #'
-#' Call cabocha -f3 command via system(), then return results as a flat XML.
+#' Call cabocha -f3 command via \code{system()}, then return results as a flat XML.
 #' It requires that CaboCha has already been installed and available.
-#'
-#' @seealso \url{https://www.rdocumentation.org/packages/flatxml/versions/0.0.2}
 #'
 #' @param texts characters that you want to pass to CaboCha.
 #' @param rcpath fullpath to MECABRC if any.
 #' @param as.tibble boolean. If false, then return flatXML dataframe.
 #' @param force.utf8 boolean. If true, it will read cabocha output xml with UTF-8.
-#' @param ... other arguments are passed to `tibble::as_tibble`.
+#' @param ... other arguments are passed to \code{tibble::as_tibble()}.
 #'
 #' @return flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
 #'
@@ -169,7 +167,11 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr %>%
 #' @export
-cabochaFlatXML <- function(texts, rcpath = NULL, as.tibble = FALSE, force.utf8 = FALSE, ...) {
+cabochaFlatXML <- function(texts,
+                           rcpath = NULL,
+                           as.tibble = FALSE,
+                           force.utf8 = FALSE,
+                           ...) {
   ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
   if (force.utf8) {
     ENC <- "UTF-8"

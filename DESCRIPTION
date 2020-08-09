@@ -34,7 +34,9 @@ Suggests:
     rmarkdown,
     testthat,
     magrittr,
-    spelling
+    spelling,
+    readtext,
+    sessioninfo
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 Language: en-US

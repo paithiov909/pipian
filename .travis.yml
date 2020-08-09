@@ -32,7 +32,7 @@ jobs:
       - curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU" -o cabocha-0.69.tar.bz2
       - tar -jxvf cabocha-0.69.tar.bz2 cabocha-0.69/
       - cd cabocha-0.69/
-      - ./configure --with-mecab-config=`which mecab-config` --with-charset=UTF8
+      - ./configure --with-mecab-config=`which mecab-config` --with-charset=UTF8 --enable-utf8-only
       - make
       - make check
       - sudo make install

@@ -1,25 +1,41 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # pipian <a href='https://paithiov909.github.io/pipian'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
-[![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#) [![Build Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian) [![GitHub license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+<!-- badges: start -->
 
-> Tiny Interface to CaboCha for R
+[![GitHub last
+commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
+[![Build
+Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian)
+[![GitHub
+license](https://img.shields.io/github/license/paithiov909/pipian.svg)](https://github.com/paithiov909/pipian/blob/master/LICENSE)
+
+<!-- badges: end -->
+
+## About
+
+pipian is a tiny interface to
+[CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency
+structure parser.
 
 ## Installation
 
-```R
+``` r
 remotes::install_github("paithiov909/pipian")
 ```
 
 ## Requirements
 
-- MeCab (>= 0.996)
-- CaboCha (>= 0.69)
+  - MeCab (\>= 0.996)
+  - CaboCha (\>= 0.69)
 
 ## Usage
 
 ### Parsing dependency
 
-```R
+``` r
 res <- pipian::CabochaTbl("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした")
 res$tbl
 #> # A tibble: 37 x 4
@@ -40,7 +56,7 @@ res$tbl
 
 ### Plotting
 
-```R
+``` r
 res$plot()
 ```
 
@@ -48,7 +64,7 @@ res$plot()
 
 ### Getting dependency as flatXML
 
-```R
+``` r
 head(pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"))
 #>       elem. elemid. attr. value.    level1   level2 level3 level4
 #> 1 sentences       1  <NA>   <NA> sentences     <NA>   <NA>   <NA>
@@ -59,33 +75,35 @@ head(pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がい
 #> 6     chunk       3   rel      D sentences sentence  chunk   <NA>
 ```
 
-### Converting flatXML into tibble compatible with CabochaR 
+### Converting flatXML into tibble compatible with CabochaR
 
-```R
-require(magritrr)
+``` r
 res <- pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした") %>%
   pipian::CabochaR()
+```
 
+``` r
 res$morphs[[1]]
-#> # A tibble: 78 x 21
-#>   chunk_idx tok_idx ne_value word  POS1  POS2  POS3  POS4  X5StageUse1 X5StageUse2
-#>       <dbl>  <dbl> <chr>    <chr> <chr> <chr> <chr> <chr> <chr>       <chr>      
-#>  1        3      0 O        ふと  副詞  一般  *     *     *           *          
-#>  2        5      1 O        振り向く~ 動詞  自立  *     *     五段・カ行イ音便~ 基本形     
-#>  3        5      2 O        と    助詞  接続助詞~ *     *     *           *          
-#>  4        5      3 O        、    記号  読点  *     *     *           *          
-#>  5        9      4 O        たくさん~ 名詞  副詞可能~ *     *     *           *          
-#>  6        9      5 O        の    助詞  連体化~ *     *     *           *          
-#>  7       12      6 O        味方  名詞  サ変接続~ *     *     *           *          
-#>  8       12      7 O        が    助詞  格助詞~ 一般  *     *           *          
-#>  9       15      8 O        い    動詞  自立  *     *     一段        連用形     
-#> 10       15      9 O        て    助詞  接続助詞~ *     *     *           *          
-#> # ... with 68 more rows, and 11 more variables: Original <chr>, Yomi1 <chr>,
-#> #   Yomi2 <chr>, sentence_id <int>, chunk_id1 <dbl>, D1 <dbl>, D2 <dbl>, rel <chr>,
-#> #   score <dbl>, head <dbl>, func <dbl>
+#> # A tibble: 78 x 13
+#>    chunk_idx tok_idx ne_value word  POS1  POS2  POS3  POS4  X5StageUse1
+#>        <dbl>   <dbl> <chr>    <chr> <chr> <chr> <chr> <chr> <chr>      
+#>  1         3       0 O        ふと  副詞  一般  *     *     *          
+#>  2         5       1 O        振り向く~ 動詞  自立  *     *     五段・カ行イ音便~
+#>  3         5       2 O        と    助詞  接続助詞~ *     *     *          
+#>  4         5       3 O        、    記号  読点  *     *     *          
+#>  5         9       4 O        たくさん~ 名詞  副詞可能~ *     *     *          
+#>  6         9       5 O        の    助詞  連体化~ *     *     *          
+#>  7        12       6 O        味方  名詞  サ変接続~ *     *     *          
+#>  8        12       7 O        が    助詞  格助詞~ 一般  *     *          
+#>  9        15       8 O        い    動詞  自立  *     *     一段       
+#> 10        15       9 O        て    助詞  接続助詞~ *     *     *          
+#> # ... with 68 more rows, and 4 more variables: X5StageUse2 <chr>,
+#> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
+```
 
+``` r
 res$as_tibble()
-#> # A tibble: 78 x 20
+#> # A tibble: 77 x 20
 #>    sentence_idx chunk_idx D1    D2    rel   score head  func  tok_idx ne_value
 #>           <int>     <dbl> <chr> <chr> <chr> <chr> <chr> <chr>   <dbl> <chr>   
 #>  1            1         3 0     1     D     1.28~ 0     0           0 O       
@@ -98,20 +116,23 @@ res$as_tibble()
 #>  8            1        12 3     4     D     0.83~ 6     7           7 O       
 #>  9            1        15 4     8     D     2.02~ 8     9           8 O       
 #> 10            1        15 4     8     D     2.02~ 8     9           9 O       
-#> # ... with 68 more rows, and 10 more variables: word <chr>, POS1 <chr>,
+#> # ... with 67 more rows, and 10 more variables: word <chr>, POS1 <chr>,
 #> #   POS2 <chr>, POS3 <chr>, POS4 <chr>, X5StageUse1 <chr>, X5StageUse2 <chr>,
 #> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
 ```
 
 ## Code of Conduct
 
-Please note that the pipian project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/pipian/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the pipian project is released with a [Contributor Code
+of Conduct](https://paithiov909.github.io/pipian/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 ## License
 
 Copyright (c) 2020 Kato Akiru
 
-Released under the MIT license https://github.com/paithiov909/pipian/blob/master/LICENSE
+Released under the MIT license
+<https://github.com/paithiov909/pipian/blob/master/LICENSE>
 
-Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from [Flaticon](https://www.flaticon.com/)
-
+Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from
+[Flaticon](https://www.flaticon.com/)

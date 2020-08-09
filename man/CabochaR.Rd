@@ -7,7 +7,7 @@
 CabochaR(fxml)
 }
 \arguments{
-\item{fxml}{flat XML that comes out from \code{cabochaFlatXML(as.tibble = FALSE)}}
+\item{fxml}{flat XML that comes from \code{cabochaFlatXML(as.tibble = FALSE)}}
 }
 \value{
 R6 class object having fields and methods below.
