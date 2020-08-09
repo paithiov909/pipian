@@ -103,9 +103,9 @@ res$as_tibble()
 #> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
 ```
 
-## Contributing
+## Code of Conduct
 
-ガイドなどはありません。ご自由にどうぞ
+Please note that the pipian project is released with a [Contributor Code of Conduct](https://paithiov909.github.io/pipian/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
 ## License
 

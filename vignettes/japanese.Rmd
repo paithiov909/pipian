@@ -102,9 +102,8 @@ res$as_tibble()
 
 ### CaboCha
 
-- [CaboChaで始める係り受け解析 - Qiita](https://qiita.com/nezuq/items/f481f07fc0576b38e81d)
-
 CaboChaが出力するXMLはそのままではパースできないので、適当なルートノードを追記する必要がある。
 
+- [CaboChaで始める係り受け解析 - Qiita](https://qiita.com/nezuq/items/f481f07fc0576b38e81d)
 - [CaboChaによってXMLで出力されたファイルをパースする。 – gepuroの日記](http://d.hatena.ne.jp/gepuro/20111014/1318610472)
 

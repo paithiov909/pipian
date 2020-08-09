@@ -9,3 +9,5 @@
 ^cabocha\-0\.69$
 ^doc$
 ^Meta$
+^\.github$
+^CODE_OF_CONDUCT\.md$
