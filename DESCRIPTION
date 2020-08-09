@@ -1,13 +1,13 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha for R
-Version: 0.2.2-1
+Version: 0.2.3
 Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
 Author: paithiov909 [aut, cre]
 Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: Call CaboCha -f3 command via system().
 Depends:
-    R (>= 3.2.0)
+    R (>= 4.0.0)
 SystemRequirements:
     MeCab,
     CaboCha
@@ -33,6 +33,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat,
-    magrittr
+    magrittr,
+    spelling
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
+Language: en-US
