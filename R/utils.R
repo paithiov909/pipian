@@ -2,7 +2,7 @@
 #'
 #' convert flat XML into CabochaR compatible output.
 #'
-#' @param fxml flat XML that comes out from \code{cabochaFlatXML(as.tibble = FALSE)}
+#' @param fxml flat XML that comes from \code{cabochaFlatXML(as.tibble = FALSE)}
 #'
 #' @return R6 class object having fields and methods below.
 #' \itemize{

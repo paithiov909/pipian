@@ -23,17 +23,17 @@ stopifnot(require(pipian))
 
 ## これは何？
 
-[paithiov909/pipian: Tiny Interface to CaboCha for R](https://github.com/paithiov909/pipian)
-
-RからCaboChaを呼ぶためのライブラリ。`base::system()`から`cabocha -f3`コマンドを呼んで出力した一時ファイル（XML）を読みに行っている。Rcpp経由ではないためとくに速くはないが、CaboChaとMeCabのパスが通っていれば使えるはずなので導入は楽。mecabrcは渡せるようにした気がする。
+RからCaboChaを呼ぶためのライブラリ。`base::system()`から`cabocha -f3`コマンドを呼んで出力した一時ファイル（XML）を読みに行っている。Rcpp経由ではないためとくに速くはないが、CaboChaとMeCabのパスが通っていれば使えるはずなので導入は楽。**外部コマンドとして叩くだけなので、Windows環境で64bit Rから32bit CaboChaを実行する場合でも問題なく動作する。**
 
 これで使えるようになる。
 
-`remotes::install_github("paithiov909/pipian")`
+``` R
+remotes::install_github("paithiov909/pipian")
+```
 
 ## モチベーション
 
-以前つくったRからkuromoji.jsで形態素解析するオレオレパッケージから機能を切り分けたかった。
+以前つくったRから形態素解析するオレオレパッケージから機能を切り分けたかった。
 
 ## 使い方
 

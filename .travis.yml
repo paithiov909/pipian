@@ -13,12 +13,15 @@ jobs:
   - os: linux
     addons:
       apt:
+        update: true
         packages:
           - mecab
           - libmecab-dev
           - mecab-ipadic-utf8
           - libxml2-dev
     before_install:
+      - sudo add-apt-repository -y ppa:cran/poppler
+      - sudo apt-get install -y libpoppler-cpp-dev
       - wget "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ" -O CRF++-0.58.tar.gz
       - tar -zxvf CRF++-0.58.tar.gz CRF++-0.58/
       - cd CRF++-0.58/
@@ -32,7 +35,7 @@ jobs:
       - curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU" -o cabocha-0.69.tar.bz2
       - tar -jxvf cabocha-0.69.tar.bz2 cabocha-0.69/
       - cd cabocha-0.69/
-      - ./configure --with-mecab-config=`which mecab-config` --with-charset=UTF8
+      - ./configure --with-mecab-config=`which mecab-config` --with-charset=UTF8 --enable-utf8-only
       - make
       - make check
       - sudo make install
