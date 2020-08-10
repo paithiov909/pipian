@@ -13,7 +13,6 @@ jobs:
   - os: linux
     addons:
       apt:
-        update: true
         packages:
           - mecab
           - libmecab-dev
