@@ -167,12 +167,12 @@
 <span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; # A tibble: 6 x 20</span></span>
 <span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;   sentence_idx chunk_idx D1    D2    rel   score head  func  tok_idx ne_value</span></span>
 <span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;   </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 1            1         3 0     1     D     1.34~ 5     7           0 O       </span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; 2            1         3 0     1     D     1.34~ 5     7           1 O       </span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; 3            1         3 0     1     D     1.34~ 5     7           2 O       </span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; 4            1         3 0     1     D     1.34~ 5     7           3 O       </span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; 5            1         3 0     1     D     1.34~ 5     7           4 O       </span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 6            1         3 0     1     D     1.34~ 5     7           5 O       </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 1            1         3 0     10    D     0.68~ 0     1           1 O       </span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; 2            1         6 1     2     D     2.02~ 5     6           2 B-ORGAN~</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; 3            1         6 1     2     D     2.02~ 5     6           3 I-ORGAN~</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; 4            1         6 1     2     D     2.02~ 5     6           4 I-ORGAN~</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; 5            1         6 1     2     D     2.02~ 5     6           5 I-ORGAN~</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 6            1         6 1     2     D     2.02~ 5     6           6 O       </span></span>
 <span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; # ... with 10 more variables: word &lt;chr&gt;, POS1 &lt;chr&gt;, POS2 &lt;chr&gt;, POS3 &lt;chr&gt;,</span></span>
 <span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; #   POS4 &lt;chr&gt;, X5StageUse1 &lt;chr&gt;, X5StageUse2 &lt;chr&gt;, Original &lt;chr&gt;,</span></span>
 <span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; #   Yomi1 &lt;chr&gt;, Yomi2 &lt;chr&gt;</span></span></code></pre></div>
@@ -181,7 +181,7 @@
 <span id="cb3-2"><a href="#cb3-2"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(sentence_idx <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(word) <span class="op">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="st">  </span>stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(<span class="dt">collapse =</span> <span class="st">" "</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; [1] "第 ２ 次 人工 知能 ブーム で の 人工 知能 は 機械 学習 と 呼ば れ 、 以下 の よう な もの が ある 。"</span></span></code></pre></div>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; [1] "は アレン 脳 科学 研究所 と 連携 し 脳 スキャン によって 生まれ た 大量 の データ を 処理 する ため の ソフトウェア を 開発 し て いる 。 年 の 時点 で 、 が 管理 し て いる の データ 量 は すでに バイト に 達し て いる と いう 。 は 、 ドイツ の 研究所 とも 共同 研究 を 始め て おり 、 脳 の 電子 顕微鏡 写真 から 神経 回路 を 再 構成 する という 研究 を 行っ て いる 。"</span></span></code></pre></div>
 </div>
 <div id="係り受け解析結果の読み込み文節係り受け" class="section level3">
 <h3 class="hasAnchor">
@@ -216,14 +216,14 @@
 <span id="cb4-23"><a href="#cb4-23"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(chunk, collocation) <span class="op">%&gt;%</span></span>
 <span id="cb4-24"><a href="#cb4-24"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
 <span id="cb4-25"><a href="#cb4-25"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#&gt;   chunk                    collocation                        </span></span>
-<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt;   &lt;chr&gt;                    &lt;chr&gt;                              </span></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#&gt; 1 第２次人工知能ブームでの 第２次人工知能ブームでの 人工知能は</span></span>
-<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; 2 人工知能は               人工知能は 呼ばれ                  </span></span>
-<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#&gt; 3 機械学習と               機械学習と 呼ばれ                  </span></span>
-<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; 4 呼ばれ                   呼ばれ ある                        </span></span>
-<span id="cb4-32"><a href="#cb4-32"></a><span class="co">#&gt; 5 以下のような             以下のような ものが                </span></span>
-<span id="cb4-33"><a href="#cb4-33"></a><span class="co">#&gt; 6 ものが                   ものが ある</span></span></code></pre></div>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#&gt;   chunk                collocation                </span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt;   &lt;chr&gt;                &lt;chr&gt;                      </span></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#&gt; 1 は                   は 開発している            </span></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; 2 アレン脳科学研究所と アレン脳科学研究所と 連携し</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#&gt; 3 連携し               連携し 生まれた            </span></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; 4 脳スキャンによって   脳スキャンによって 生まれた</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="co">#&gt; 5 生まれた             生まれた データを          </span></span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="co">#&gt; 6 大量の               大量の データを</span></span></code></pre></div>
 </div>
 <div id="名詞を含む文節が動詞を含む文節に係るものを抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -255,14 +255,14 @@
 <span id="cb5-25"><a href="#cb5-25"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(chunk <span class="op">!=</span><span class="st"> </span>collocation) <span class="op">%&gt;%</span></span>
 <span id="cb5-26"><a href="#cb5-26"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
 <span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt;   chunk                  collocation                        </span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt;   &lt;chr&gt;                  &lt;chr&gt;                              </span></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#&gt; 1 人工知能は             人工知能は 呼ばれ、                </span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#&gt; 2 機械学習と             機械学習と 呼ばれ、                </span></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#&gt; 3 ものが                 ものが ある。                      </span></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#&gt; 4 年代に                 年代に なると                      </span></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#&gt; 5 成果が                 成果が 出始めた。                  </span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#&gt; 6 ジョン・マッカーシーは ジョン・マッカーシーは 作り出した。</span></span></code></pre></div>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt;   chunk                collocation                  </span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt;   &lt;chr&gt;                &lt;chr&gt;                        </span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#&gt; 1 アレン脳科学研究所と アレン脳科学研究所と 連携し  </span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#&gt; 2 連携し               連携し 生まれた              </span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#&gt; 3 脳スキャンによって   脳スキャンによって 生まれた  </span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#&gt; 4 データを             データを 処理する            </span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#&gt; 5 ソフトウェアを       ソフトウェアを 開発している。</span></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#&gt; 6 開発している。       開発している。 達していると</span></span></code></pre></div>
 </div>
 <div id="係り受け木の可視化" class="section level3">
 <h3 class="hasAnchor">
@@ -295,42 +295,37 @@
 <span id="cb7-14"><a href="#cb7-14"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Original, collocation)</span>
 <span id="cb7-15"><a href="#cb7-15"></a></span>
 <span id="cb7-16"><a href="#cb7-16"></a>pattern</span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; # A tibble: 230 x 2</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt;    Original collocation     </span></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;           </span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  1 呼ぶ     "は と"         </span></span>
-<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  2 れる     "は と"         </span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  3 ある     "が"            </span></span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt;  4 なる     "に"            </span></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;  5 出る     "と に関して が"</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt;  6 始める   "と に関して が"</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt;  7 作り出す "は で を"      </span></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt;  8 する     "は を"         </span></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt;  9 ふるまう ""              </span></span>
-<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 10 する     "を"            </span></span>
-<span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; # ... with 220 more rows</span></span></code></pre></div>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; # A tibble: 181 x 2</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt;    Original collocation</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;      </span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  1 する     と         </span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  2 生まれる によって   </span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  3 する     を         </span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt;  4 する     は を      </span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;  5 いる     は を      </span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt;  6 する     が         </span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt;  7 いる     が         </span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt;  8 達す     て で は に</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt;  9 いる     て で は に</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 10 いう     て と      </span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; # ... with 171 more rows</span></span></code></pre></div>
 <p>「行う」「なる」「与える」という動詞の格パターン</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>pattern <span class="op">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Original <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"行う"</span>, <span class="st">"なる"</span>, <span class="st">"与える"</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Original, collocation) <span class="op">%&gt;%</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>()</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; # A tibble: 13 x 3</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; # Groups:   Original, collocation [13]</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt;    Original collocation         n</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;           &lt;int&gt;</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  1 なる     が と               1</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;  2 なる     で は               1</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt;  3 なる     と                  1</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;  4 なる     に                  1</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt;  5 なる     に は によって      1</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt;  6 なる     は て               1</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt;  7 行う     から                1</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt;  8 行う     て に を            1</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="co">#&gt;  9 行う     に により に を     1</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#&gt; 10 行う     は を               1</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="co">#&gt; 11 行う     まで を             1</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a><span class="co">#&gt; 12 行う     を                  2</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a><span class="co">#&gt; 13 行う     を に を            1</span></span></code></pre></div>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; # A tibble: 8 x 3</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; # Groups:   Original, collocation [8]</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt;   Original collocation           n</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;             &lt;int&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt; 1 なる     が で は は と に     1</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt; 2 なる     が と                 1</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt; 3 なる     て て が が と        1</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt; 4 なる     に は で に           1</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt; 5 なる     は に                 1</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt; 6 行う     て を                 1</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt; 7 行う     を に を              1</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt; 8 与える   が など に            1</span></span></code></pre></div>
 </div>
 <div id="動詞の格フレーム情報の抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -364,20 +359,20 @@
 <span id="cb9-27"><a href="#cb9-27"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Original, collocation, chunk)</span>
 <span id="cb9-28"><a href="#cb9-28"></a></span>
 <span id="cb9-29"><a href="#cb9-29"></a>pattern</span>
-<span id="cb9-30"><a href="#cb9-30"></a><span class="co">#&gt; # A tibble: 230 x 3</span></span>
-<span id="cb9-31"><a href="#cb9-31"></a><span class="co">#&gt;    Original collocation      chunk                                 </span></span>
-<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;                                 </span></span>
-<span id="cb9-33"><a href="#cb9-33"></a><span class="co">#&gt;  1 呼ぶ     "は と"          "人工知能は 機械学習と"               </span></span>
-<span id="cb9-34"><a href="#cb9-34"></a><span class="co">#&gt;  2 れる     "は と"          "人工知能は 機械学習と"               </span></span>
-<span id="cb9-35"><a href="#cb9-35"></a><span class="co">#&gt;  3 ある     "が"             "ものが"                              </span></span>
-<span id="cb9-36"><a href="#cb9-36"></a><span class="co">#&gt;  4 なる     "に"             "年代に"                              </span></span>
-<span id="cb9-37"><a href="#cb9-37"></a><span class="co">#&gt;  5 出る     "と に関して が" "なると に関して 成果が"              </span></span>
-<span id="cb9-38"><a href="#cb9-38"></a><span class="co">#&gt;  6 始める   "と に関して が" "なると に関して 成果が"              </span></span>
-<span id="cb9-39"><a href="#cb9-39"></a><span class="co">#&gt;  7 作り出す "は で を"       "ジョン・マッカーシーは 会議で 用語を"</span></span>
-<span id="cb9-40"><a href="#cb9-40"></a><span class="co">#&gt;  8 する     "は を"          "彼はまた プログラミング言語を"       </span></span>
-<span id="cb9-41"><a href="#cb9-41"></a><span class="co">#&gt;  9 ふるまう ""               ""                                    </span></span>
-<span id="cb9-42"><a href="#cb9-42"></a><span class="co">#&gt; 10 する     "を"             "テストを"                            </span></span>
-<span id="cb9-43"><a href="#cb9-43"></a><span class="co">#&gt; # ... with 220 more rows</span></span></code></pre></div>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="co">#&gt; # A tibble: 181 x 3</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co">#&gt;    Original collocation chunk                                      </span></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;                                      </span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="co">#&gt;  1 する     と          アレン脳科学研究所と                       </span></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="co">#&gt;  2 生まれる によって    脳スキャンによって                         </span></span>
+<span id="cb9-35"><a href="#cb9-35"></a><span class="co">#&gt;  3 する     を          データを                                   </span></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="co">#&gt;  4 する     は を       は ソフトウェアを                          </span></span>
+<span id="cb9-37"><a href="#cb9-37"></a><span class="co">#&gt;  5 いる     は を       は ソフトウェアを                          </span></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="co">#&gt;  6 する     が          が                                         </span></span>
+<span id="cb9-39"><a href="#cb9-39"></a><span class="co">#&gt;  7 いる     が          が                                         </span></span>
+<span id="cb9-40"><a href="#cb9-40"></a><span class="co">#&gt;  8 達す     て で は に 開発している。 時点で、 データ量は バイトに</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a><span class="co">#&gt;  9 いる     て で は に 開発している。 時点で、 データ量は バイトに</span></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="co">#&gt; 10 いう     て と       達していると 達していると                  </span></span>
+<span id="cb9-43"><a href="#cb9-43"></a><span class="co">#&gt; # ... with 171 more rows</span></span></code></pre></div>
 </div>
 <div id="機能動詞構文のマイニング" class="section level3">
 <h3 class="hasAnchor">
@@ -418,20 +413,20 @@
 <span id="cb10-33"><a href="#cb10-33"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(surface_form, collocation, chunk)</span>
 <span id="cb10-34"><a href="#cb10-34"></a></span>
 <span id="cb10-35"><a href="#cb10-35"></a>pattern</span>
-<span id="cb10-36"><a href="#cb10-36"></a><span class="co">#&gt; # A tibble: 194 x 3</span></span>
-<span id="cb10-37"><a href="#cb10-37"></a><span class="co">#&gt;    surface_form          collocation   chunk                                    </span></span>
-<span id="cb10-38"><a href="#cb10-38"></a><span class="co">#&gt;    &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;                                    </span></span>
-<span id="cb10-39"><a href="#cb10-39"></a><span class="co">#&gt;  1 機械学習と            ""            ""                                       </span></span>
-<span id="cb10-40"><a href="#cb10-40"></a><span class="co">#&gt;  2 会議で                "の"          "最初の"                                 </span></span>
-<span id="cb10-41"><a href="#cb10-41"></a><span class="co">#&gt;  3 プログラミング言語を  ""            ""                                       </span></span>
-<span id="cb10-42"><a href="#cb10-42"></a><span class="co">#&gt;  4 開発した。            "は を"       "彼はまた プログラミング言語を"          </span></span>
-<span id="cb10-43"><a href="#cb10-43"></a><span class="co">#&gt;  5 テストを              "に関する"    "知的ふるまいに関する"                   </span></span>
-<span id="cb10-44"><a href="#cb10-44"></a><span class="co">#&gt;  6 導入した。            "として は を"~ "方法として、 アラン・チューリングは 「チューリングテスト」を"~</span></span>
-<span id="cb10-45"><a href="#cb10-45"></a><span class="co">#&gt;  7 構築した。            "は を"       "はを はを"                              </span></span>
-<span id="cb10-46"><a href="#cb10-46"></a><span class="co">#&gt;  8 来談者中心療法を      ""            ""                                       </span></span>
-<span id="cb10-47"><a href="#cb10-47"></a><span class="co">#&gt;  9 おしゃべりロボットである。~ "は"          "これは"                                 </span></span>
-<span id="cb10-48"><a href="#cb10-48"></a><span class="co">#&gt; 10 匹敵する              "に"          "世界チャンピオンに"                     </span></span>
-<span id="cb10-49"><a href="#cb10-49"></a><span class="co">#&gt; # ... with 184 more rows</span></span></code></pre></div>
+<span id="cb10-36"><a href="#cb10-36"></a><span class="co">#&gt; # A tibble: 163 x 3</span></span>
+<span id="cb10-37"><a href="#cb10-37"></a><span class="co">#&gt;    surface_form         collocation chunk                          </span></span>
+<span id="cb10-38"><a href="#cb10-38"></a><span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;       &lt;chr&gt;                          </span></span>
+<span id="cb10-39"><a href="#cb10-39"></a><span class="co">#&gt;  1 連携し               "と"        "アレン脳科学研究所と"         </span></span>
+<span id="cb10-40"><a href="#cb10-40"></a><span class="co">#&gt;  2 脳スキャンによって   ""          ""                             </span></span>
+<span id="cb10-41"><a href="#cb10-41"></a><span class="co">#&gt;  3 処理する             "を"        "データを"                     </span></span>
+<span id="cb10-42"><a href="#cb10-42"></a><span class="co">#&gt;  4 開発している。       "は を"     "は ソフトウェアを"            </span></span>
+<span id="cb10-43"><a href="#cb10-43"></a><span class="co">#&gt;  5 管理している         "が"        "が"                           </span></span>
+<span id="cb10-44"><a href="#cb10-44"></a><span class="co">#&gt;  6 共同研究を共同研究を ""          ""                             </span></span>
+<span id="cb10-45"><a href="#cb10-45"></a><span class="co">#&gt;  7 共同研究を共同研究を ""          ""                             </span></span>
+<span id="cb10-46"><a href="#cb10-46"></a><span class="co">#&gt;  8 再構成するという     "から を"   "電子顕微鏡写真から 神経回路を"</span></span>
+<span id="cb10-47"><a href="#cb10-47"></a><span class="co">#&gt;  9 研究を               "という"    "再構成するという"             </span></span>
+<span id="cb10-48"><a href="#cb10-48"></a><span class="co">#&gt; 10 実現する、           "を で"     "知的能力を コンピュータ上で"  </span></span>
+<span id="cb10-49"><a href="#cb10-49"></a><span class="co">#&gt; # ... with 153 more rows</span></span></code></pre></div>
 </div>
 <div id="名詞から根へのパスの抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -453,37 +448,38 @@
 <span id="cb11-15"><a href="#cb11-15"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(POS1 <span class="op">==</span><span class="st"> "名詞"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb11-16"><a href="#cb11-16"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(sentence_idx, chunk_idx) <span class="op">%&gt;%</span></span>
 <span id="cb11-17"><a href="#cb11-17"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_map</a></span>(<span class="op">~</span><span class="st"> </span>.x <span class="op">%&gt;%</span></span>
-<span id="cb11-18"><a href="#cb11-18"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">path =</span> stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(</span>
-<span id="cb11-19"><a href="#cb11-19"></a>      memo<span class="op">$</span>chunk[</span>
-<span id="cb11-20"><a href="#cb11-20"></a>        memo<span class="op">$</span>sentence_idx <span class="op">==</span><span class="st"> </span>.y<span class="op">$</span>sentence_idx <span class="op">&amp;</span></span>
-<span id="cb11-21"><a href="#cb11-21"></a><span class="st">          </span>memo<span class="op">$</span>chunk_idx <span class="op">&gt;=</span><span class="st"> </span>.y<span class="op">$</span>chunk_idx <span class="op">&amp;</span></span>
-<span id="cb11-22"><a href="#cb11-22"></a><span class="st">          </span>(memo<span class="op">$</span>D2 <span class="op">&gt;</span><span class="st"> </span>.x<span class="op">$</span>D1 <span class="op">||</span><span class="st"> </span>memo<span class="op">$</span>D2 <span class="op">==</span><span class="st"> </span><span class="op">-</span>1L)</span>
-<span id="cb11-23"><a href="#cb11-23"></a>      ],</span>
-<span id="cb11-24"><a href="#cb11-24"></a>      <span class="dt">collapse =</span> <span class="st">" -&gt; "</span></span>
-<span id="cb11-25"><a href="#cb11-25"></a>    ))) <span class="op">%&gt;%</span></span>
-<span id="cb11-26"><a href="#cb11-26"></a><span class="st">  </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(<span class="op">~</span>.) <span class="op">%&gt;%</span></span>
-<span id="cb11-27"><a href="#cb11-27"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(path)</span>
-<span id="cb11-28"><a href="#cb11-28"></a></span>
-<span id="cb11-29"><a href="#cb11-29"></a>pattern <span class="op">%&gt;%</span></span>
-<span id="cb11-30"><a href="#cb11-30"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(path <span class="op">!=</span><span class="st"> ""</span>)</span>
-<span id="cb11-31"><a href="#cb11-31"></a><span class="co">#&gt; # A tibble: 15 x 1</span></span>
-<span id="cb11-32"><a href="#cb11-32"></a><span class="co">#&gt;    path                                                                         </span></span>
-<span id="cb11-33"><a href="#cb11-33"></a><span class="co">#&gt;    &lt;chr&gt;                                                                        </span></span>
-<span id="cb11-34"><a href="#cb11-34"></a><span class="co">#&gt;  1 年代に -&gt; なると -&gt; に関して -&gt; 活発な -&gt; 成果が -&gt; 出始めた。 -&gt; ジョン・マッカーシーは -&gt; に関する -&gt; 最初の -&gt; 会~</span></span>
-<span id="cb11-35"><a href="#cb11-35"></a><span class="co">#&gt;  2 年代は -&gt; の -&gt; 多くの -&gt; 分野で -&gt; 様々な -&gt; アプリケーションが -&gt; 成果を -&gt; 上げた。 -&gt; 特に、 -&gt; ボードゲームでは~</span></span>
-<span id="cb11-36"><a href="#cb11-36"></a><span class="co">#&gt;  3 世紀 -&gt; 初め、 -&gt; は、 -&gt; 動物の -&gt; 身体が -&gt; ただの -&gt; 複雑な -&gt; 機械であると -&gt; 提唱した -&gt; （機械論）。 -&gt; 年~</span></span>
-<span id="cb11-37"><a href="#cb11-37"></a><span class="co">#&gt;  4 中国の -&gt; 社会信用システムに -&gt; 代表されるような、 -&gt; 人工知能で -&gt; ビッグデータを -&gt; 活用して -&gt; 人々の -&gt; 適性を -&gt; 決~</span></span>
-<span id="cb11-38"><a href="#cb11-38"></a><span class="co">#&gt;  5 世界各国において、 -&gt; 軍事・民間共に -&gt; 実用化に -&gt; 向け -&gt; 研究開発が -&gt; 進んでいるが、 -&gt; とくに -&gt; 無人戦闘機や -&gt; 無~</span></span>
-<span id="cb11-39"><a href="#cb11-39"></a><span class="co">#&gt;  6 年代 -&gt; 後半から -&gt; 中頃にかけて、 -&gt; 従来から -&gt; 電子制御の -&gt; 手法として -&gt; 用いられてきた -&gt; 制御， -&gt; 現代制御の -~</span></span>
-<span id="cb11-40"><a href="#cb11-40"></a><span class="co">#&gt;  7 年に、 -&gt; ジェフリー・らの -&gt; 研究チームにより -&gt; オートエンコーダによる -&gt; 深層化手法が -&gt; 提案された -&gt; （現在の -&gt; 直接的~</span></span>
-<span id="cb11-41"><a href="#cb11-41"></a><span class="co">#&gt;  8 プログラミング言語による -&gt; 「」という -&gt; カウンセラーを -&gt; 模倣した -&gt; プログラム -&gt; （人工無脳）が -&gt; しばしば -&gt; 引き合い~</span></span>
-<span id="cb11-42"><a href="#cb11-42"></a><span class="co">#&gt;  9 年の -&gt; 発明と、 -&gt; 年以降の -&gt; ビッグデータ収集環境の -&gt; 整備、 -&gt; 計算資源と -&gt; なる -&gt; 高性能化により、 -&gt; が -&gt; ~</span></span>
-<span id="cb11-43"><a href="#cb11-43"></a><span class="co">#&gt; 10 人工知能学会の -&gt; 松尾豊は、 -&gt; 著書 -&gt; 『人工知能は -&gt; 人間を -&gt; 超えるか』内に -&gt; 於いて、 -&gt; 人間に対して -&gt; 反乱を ~</span></span>
-<span id="cb11-44"><a href="#cb11-44"></a><span class="co">#&gt; 11 対談で -&gt; 須藤は -&gt; 「これまで -&gt; けっこう -&gt; 長時間 -&gt; 議論を -&gt; 行ってきました。 -&gt; おかげで、 -&gt; 意見の -&gt; 違いは~</span></span>
-<span id="cb11-45"><a href="#cb11-45"></a><span class="co">#&gt; 12 年代に、 -&gt; によって -&gt; 広く -&gt; 使われるようになった。                       </span></span>
-<span id="cb11-46"><a href="#cb11-46"></a><span class="co">#&gt; 13 松下電器が -&gt; 年頃から -&gt; 持つような -&gt; 曖昧さを -&gt; 制御に -&gt; 活かす -&gt; ファジィ制御についての -&gt; 研究を -&gt; 開始し、 -~</span></span>
-<span id="cb11-47"><a href="#cb11-47"></a><span class="co">#&gt; 14 年には -&gt; 非構造化データ形式の -&gt; 国際規格である -&gt; 提唱されたが、 -&gt; ここから -&gt; 上の -&gt; 非構造化データに対して、 -&gt; アプリ~</span></span>
-<span id="cb11-48"><a href="#cb11-48"></a><span class="co">#&gt; 15 年代と -&gt; 年代の -&gt; 間に、 -&gt; ジョエル・は -&gt; プログラム中で -&gt; 積分問題での -&gt; 記号的推論の -&gt; パワーを -&gt; 示した。 -~</span></span></code></pre></div>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(</span>
+<span id="cb11-19"><a href="#cb11-19"></a>      <span class="dt">sentence_idx =</span> .y<span class="op">$</span>sentence_idx,</span>
+<span id="cb11-20"><a href="#cb11-20"></a>      <span class="dt">chunk_idx =</span> .y<span class="op">$</span>chunk_idx,</span>
+<span id="cb11-21"><a href="#cb11-21"></a>      <span class="dt">path =</span> stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(</span>
+<span id="cb11-22"><a href="#cb11-22"></a>        memo<span class="op">$</span>chunk[</span>
+<span id="cb11-23"><a href="#cb11-23"></a>          memo<span class="op">$</span>sentence_idx <span class="op">==</span><span class="st"> </span>.y<span class="op">$</span>sentence_idx <span class="op">&amp;</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a><span class="st">            </span>memo<span class="op">$</span>chunk_idx <span class="op">&gt;=</span><span class="st"> </span>.y<span class="op">$</span>chunk_idx <span class="op">&amp;</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a><span class="st">            </span>(memo<span class="op">$</span>D2 <span class="op">&gt;</span><span class="st"> </span>.x<span class="op">$</span>D1 <span class="op">||</span><span class="st"> </span>memo<span class="op">$</span>D2 <span class="op">==</span><span class="st"> </span><span class="op">-</span>1L)</span>
+<span id="cb11-26"><a href="#cb11-26"></a>        ],</span>
+<span id="cb11-27"><a href="#cb11-27"></a>        <span class="dt">sep =</span> <span class="st">""</span>,</span>
+<span id="cb11-28"><a href="#cb11-28"></a>        <span class="dt">collapse =</span> <span class="st">" -&gt; "</span></span>
+<span id="cb11-29"><a href="#cb11-29"></a>      )</span>
+<span id="cb11-30"><a href="#cb11-30"></a>    )) <span class="op">%&gt;%</span></span>
+<span id="cb11-31"><a href="#cb11-31"></a><span class="st">  </span>purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dfr</a></span>(<span class="op">~</span>.)</span>
+<span id="cb11-32"><a href="#cb11-32"></a></span>
+<span id="cb11-33"><a href="#cb11-33"></a>pattern <span class="op">%&gt;%</span></span>
+<span id="cb11-34"><a href="#cb11-34"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(path) <span class="op">%&gt;%</span></span>
+<span id="cb11-35"><a href="#cb11-35"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(path <span class="op">!=</span><span class="st"> ""</span>)</span>
+<span id="cb11-36"><a href="#cb11-36"></a><span class="co">#&gt; # A tibble: 124 x 1</span></span>
+<span id="cb11-37"><a href="#cb11-37"></a><span class="co">#&gt;    path                                                                         </span></span>
+<span id="cb11-38"><a href="#cb11-38"></a><span class="co">#&gt;    &lt;chr&gt;                                                                        </span></span>
+<span id="cb11-39"><a href="#cb11-39"></a><span class="co">#&gt;  1 アレン脳科学研究所と -&gt; 連携し -&gt; 脳スキャンによって -&gt; 生まれた -&gt; 大量の -&gt; データを -&gt; 処理する -&gt; ための -&gt; ソフトウ~</span></span>
+<span id="cb11-40"><a href="#cb11-40"></a><span class="co">#&gt;  2 連携し -&gt; 脳スキャンによって -&gt; 生まれた -&gt; 大量の -&gt; データを -&gt; 処理する -&gt; ための -&gt; ソフトウェアを -&gt; 開発している。~</span></span>
+<span id="cb11-41"><a href="#cb11-41"></a><span class="co">#&gt;  3 脳スキャンによって -&gt; 生まれた -&gt; 大量の -&gt; データを -&gt; 処理する -&gt; ための -&gt; ソフトウェアを -&gt; 開発している。 -&gt; 年の ~</span></span>
+<span id="cb11-42"><a href="#cb11-42"></a><span class="co">#&gt;  4 大量の -&gt; データを -&gt; 処理する -&gt; ための -&gt; ソフトウェアを -&gt; 開発している。 -&gt; 年の -&gt; 時点で、 -&gt; が -&gt; 管理してい~</span></span>
+<span id="cb11-43"><a href="#cb11-43"></a><span class="co">#&gt;  5 データを -&gt; 処理する -&gt; ための -&gt; ソフトウェアを -&gt; 開発している。 -&gt; 年の -&gt; 時点で、 -&gt; が -&gt; 管理している -&gt; の ~</span></span>
+<span id="cb11-44"><a href="#cb11-44"></a><span class="co">#&gt;  6 処理する -&gt; ための -&gt; ソフトウェアを -&gt; 開発している。 -&gt; 年の -&gt; 時点で、 -&gt; が -&gt; 管理している -&gt; の -&gt; データ量は~</span></span>
+<span id="cb11-45"><a href="#cb11-45"></a><span class="co">#&gt;  7 ための -&gt; ソフトウェアを -&gt; 開発している。 -&gt; 年の -&gt; 時点で、 -&gt; が -&gt; 管理している -&gt; の -&gt; データ量は -&gt; すでに ~</span></span>
+<span id="cb11-46"><a href="#cb11-46"></a><span class="co">#&gt;  8 ソフトウェアを -&gt; 開発している。 -&gt; 年の -&gt; 時点で、 -&gt; が -&gt; 管理している -&gt; の -&gt; データ量は -&gt; すでに -&gt; バイトに~</span></span>
+<span id="cb11-47"><a href="#cb11-47"></a><span class="co">#&gt;  9 人間の -&gt; 知的能力を -&gt; コンピュータ上で -&gt; 実現する、 -&gt; 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt;~</span></span>
+<span id="cb11-48"><a href="#cb11-48"></a><span class="co">#&gt; 10 知的能力を -&gt; コンピュータ上で -&gt; 実現する、 -&gt; 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt; 自然言語処理~</span></span>
+<span id="cb11-49"><a href="#cb11-49"></a><span class="co">#&gt; # ... with 114 more rows</span></span></code></pre></div>
 </div>
 <div id="名詞間の係り受けパスの抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -583,7 +579,7 @@
 <span id="cb12-87"><a href="#cb12-87"></a><span class="co">#&gt;  xml2          1.3.2    2020-04-23 [2] CRAN (R 4.0.2)                     </span></span>
 <span id="cb12-88"><a href="#cb12-88"></a><span class="co">#&gt;  yaml          2.2.1    2020-02-01 [2] CRAN (R 4.0.0)                     </span></span>
 <span id="cb12-89"><a href="#cb12-89"></a><span class="co">#&gt; </span></span>
-<span id="cb12-90"><a href="#cb12-90"></a><span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpuoZDSy/temp_libpath55c69e63c86</span></span>
+<span id="cb12-90"><a href="#cb12-90"></a><span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpAHZ7Z7/temp_libpath285c52e22934</span></span>
 <span id="cb12-91"><a href="#cb12-91"></a><span class="co">#&gt; [2] C:/Users/user/Documents/R/win-library/4.0</span></span>
 <span id="cb12-92"><a href="#cb12-92"></a><span class="co">#&gt; [3] C:/Program Files/R/R-4.0.2/library</span></span></code></pre></div>
 </div>

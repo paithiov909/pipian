@@ -291,19 +291,24 @@ pattern <- memo %>%
   dplyr::filter(POS1 == "名詞") %>%
   dplyr::group_by(sentence_idx, chunk_idx) %>%
   dplyr::group_map(~ .x %>%
-    dplyr::mutate(path = stringr::str_c(
-      memo$chunk[
-        memo$sentence_idx == .y$sentence_idx &
-        memo$chunk_idx >= .y$chunk_idx &
-        (memo$D2 > .x$D1 || memo$D2 ==  -1L)
-      ],
-      collapse = " -> "
-    ))
+    dplyr::mutate(
+      sentence_idx = .y$sentence_idx,
+      chunk_idx = .y$chunk_idx,
+      path = stringr::str_c(
+        memo$chunk[
+          memo$sentence_idx == .y$sentence_idx &
+          memo$chunk_idx >= .y$chunk_idx &
+          (memo$D2 > .x$D1 || memo$D2 ==  -1L)
+        ],
+        sep = "",
+        collapse = " -> "
+      )
+    )
   ) %>%
-  purrr::map_dfr(~ .) %>%
-  dplyr::select(path)
+  purrr::map_dfr(~ .)
 
 pattern %>%
+  dplyr::select(path) %>%
   dplyr::filter(path != "")
 ```
 
