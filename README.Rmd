@@ -20,7 +20,7 @@ require(magrittr)
 <!-- badges: start -->
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
-[![Build Status](https://travis-ci.org/paithiov909/pipian.svg?branch=master)](https://travis-ci.org/paithiov909/pipian)
+[![Build Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
 
 <!-- badges: end -->
 
@@ -88,4 +88,3 @@ Copyright (c) 2020 Kato Akiru
 Released under the MIT license https://github.com/paithiov909/pipian/blob/master/LICENSE
 
 Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from [Flaticon](https://www.flaticon.com/)
-

@@ -43,7 +43,6 @@ stopifnot(require(readtext))
 
 - [【R】言語処理100本ノック - Qiita](https://qiita.com/PiyoMoasa/items/7c1a6cca3f9cbcaf7773)
 - [R言語で「言語処理100本ノック 2020」/ NLP100 Rlang - Speaker Deck](https://speakerdeck.com/upura/nlp100-rlang)
-- [Rで言語処理100本ノックを解くわけがない（１） | WabbitsPunch](https://wabbitspunch.netlify.app/posts/100-knocks-2020-1/)
 
 ### 使用するファイルの読み込み
 
