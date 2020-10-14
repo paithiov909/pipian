@@ -4,8 +4,8 @@
 #' It requires that CaboCha has already been installed and available.
 #'
 #' @param texts characters that you want to pass to CaboCha.
-#' @param rcpath fullpath to MECABRC if any.
-#' @param force.utf8 boolean. If true, it will read cabocha output xml with UTF-8.
+#' @param rcpath path to MECABRC if any.
+#' @param force.utf8 boolean. If true, it reads cabocha output xml with UTF-8.
 #'
 #' @return R6 class object having fields and methods below.
 #' \itemize{
@@ -155,9 +155,9 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 #' It requires that CaboCha has already been installed and available.
 #'
 #' @param texts characters that you want to pass to CaboCha.
-#' @param rcpath fullpath to MECABRC if any.
+#' @param rcpath path to MECABRC if any.
 #' @param as.tibble boolean. If false, then return flatXML dataframe.
-#' @param force.utf8 boolean. If true, it will read cabocha output xml with UTF-8.
+#' @param force.utf8 boolean. If true, it reads cabocha output xml with UTF-8.
 #' @param ... other arguments are passed to \code{tibble::as_tibble()}.
 #'
 #' @return flat XML made by \code{flatxml::fxml_importXMLFlat(CaboChaOutputXML)}
