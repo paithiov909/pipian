@@ -3,6 +3,7 @@
 export(CabochaR)
 export(CabochaTbl)
 export(cabochaFlatXML)
+export(is_cabocha_available)
 import(R6)
 import(dplyr)
 importFrom(dplyr,"%>%")

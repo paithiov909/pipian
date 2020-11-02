@@ -50,6 +50,9 @@ jobs:
           - cabocha
           - libxml2
 
+r_github_packages:
+  - r-lib/covr
+
 env:
   global:
     - R_BUILD_ARGS="--no-build-vignettes --no-manual"
@@ -59,6 +62,9 @@ env:
 # do not build vignettes...takes too long and times out on travis
 r_build_args: --no-build-vignettes --no-manual
 r_check_args: --no-build-vignettes --no-manual --timings
+
+after_success:
+  - Rscript -e 'covr::codecov()'
 
 cache:
   packages: true

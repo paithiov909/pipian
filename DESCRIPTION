@@ -1,9 +1,9 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha for R
-Version: 0.2.3
-Authors@R: person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre"))
-Author: paithiov909 [aut, cre]
+Version: 0.2.3-1
+Authors@R: c(
+    person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: Call CaboCha -f3 command via system().
 Depends:

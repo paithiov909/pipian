@@ -12,7 +12,10 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-require(magrittr)
+stopifnot(
+  require(magrittr),
+  require(pipian)
+)
 ```
 
 # pipian <a href='https://paithiov909.github.io/pipian'><img src='man/figures/logo.png' align="right" height="139" /></a>
@@ -21,23 +24,23 @@ require(magrittr)
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
 [![Build Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
-
+[![Codecov test coverage](https://codecov.io/gh/paithiov909/pipian/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=master)
 <!-- badges: end -->
 
 ## About
 
 pipian is a tiny interface to [CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency structure parser.
 
+## System Requirements
+
+- MeCab (>= 0.996)
+- CaboCha (>= 0.69)
+
 ## Installation
 
 ``` R
 remotes::install_github("paithiov909/pipian")
 ```
-
-## Requirements
-
-- MeCab (>= 0.996)
-- CaboCha (>= 0.69)
 
 ## Usage
 
@@ -83,8 +86,6 @@ Please note that the pipian project is released with a [Contributor Code of Cond
 
 ## License
 
-Copyright (c) 2020 Kato Akiru
+Under the MIT license.
 
-Released under the MIT license https://github.com/paithiov909/pipian/blob/master/LICENSE
-
-Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from [Flaticon](https://www.flaticon.com/)
+Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from [Flaticon](https://www.flaticon.com/).

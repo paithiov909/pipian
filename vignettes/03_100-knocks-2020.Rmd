@@ -18,9 +18,11 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-stopifnot(require(pipian))
-stopifnot(require(tidyverse))
-stopifnot(require(readtext))
+stopifnot(
+  require(pipian),
+  require(tidyverse),
+  require(readtext)
+)
 ```
 
 ## Overview
