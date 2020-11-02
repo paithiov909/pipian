@@ -1,6 +1,51 @@
+#' @noRd
+#' @keywords internal
+R6_CabochaR <- R6::R6Class(
+  "CabochaR",
+  public = list(
+    attributes = NULL,
+    morphs = NULL,
+    initialize = function(attributes, morphs) {
+      self$attributes <- attributes
+      self$morphs <- morphs
+    },
+    as_tibble = function(attr = self$attributes, dfs = self$morphs) {
+      purrr::imap_dfr(dfs, function(df, idx) {
+        df %>%
+          dplyr::mutate(sentence_idx = idx) %>%
+          dplyr::right_join(attr, by = "chunk_idx") %>%
+          dplyr::select(
+            "sentence_idx",
+            "chunk_idx",
+            "D1",
+            "D2",
+            "rel",
+            "score",
+            "head",
+            "func",
+            "tok_idx",
+            "ne_value",
+            "word",
+            "POS1",
+            "POS2",
+            "POS3",
+            "POS4",
+            "X5StageUse1",
+            "X5StageUse2",
+            "Original",
+            "Yomi1",
+            "Yomi2"
+          ) %>%
+          tidyr::drop_na()
+      })
+    }
+  )
+)
+
+
 #' Utility for parsing CaboCha output
 #'
-#' convert flat XML into CabochaR compatible output.
+#' converts flat XML into CabochaR compatible output.
 #'
 #' @param fxml flat XML that comes from \code{cabochaFlatXML(as.tibble = FALSE)}
 #'
@@ -168,49 +213,5 @@ CabochaR <- function(fxml) {
     ))
   })
 
-  # Class object
-  CabochaR <- R6::R6Class(
-    "CabochaR",
-    public = list(
-      attributes = NULL,
-      morphs = NULL,
-      initialize = function(attributes, morphs) {
-        self$attributes <- attributes
-        self$morphs <- morphs
-      },
-      as_tibble = function(attr = self$attributes, dfs = self$morphs) {
-        purrr::imap_dfr(dfs, function(df, idx) {
-          df %>%
-            dplyr::mutate(sentence_idx = idx) %>%
-            dplyr::right_join(attr, by = "chunk_idx") %>%
-            dplyr::select(
-              "sentence_idx",
-              "chunk_idx",
-              "D1",
-              "D2",
-              "rel",
-              "score",
-              "head",
-              "func",
-              "tok_idx",
-              "ne_value",
-              "word",
-              "POS1",
-              "POS2",
-              "POS3",
-              "POS4",
-              "X5StageUse1",
-              "X5StageUse2",
-              "Original",
-              "Yomi1",
-              "Yomi2"
-            ) %>%
-            tidyr::drop_na()
-        })
-      }
-    )
-  )
-
-  obj <- CabochaR$new(attributes, morphs)
-  return(obj)
+  return(R6_CabochaR$new(attributes, morphs))
 }

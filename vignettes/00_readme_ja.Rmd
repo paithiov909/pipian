@@ -17,8 +17,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-stopifnot(require(magrittr))
-stopifnot(require(pipian))
+stopifnot(
+  require(magrittr),
+  require(pipian)
+)
 ```
 
 ## これは何？

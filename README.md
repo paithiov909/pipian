@@ -9,7 +9,8 @@
 commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
 [![Build
 Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
-
+[![Codecov test
+coverage](https://codecov.io/gh/paithiov909/pipian/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=master)
 <!-- badges: end -->
 
 ## About
@@ -18,16 +19,16 @@ pipian is a tiny interface to
 [CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency
 structure parser.
 
+## System Requirements
+
+  - MeCab (\>= 0.996)
+  - CaboCha (\>= 0.69)
+
 ## Installation
 
 ``` r
 remotes::install_github("paithiov909/pipian")
 ```
-
-## Requirements
-
-  - MeCab (\>= 0.996)
-  - CaboCha (\>= 0.69)
 
 ## Usage
 
@@ -127,10 +128,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-Copyright (c) 2020 Kato Akiru
-
-Released under the MIT license
-<https://github.com/paithiov909/pipian/blob/master/LICENSE>
+Under the MIT license.
 
 Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from
-[Flaticon](https://www.flaticon.com/)
+[Flaticon](https://www.flaticon.com/).
