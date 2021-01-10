@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipian</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3.2</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -75,7 +75,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/paithiov909/pipian">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -89,14 +89,13 @@
 
       
 
-      </header><script src="03_100-knocks-2020_files/header-attrs-2.5/header-attrs.js"></script><script src="03_100-knocks-2020_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="03_100-knocks-2020_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="03_100-knocks-2020_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="03_100-knocks-2020_files/header-attrs-2.6/header-attrs.js"></script><script src="03_100-knocks-2020_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Practice: Dependency Parsing from NLP 100 Exercise 2020 (Rev1)</h1>
                         <h4 class="author">Kato Akiru</h4>
             
-            <h4 class="date">2020-11-02</h4>
+            <h4 class="date">2021-01-11</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/paithiov909/pipian/blob/master/vignettes/03_100-knocks-2020.Rmd"><code>vignettes/03_100-knocks-2020.Rmd</code></a></small>
       <div class="hidden name"><code>03_100-knocks-2020.Rmd</code></div>
@@ -167,12 +166,12 @@
 <span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; # A tibble: 6 x 20</span></span>
 <span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;   sentence_idx chunk_idx D1    D2    rel   score head  func  tok_idx ne_value</span></span>
 <span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt;          &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;   </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 1            1         3 0     1     D     1.78~ 1     2           0 O       </span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; 2            1         3 0     1     D     1.78~ 1     2           1 O       </span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; 3            1         3 0     1     D     1.78~ 1     2           2 O       </span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; 4            1         7 1     5     D     1.95~ 3     4           3 O       </span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; 5            1         7 1     5     D     1.95~ 3     4           4 O       </span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 6            1         7 1     5     D     1.95~ 3     4           5 O       </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 1            1         3 0     5     D     1.12~ 1     2           0 O       </span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; 2            1         3 0     5     D     1.12~ 1     2           1 O       </span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; 3            1         3 0     5     D     1.12~ 1     2           2 O       </span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; 4            1         3 0     5     D     1.12~ 1     2           3 O       </span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; 5            1         8 1     5     D     2.68~ 7     8           4 O       </span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 6            1         8 1     5     D     2.68~ 7     8           5 O       </span></span>
 <span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; # ... with 10 more variables: word &lt;chr&gt;, POS1 &lt;chr&gt;, POS2 &lt;chr&gt;, POS3 &lt;chr&gt;,</span></span>
 <span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; #   POS4 &lt;chr&gt;, X5StageUse1 &lt;chr&gt;, X5StageUse2 &lt;chr&gt;, Original &lt;chr&gt;,</span></span>
 <span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; #   Yomi1 &lt;chr&gt;, Yomi2 &lt;chr&gt;</span></span></code></pre></div>
@@ -181,7 +180,7 @@
 <span id="cb3-2"><a href="#cb3-2"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(sentence_idx <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) <span class="op">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(word) <span class="op">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="st">  </span>stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span>(<span class="dt">collapse =</span> <span class="st">" "</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; [1] "主要 国 の 軍隊 は 、 ミサイル 防衛 の 分野 で の 自動 化 を 試み て いる 。 アメリカ 海軍 は 完全 自動 の 防空 システム 「 」 を 導入 し 砲 により 対 艦 ミサイル を 破壊 できる 。 イスラエル 軍 は 対空 迎撃 ミサイル システム 「 」 を 所有 し 、 ガザ 地区 と の 境界 線 に は 標的 を 自動 検知 する や サムソン を 稼働 さ せ て 複数 の 人間 を 射殺 し て いる 。 今後 は 新しい 軍事 能力 を 生み 、 軍 の 指揮 、 訓練 、 部隊 の 展開 を 変え 、 戦争 を 一変 さ せ その 変化 は 大国 間 の 軍事 バランス を 決める こと に なる と の 主張 も ある 。 哨戒 機 の よう に 戦闘 指揮 システム に 支援 用 に 搭載 さ れる こと も ある 。"</span></span></code></pre></div>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; [1] "世界 各国 において 、 軍事 ・ 民間 共 に 実用 化 に 向け 研究 開発 が 進ん で いる が 、 とくに 無人 戦闘 機 や 無人 自動車 ロボット カー の 開発 が 進行 し て いる ものの 、 年代 に は まだ 完全 な 自動 化 は 試験 的 な もの に 留まっ た （ は 利用 さ れ て いる が 、 一部 操作 は 地上 から 行っ て いる もの が 多い ） 。"</span></span></code></pre></div>
 </div>
 <div id="係り受け解析結果の読み込み文節係り受け" class="section level3">
 <h3 class="hasAnchor">
@@ -216,14 +215,14 @@
 <span id="cb4-23"><a href="#cb4-23"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(chunk, collocation) <span class="op">%&gt;%</span></span>
 <span id="cb4-24"><a href="#cb4-24"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
 <span id="cb4-25"><a href="#cb4-25"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#&gt;   chunk          collocation            </span></span>
-<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;                  </span></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#&gt; 1 主要国の       主要国の 軍隊は        </span></span>
-<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; 2 軍隊は         軍隊は 試みている      </span></span>
-<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#&gt; 3 ミサイル防衛の ミサイル防衛の 分野での</span></span>
-<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; 4 分野での       分野での 自動化を      </span></span>
-<span id="cb4-32"><a href="#cb4-32"></a><span class="co">#&gt; 5 自動化を       自動化を 試みている    </span></span>
-<span id="cb4-33"><a href="#cb4-33"></a><span class="co">#&gt; 6 試みている     試みている 破壊できる</span></span></code></pre></div>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#&gt;   chunk            collocation                  </span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt;   &lt;chr&gt;            &lt;chr&gt;                        </span></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#&gt; 1 世界各国において 世界各国において 進んでいるが</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; 2 軍事民間共に     軍事民間共に 進んでいるが    </span></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#&gt; 3 実用化に         実用化に 向け                </span></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; 4 向け             向け 進んでいるが            </span></span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="co">#&gt; 5 研究開発が       研究開発が 進んでいるが      </span></span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="co">#&gt; 6 進んでいるが     進んでいるが 進行している</span></span></code></pre></div>
 </div>
 <div id="名詞を含む文節が動詞を含む文節に係るものを抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -255,14 +254,14 @@
 <span id="cb5-25"><a href="#cb5-25"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(chunk <span class="op">!=</span><span class="st"> </span>collocation) <span class="op">%&gt;%</span></span>
 <span id="cb5-26"><a href="#cb5-26"></a><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</span>
 <span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt;   chunk          collocation                </span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt;   &lt;chr&gt;          &lt;chr&gt;                      </span></span>
-<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#&gt; 1 軍隊は、       軍隊は、 試みている。      </span></span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#&gt; 2 自動化を       自動化を 試みている。      </span></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#&gt; 3 アメリカ海軍は アメリカ海軍は 破壊できる。</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#&gt; 4 導入し         導入し 破壊できる。        </span></span>
-<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#&gt; 5 砲により       砲により 破壊できる。      </span></span>
-<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#&gt; 6 対艦ミサイルを 対艦ミサイルを 破壊できる。</span></span></code></pre></div>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt;   chunk              collocation                      </span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                            </span></span>
+<span id="cb5-30"><a href="#cb5-30"></a><span class="co">#&gt; 1 世界各国において、 世界各国において、 進んでいるが、</span></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="co">#&gt; 2 軍事・民間共に     軍事・民間共に 進んでいるが、    </span></span>
+<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#&gt; 3 実用化に           実用化に 向け                    </span></span>
+<span id="cb5-33"><a href="#cb5-33"></a><span class="co">#&gt; 4 研究開発が         研究開発が 進んでいるが、        </span></span>
+<span id="cb5-34"><a href="#cb5-34"></a><span class="co">#&gt; 5 開発が             開発が 進行している              </span></span>
+<span id="cb5-35"><a href="#cb5-35"></a><span class="co">#&gt; 6 年代には           年代には 利用されているが、</span></span></code></pre></div>
 </div>
 <div id="係り受け木の可視化" class="section level3">
 <h3 class="hasAnchor">
@@ -295,20 +294,20 @@
 <span id="cb7-14"><a href="#cb7-14"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Original, collocation)</span>
 <span id="cb7-15"><a href="#cb7-15"></a></span>
 <span id="cb7-16"><a href="#cb7-16"></a>pattern</span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; # A tibble: 274 x 2</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt;    Original collocation    </span></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;          </span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  1 試みる   は を          </span></span>
-<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  2 いる     は を          </span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  3 する     を             </span></span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt;  4 できる   て は により を</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;  5 する     は を          </span></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt;  6 する     を             </span></span>
-<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt;  7 する     を             </span></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt;  8 せる     を             </span></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt;  9 する     に は て を    </span></span>
-<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 10 いる     に は て を    </span></span>
-<span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; # ... with 264 more rows</span></span></code></pre></div>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; # A tibble: 278 x 2</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt;    Original collocation   </span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;         </span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  1 向ける   に            </span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  2 進む     において に が</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  3 いる     において に が</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt;  4 する     で が が      </span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;  5 いる     で が が      </span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt;  6 留まる   に            </span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt;  7 する     に は は は   </span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt;  8 れる     に は は は   </span></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt;  9 いる     に は は は   </span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 10 行う     から          </span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="co">#&gt; # ... with 268 more rows</span></span></code></pre></div>
 <p>「行う」「なる」「与える」という動詞の格パターン</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>pattern <span class="op">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(Original <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"行う"</span>, <span class="st">"なる"</span>, <span class="st">"与える"</span>)) <span class="op">%&gt;%</span></span>
@@ -316,26 +315,26 @@
 <span id="cb8-4"><a href="#cb8-4"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>()</span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; # A tibble: 18 x 3</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; # Groups:   Original, collocation [18]</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt;    Original collocation             n</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;               &lt;int&gt;</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  1 なる     が と                   2</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;  2 なる     で が に                1</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt;  3 なる     て で から で も が     1</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;  4 なる     て は として に         1</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt;  5 なる     と                      1</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt;  6 なる     に                      1</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt;  7 なる     に は によって          1</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt;  8 なる     に は も                1</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="co">#&gt;  9 なる     は て                   1</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#&gt; 10 なる     は に                   1</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="co">#&gt; 11 なる     は は                   1</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a><span class="co">#&gt; 12 行う     で は が                1</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a><span class="co">#&gt; 13 行う     に で を                1</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a><span class="co">#&gt; 14 行う     まで を に              1</span></span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="co">#&gt; 15 行う     を                      2</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a><span class="co">#&gt; 16 行う     を に を                1</span></span>
-<span id="cb8-25"><a href="#cb8-25"></a><span class="co">#&gt; 17 与える   が など に              1</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a><span class="co">#&gt; 18 与える   が に                   1</span></span></code></pre></div>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt;    Original collocation            n</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;              &lt;int&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#&gt;  1 なる     ""                     1</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#&gt;  2 なる     "が と"                1</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#&gt;  3 なる     "て は に"             1</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#&gt;  4 なる     "で は を"             1</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">#&gt;  5 なる     "と を"                1</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#&gt;  6 なる     "に"                   1</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#&gt;  7 なる     "に は が に"          1</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co">#&gt;  8 なる     "に は によって"       1</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="co">#&gt;  9 なる     "は に"                1</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="co">#&gt; 10 なる     "は に は"             1</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="co">#&gt; 11 行う     "から"                 1</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="co">#&gt; 12 行う     "て に を"             1</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="co">#&gt; 13 行う     "で は て が に"       1</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a><span class="co">#&gt; 14 行う     "に により に を"      1</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="co">#&gt; 15 行う     "は を をめぐって"     1</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="co">#&gt; 16 行う     "を"                   5</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="co">#&gt; 17 与える   "が など に"           1</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="co">#&gt; 18 与える   "は に を"             1</span></span></code></pre></div>
 </div>
 <div id="動詞の格フレーム情報の抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -369,20 +368,20 @@
 <span id="cb9-27"><a href="#cb9-27"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(Original, collocation, chunk)</span>
 <span id="cb9-28"><a href="#cb9-28"></a></span>
 <span id="cb9-29"><a href="#cb9-29"></a>pattern</span>
-<span id="cb9-30"><a href="#cb9-30"></a><span class="co">#&gt; # A tibble: 274 x 3</span></span>
-<span id="cb9-31"><a href="#cb9-31"></a><span class="co">#&gt;    Original collocation     chunk                                              </span></span>
-<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;                                              </span></span>
-<span id="cb9-33"><a href="#cb9-33"></a><span class="co">#&gt;  1 試みる   は を           軍隊は、 自動化を                                  </span></span>
-<span id="cb9-34"><a href="#cb9-34"></a><span class="co">#&gt;  2 いる     は を           軍隊は、 自動化を                                  </span></span>
-<span id="cb9-35"><a href="#cb9-35"></a><span class="co">#&gt;  3 する     を              「」を                                             </span></span>
-<span id="cb9-36"><a href="#cb9-36"></a><span class="co">#&gt;  4 できる   て は により を 試みている。 アメリカ海軍は 砲により 対艦ミサイルを</span></span>
-<span id="cb9-37"><a href="#cb9-37"></a><span class="co">#&gt;  5 する     は を           イスラエル軍は 「」を                              </span></span>
-<span id="cb9-38"><a href="#cb9-38"></a><span class="co">#&gt;  6 する     を              標的を                                             </span></span>
-<span id="cb9-39"><a href="#cb9-39"></a><span class="co">#&gt;  7 する     を              サムソンを                                         </span></span>
-<span id="cb9-40"><a href="#cb9-40"></a><span class="co">#&gt;  8 せる     を              サムソンを                                         </span></span>
-<span id="cb9-41"><a href="#cb9-41"></a><span class="co">#&gt;  9 する     に は て を     境界線には 境界線には 稼働させて 人間を            </span></span>
-<span id="cb9-42"><a href="#cb9-42"></a><span class="co">#&gt; 10 いる     に は て を     境界線には 境界線には 稼働させて 人間を            </span></span>
-<span id="cb9-43"><a href="#cb9-43"></a><span class="co">#&gt; # ... with 264 more rows</span></span></code></pre></div>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="co">#&gt; # A tibble: 278 x 3</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co">#&gt;    Original collocation    chunk                                       </span></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;          &lt;chr&gt;                                       </span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="co">#&gt;  1 向ける   に             実用化に                                    </span></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="co">#&gt;  2 進む     において に が 世界各国において、 軍事・民間共に 研究開発が</span></span>
+<span id="cb9-35"><a href="#cb9-35"></a><span class="co">#&gt;  3 いる     において に が 世界各国において、 軍事・民間共に 研究開発が</span></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="co">#&gt;  4 する     で が が       進んでいるが、 進んでいるが、 開発が        </span></span>
+<span id="cb9-37"><a href="#cb9-37"></a><span class="co">#&gt;  5 いる     で が が       進んでいるが、 進んでいるが、 開発が        </span></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="co">#&gt;  6 留まる   に             ものに                                      </span></span>
+<span id="cb9-39"><a href="#cb9-39"></a><span class="co">#&gt;  7 する     に は は は    年代には 年代には 自動化は （は             </span></span>
+<span id="cb9-40"><a href="#cb9-40"></a><span class="co">#&gt;  8 れる     に は は は    年代には 年代には 自動化は （は             </span></span>
+<span id="cb9-41"><a href="#cb9-41"></a><span class="co">#&gt;  9 いる     に は は は    年代には 年代には 自動化は （は             </span></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="co">#&gt; 10 行う     から           地上から                                    </span></span>
+<span id="cb9-43"><a href="#cb9-43"></a><span class="co">#&gt; # ... with 268 more rows</span></span></code></pre></div>
 </div>
 <div id="機能動詞構文のマイニング" class="section level3">
 <h3 class="hasAnchor">
@@ -423,20 +422,20 @@
 <span id="cb10-33"><a href="#cb10-33"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(surface_form, collocation, chunk)</span>
 <span id="cb10-34"><a href="#cb10-34"></a></span>
 <span id="cb10-35"><a href="#cb10-35"></a>pattern</span>
-<span id="cb10-36"><a href="#cb10-36"></a><span class="co">#&gt; # A tibble: 238 x 3</span></span>
-<span id="cb10-37"><a href="#cb10-37"></a><span class="co">#&gt;    surface_form          collocation     chunk                                  </span></span>
-<span id="cb10-38"><a href="#cb10-38"></a><span class="co">#&gt;    &lt;chr&gt;                 &lt;chr&gt;           &lt;chr&gt;                                  </span></span>
-<span id="cb10-39"><a href="#cb10-39"></a><span class="co">#&gt;  1 ミサイル防衛の        ""              ""                                     </span></span>
-<span id="cb10-40"><a href="#cb10-40"></a><span class="co">#&gt;  2 導入し                "を"            "「」を"                               </span></span>
-<span id="cb10-41"><a href="#cb10-41"></a><span class="co">#&gt;  3 破壊できる。          "て は により を"~ "試みている。 アメリカ海軍は 砲により 対艦ミサイルを"~</span></span>
-<span id="cb10-42"><a href="#cb10-42"></a><span class="co">#&gt;  4 対空迎撃ミサイルシステム~ ""              ""                                     </span></span>
-<span id="cb10-43"><a href="#cb10-43"></a><span class="co">#&gt;  5 所有し、              "は を"         "イスラエル軍は 「」を"                </span></span>
-<span id="cb10-44"><a href="#cb10-44"></a><span class="co">#&gt;  6 自動検知する          "を"            "標的を"                               </span></span>
-<span id="cb10-45"><a href="#cb10-45"></a><span class="co">#&gt;  7 稼働させて            "を"            "サムソンを"                           </span></span>
-<span id="cb10-46"><a href="#cb10-46"></a><span class="co">#&gt;  8 射殺している。        "に は て を"   "境界線には 境界線には 稼働させて 人間を"~</span></span>
-<span id="cb10-47"><a href="#cb10-47"></a><span class="co">#&gt;  9 指揮、                "の"            "軍の"                                 </span></span>
-<span id="cb10-48"><a href="#cb10-48"></a><span class="co">#&gt; 10 訓練、                ""              ""                                     </span></span>
-<span id="cb10-49"><a href="#cb10-49"></a><span class="co">#&gt; # ... with 228 more rows</span></span></code></pre></div>
+<span id="cb10-36"><a href="#cb10-36"></a><span class="co">#&gt; # A tibble: 239 x 3</span></span>
+<span id="cb10-37"><a href="#cb10-37"></a><span class="co">#&gt;    surface_form         collocation   chunk                                 </span></span>
+<span id="cb10-38"><a href="#cb10-38"></a><span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;         &lt;chr&gt;                                 </span></span>
+<span id="cb10-39"><a href="#cb10-39"></a><span class="co">#&gt;  1 実用化に             ""            ""                                    </span></span>
+<span id="cb10-40"><a href="#cb10-40"></a><span class="co">#&gt;  2 研究開発が研究開発が ""            ""                                    </span></span>
+<span id="cb10-41"><a href="#cb10-41"></a><span class="co">#&gt;  3 研究開発が研究開発が ""            ""                                    </span></span>
+<span id="cb10-42"><a href="#cb10-42"></a><span class="co">#&gt;  4 無人戦闘機や         ""            ""                                    </span></span>
+<span id="cb10-43"><a href="#cb10-43"></a><span class="co">#&gt;  5 開発が               "の"          "無人自動車ロボットカーの"            </span></span>
+<span id="cb10-44"><a href="#cb10-44"></a><span class="co">#&gt;  6 進行している         "で が が"    "進んでいるが、 進んでいるが、 開発が"</span></span>
+<span id="cb10-45"><a href="#cb10-45"></a><span class="co">#&gt;  7 試験的な             ""            ""                                    </span></span>
+<span id="cb10-46"><a href="#cb10-46"></a><span class="co">#&gt;  8 利用されているが、   "に は は は" "年代には 年代には 自動化は （は"     </span></span>
+<span id="cb10-47"><a href="#cb10-47"></a><span class="co">#&gt;  9 一部操作は           ""            ""                                    </span></span>
+<span id="cb10-48"><a href="#cb10-48"></a><span class="co">#&gt; 10 実現する、           "を で"       "知的能力を コンピュータ上で"         </span></span>
+<span id="cb10-49"><a href="#cb10-49"></a><span class="co">#&gt; # ... with 229 more rows</span></span></code></pre></div>
 </div>
 <div id="名詞から根へのパスの抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -476,27 +475,20 @@
 <span id="cb11-33"><a href="#cb11-33"></a>pattern <span class="op">%&gt;%</span></span>
 <span id="cb11-34"><a href="#cb11-34"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(path) <span class="op">%&gt;%</span></span>
 <span id="cb11-35"><a href="#cb11-35"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(path <span class="op">!=</span><span class="st"> ""</span>)</span>
-<span id="cb11-36"><a href="#cb11-36"></a><span class="co">#&gt; # A tibble: 18 x 1</span></span>
+<span id="cb11-36"><a href="#cb11-36"></a><span class="co">#&gt; # A tibble: 64 x 1</span></span>
 <span id="cb11-37"><a href="#cb11-37"></a><span class="co">#&gt;    path                                                                         </span></span>
 <span id="cb11-38"><a href="#cb11-38"></a><span class="co">#&gt;    &lt;chr&gt;                                                                        </span></span>
-<span id="cb11-39"><a href="#cb11-39"></a><span class="co">#&gt;  1 主要国の -&gt; 軍隊は、 -&gt; ミサイル防衛の -&gt; 分野での -&gt; 自動化を -&gt; 試みている。 -&gt; アメリカ海軍は -&gt; 完全自動の -&gt; 防空シ~</span></span>
-<span id="cb11-40"><a href="#cb11-40"></a><span class="co">#&gt;  2 脳シミュレーションを -&gt; 行うには -&gt; 脳神経科学の -&gt; 知識も -&gt; 重要となる。   </span></span>
-<span id="cb11-41"><a href="#cb11-41"></a><span class="co">#&gt;  3 年には -&gt; 国立情報学研究所や -&gt; 富士通研究所の -&gt; 研究チームが -&gt; 開発した -&gt; 「東くん」で -&gt; 東京大学入試の -&gt; 模擬試験に ~</span></span>
-<span id="cb11-42"><a href="#cb11-42"></a><span class="co">#&gt;  4 プログラミング言語による -&gt; 「」という -&gt; カウンセラーを -&gt; 模倣した -&gt; プログラム -&gt; （人工無脳）が -&gt; しばしば -&gt; 引き合い~</span></span>
-<span id="cb11-43"><a href="#cb11-43"></a><span class="co">#&gt;  5 フランス大統領は -&gt; 分野の -&gt; 開発支援に -&gt; 向け -&gt; 年で -&gt; 億ドル -&gt; （約億円）を -&gt; 支出すると -&gt; 宣言し、 -&gt; 研究~</span></span>
-<span id="cb11-44"><a href="#cb11-44"></a><span class="co">#&gt;  6 年 -&gt; 月に -&gt; 米社が -&gt; 作成した -&gt; プロ囲碁棋士に -&gt; 勝利して以降は -&gt; と -&gt; 手法が -&gt; 注目され、 -&gt; 人工知能自体の~</span></span>
-<span id="cb11-45"><a href="#cb11-45"></a><span class="co">#&gt;  7 アメリカでは -&gt; 年に -&gt; 時の -&gt; 大統領が -&gt; 脳研究プロジェクト -&gt; 発表。     </span></span>
-<span id="cb11-46"><a href="#cb11-46"></a><span class="co">#&gt;  8 ニューロ， -&gt; ファジィ， -&gt; という -&gt; 手法は、 -&gt; 単純な -&gt; 制御や、 -&gt; 対象を -&gt; 数式で -&gt; 客観的に -&gt; モデル化する~</span></span>
-<span id="cb11-47"><a href="#cb11-47"></a><span class="co">#&gt;  9 生命情報科学者・神経科学者の -&gt; 合原一幸編著 -&gt; 『人工知能は -&gt; こうして -&gt; 創られる』に -&gt; よれば、 -&gt; 急激な -&gt; 発展に -~</span></span>
-<span id="cb11-48"><a href="#cb11-48"></a><span class="co">#&gt; 10 人工知能                                                                     </span></span>
-<span id="cb11-49"><a href="#cb11-49"></a><span class="co">#&gt; 11 年の -&gt; 発明と、 -&gt; 年以降の -&gt; ビッグデータ収集環境の -&gt; 整備、 -&gt; 計算資源と -&gt; 高性能化により、 -&gt; が -&gt; 画像処理コン~</span></span>
-<span id="cb11-50"><a href="#cb11-50"></a><span class="co">#&gt; 12 これらを -&gt; 統合した -&gt; 知的システムを -&gt; 作る -&gt; 試みも -&gt; なされている。 -&gt; では、 -&gt; エキスパートの -&gt; 推論ルールを、~</span></span>
-<span id="cb11-51"><a href="#cb11-51"></a><span class="co">#&gt; 13 ロシアと -&gt; 既に -&gt; 実用化してると -&gt; される -&gt; ハッキングの -&gt; 自動化の -&gt; 他、 -&gt; 個人を -&gt; 攻撃したり -&gt; で -&gt;~</span></span>
-<span id="cb11-52"><a href="#cb11-52"></a><span class="co">#&gt; 14 発明家レイ・カーツワイルが -&gt; 言うには、 -&gt; 哲学者ジョン・が -&gt; 提起した -&gt; 強い -&gt; 弱い -&gt; 論争は、 -&gt; 哲学議論で -&gt; ホ~</span></span>
-<span id="cb11-53"><a href="#cb11-53"></a><span class="co">#&gt; 15 ロボット向けとしては、 -&gt; 提唱した -&gt; 包摂アーキテクチャという -&gt; 登場している。 -&gt; これは -&gt; 従来型の -&gt; 「我思う、 -&gt; 故に~</span></span>
-<span id="cb11-54"><a href="#cb11-54"></a><span class="co">#&gt; 16 年代に -&gt; なると -&gt; に関して -&gt; 活発な -&gt; 成果が -&gt; 出始めた。 -&gt; ジョン・マッカーシーは -&gt; に関する -&gt; 最初の -&gt; 会~</span></span>
-<span id="cb11-55"><a href="#cb11-55"></a><span class="co">#&gt; 17 リーズナブルな -&gt; コストで -&gt; 大量の -&gt; 計算リソースが -&gt; 手に -&gt; 入るようになった -&gt; ビッグデータが -&gt; 出現し、 -&gt; 企業~</span></span>
-<span id="cb11-56"><a href="#cb11-56"></a><span class="co">#&gt; 18 年代に、 -&gt; によって -&gt; 広く -&gt; 使われるようになった。</span></span></code></pre></div>
+<span id="cb11-39"><a href="#cb11-39"></a><span class="co">#&gt;  1 世界各国において、 -&gt; 軍事・民間共に -&gt; 実用化に -&gt; 向け -&gt; 研究開発が -&gt; 進んでいるが、 -&gt; とくに -&gt; 無人戦闘機や -&gt; 無~</span></span>
+<span id="cb11-40"><a href="#cb11-40"></a><span class="co">#&gt;  2 軍事・民間共に -&gt; 実用化に -&gt; 向け -&gt; 研究開発が -&gt; 進んでいるが、 -&gt; とくに -&gt; 無人戦闘機や -&gt; 無人自動車ロボットカーの -~</span></span>
+<span id="cb11-41"><a href="#cb11-41"></a><span class="co">#&gt;  3 実用化に -&gt; 向け -&gt; 研究開発が -&gt; 進んでいるが、 -&gt; とくに -&gt; 無人戦闘機や -&gt; 無人自動車ロボットカーの -&gt; 開発が -&gt; 進行~</span></span>
+<span id="cb11-42"><a href="#cb11-42"></a><span class="co">#&gt;  4 研究開発が -&gt; 進んでいるが、 -&gt; とくに -&gt; 無人戦闘機や -&gt; 無人自動車ロボットカーの -&gt; 開発が -&gt; 進行している -&gt; ものの、 -~</span></span>
+<span id="cb11-43"><a href="#cb11-43"></a><span class="co">#&gt;  5 年代に、 -&gt; は -&gt; によって -&gt; 広く -&gt; 使われるようになった。                 </span></span>
+<span id="cb11-44"><a href="#cb11-44"></a><span class="co">#&gt;  6 人間の -&gt; 知的能力を -&gt; コンピュータ上で -&gt; 実現する、 -&gt; 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt;~</span></span>
+<span id="cb11-45"><a href="#cb11-45"></a><span class="co">#&gt;  7 知的能力を -&gt; コンピュータ上で -&gt; 実現する、 -&gt; 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt; 自然言語処理~</span></span>
+<span id="cb11-46"><a href="#cb11-46"></a><span class="co">#&gt;  8 コンピュータ上で -&gt; 実現する、 -&gt; 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt; 自然言語処理 -&gt; （機械翻訳~</span></span>
+<span id="cb11-47"><a href="#cb11-47"></a><span class="co">#&gt;  9 実現する、 -&gt; 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt; 自然言語処理 -&gt; （機械翻訳・かな漢字変換・構文解析~</span></span>
+<span id="cb11-48"><a href="#cb11-48"></a><span class="co">#&gt; 10 様々な -&gt; 技術・ソフトウェア・コンピュータシステム。 -&gt; 応用例は -&gt; 自然言語処理 -&gt; （機械翻訳・かな漢字変換・構文解析等）、 -&gt; 専門~</span></span>
+<span id="cb11-49"><a href="#cb11-49"></a><span class="co">#&gt; # ... with 54 more rows</span></span></code></pre></div>
 </div>
 <div id="名詞間の係り受けパスの抽出" class="section level3">
 <h3 class="hasAnchor">
@@ -518,87 +510,87 @@
 <span id="cb12-9"><a href="#cb12-9"></a><span class="co">#&gt;  collate  Japanese_Japan.932          </span></span>
 <span id="cb12-10"><a href="#cb12-10"></a><span class="co">#&gt;  ctype    Japanese_Japan.932          </span></span>
 <span id="cb12-11"><a href="#cb12-11"></a><span class="co">#&gt;  tz       Asia/Tokyo                  </span></span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#&gt;  date     2020-11-02                  </span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#&gt;  date     2021-01-11                  </span></span>
 <span id="cb12-13"><a href="#cb12-13"></a><span class="co">#&gt; </span></span>
 <span id="cb12-14"><a href="#cb12-14"></a><span class="co">#&gt; - Packages -------------------------------------------------------------------</span></span>
 <span id="cb12-15"><a href="#cb12-15"></a><span class="co">#&gt;  package     * version date       lib source                        </span></span>
-<span id="cb12-16"><a href="#cb12-16"></a><span class="co">#&gt;  assertthat    0.2.1   2019-03-21 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-17"><a href="#cb12-17"></a><span class="co">#&gt;  backports     1.1.10  2020-09-15 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="co">#&gt;  blob          1.2.1   2020-01-20 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-19"><a href="#cb12-19"></a><span class="co">#&gt;  broom         0.7.2   2020-10-20 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-20"><a href="#cb12-20"></a><span class="co">#&gt;  cellranger    1.1.0   2016-07-27 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-21"><a href="#cb12-21"></a><span class="co">#&gt;  cli           2.1.0   2020-10-12 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-22"><a href="#cb12-22"></a><span class="co">#&gt;  colorspace    1.4-1   2019-03-18 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-23"><a href="#cb12-23"></a><span class="co">#&gt;  crayon        1.3.4   2017-09-16 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-24"><a href="#cb12-24"></a><span class="co">#&gt;  data.table    1.13.2  2020-10-19 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-25"><a href="#cb12-25"></a><span class="co">#&gt;  DBI           1.1.0   2019-12-15 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-26"><a href="#cb12-26"></a><span class="co">#&gt;  dbplyr        1.4.4   2020-05-27 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-27"><a href="#cb12-27"></a><span class="co">#&gt;  desc          1.2.0   2018-05-01 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-28"><a href="#cb12-28"></a><span class="co">#&gt;  digest        0.6.27  2020-10-24 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-29"><a href="#cb12-29"></a><span class="co">#&gt;  dplyr       * 1.0.2   2020-08-18 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-30"><a href="#cb12-30"></a><span class="co">#&gt;  ellipsis      0.3.1   2020-05-15 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-31"><a href="#cb12-31"></a><span class="co">#&gt;  evaluate      0.14    2019-05-28 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-32"><a href="#cb12-32"></a><span class="co">#&gt;  fansi         0.4.1   2020-01-08 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-33"><a href="#cb12-33"></a><span class="co">#&gt;  flatxml       0.1.0   2020-07-24 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-34"><a href="#cb12-34"></a><span class="co">#&gt;  forcats     * 0.5.0   2020-03-01 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-35"><a href="#cb12-35"></a><span class="co">#&gt;  fs            1.5.0   2020-07-31 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-36"><a href="#cb12-36"></a><span class="co">#&gt;  generics      0.1.0   2020-10-31 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-37"><a href="#cb12-37"></a><span class="co">#&gt;  ggplot2     * 3.3.2   2020-06-19 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-38"><a href="#cb12-38"></a><span class="co">#&gt;  glue          1.4.2   2020-08-27 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-39"><a href="#cb12-39"></a><span class="co">#&gt;  gtable        0.3.0   2019-03-25 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-40"><a href="#cb12-40"></a><span class="co">#&gt;  haven         2.3.1   2020-06-01 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-41"><a href="#cb12-41"></a><span class="co">#&gt;  hms           0.5.3   2020-01-08 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-42"><a href="#cb12-42"></a><span class="co">#&gt;  htmltools     0.5.0   2020-06-16 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-43"><a href="#cb12-43"></a><span class="co">#&gt;  httr          1.4.2   2020-07-20 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-44"><a href="#cb12-44"></a><span class="co">#&gt;  igraph        1.2.6   2020-10-06 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-45"><a href="#cb12-45"></a><span class="co">#&gt;  jsonlite      1.7.1   2020-09-07 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-46"><a href="#cb12-46"></a><span class="co">#&gt;  knitr         1.30    2020-09-22 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-47"><a href="#cb12-47"></a><span class="co">#&gt;  lifecycle     0.2.0   2020-03-06 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-48"><a href="#cb12-48"></a><span class="co">#&gt;  lubridate     1.7.9   2020-06-08 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-49"><a href="#cb12-49"></a><span class="co">#&gt;  magrittr      1.5     2014-11-22 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-50"><a href="#cb12-50"></a><span class="co">#&gt;  MASS          7.3-53  2020-09-09 [2] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-51"><a href="#cb12-51"></a><span class="co">#&gt;  memoise       1.1.0   2017-04-21 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-52"><a href="#cb12-52"></a><span class="co">#&gt;  modelr        0.1.8   2020-05-19 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-53"><a href="#cb12-53"></a><span class="co">#&gt;  munsell       0.5.0   2018-06-12 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-54"><a href="#cb12-54"></a><span class="co">#&gt;  pillar        1.4.6   2020-07-10 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-55"><a href="#cb12-55"></a><span class="co">#&gt;  pipian      * 0.2.3-1 2020-11-02 [1] local                         </span></span>
-<span id="cb12-56"><a href="#cb12-56"></a><span class="co">#&gt;  pkgconfig     2.0.3   2019-09-22 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-57"><a href="#cb12-57"></a><span class="co">#&gt;  pkgdown       1.4.1   2020-09-23 [1] Github (r-lib/pkgdown@cdd8340)</span></span>
-<span id="cb12-58"><a href="#cb12-58"></a><span class="co">#&gt;  ps            1.4.0   2020-10-07 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-59"><a href="#cb12-59"></a><span class="co">#&gt;  purrr       * 0.3.4   2020-04-17 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-60"><a href="#cb12-60"></a><span class="co">#&gt;  R.cache       0.14.0  2019-12-06 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-61"><a href="#cb12-61"></a><span class="co">#&gt;  R.methodsS3   1.8.1   2020-08-26 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-62"><a href="#cb12-62"></a><span class="co">#&gt;  R.oo          1.24.0  2020-08-26 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-63"><a href="#cb12-63"></a><span class="co">#&gt;  R.utils       2.10.1  2020-08-26 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-64"><a href="#cb12-64"></a><span class="co">#&gt;  R6            2.5.0   2020-10-28 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-65"><a href="#cb12-65"></a><span class="co">#&gt;  Rcpp          1.0.5   2020-07-06 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-66"><a href="#cb12-66"></a><span class="co">#&gt;  readr       * 1.4.0   2020-10-05 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-67"><a href="#cb12-67"></a><span class="co">#&gt;  readtext    * 0.80    2020-09-22 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-68"><a href="#cb12-68"></a><span class="co">#&gt;  readxl        1.3.1   2019-03-13 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-69"><a href="#cb12-69"></a><span class="co">#&gt;  reprex        0.3.0   2019-05-16 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-70"><a href="#cb12-70"></a><span class="co">#&gt;  rlang         0.4.8   2020-10-08 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-71"><a href="#cb12-71"></a><span class="co">#&gt;  rmarkdown     2.5     2020-10-21 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-72"><a href="#cb12-72"></a><span class="co">#&gt;  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-73"><a href="#cb12-73"></a><span class="co">#&gt;  rstudioapi    0.11    2020-02-07 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-74"><a href="#cb12-74"></a><span class="co">#&gt;  rvest         0.3.6   2020-07-25 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-75"><a href="#cb12-75"></a><span class="co">#&gt;  scales        1.1.1   2020-05-11 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-76"><a href="#cb12-76"></a><span class="co">#&gt;  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-77"><a href="#cb12-77"></a><span class="co">#&gt;  stringi       1.5.3   2020-09-09 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-78"><a href="#cb12-78"></a><span class="co">#&gt;  stringr     * 1.4.0   2019-02-10 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-79"><a href="#cb12-79"></a><span class="co">#&gt;  styler        1.3.2   2020-02-23 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-80"><a href="#cb12-80"></a><span class="co">#&gt;  tibble      * 3.0.4   2020-10-12 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-81"><a href="#cb12-81"></a><span class="co">#&gt;  tidyr       * 1.1.2   2020-08-27 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-82"><a href="#cb12-82"></a><span class="co">#&gt;  tidyselect    1.1.0   2020-05-11 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-83"><a href="#cb12-83"></a><span class="co">#&gt;  tidyverse   * 1.3.0   2019-11-21 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-84"><a href="#cb12-84"></a><span class="co">#&gt;  utf8          1.1.4   2018-05-24 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-85"><a href="#cb12-85"></a><span class="co">#&gt;  vctrs         0.3.4   2020-08-29 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-86"><a href="#cb12-86"></a><span class="co">#&gt;  withr         2.3.0   2020-09-22 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-87"><a href="#cb12-87"></a><span class="co">#&gt;  xfun          0.19    2020-10-30 [1] CRAN (R 4.0.3)                </span></span>
-<span id="cb12-88"><a href="#cb12-88"></a><span class="co">#&gt;  xml2          1.3.2   2020-04-23 [1] CRAN (R 4.0.2)                </span></span>
-<span id="cb12-89"><a href="#cb12-89"></a><span class="co">#&gt;  yaml          2.2.1   2020-02-01 [1] CRAN (R 4.0.0)                </span></span>
-<span id="cb12-90"><a href="#cb12-90"></a><span class="co">#&gt; </span></span>
-<span id="cb12-91"><a href="#cb12-91"></a><span class="co">#&gt; [1] C:/Users/user/Documents/R/win-library/4.0</span></span>
-<span id="cb12-92"><a href="#cb12-92"></a><span class="co">#&gt; [2] C:/Program Files/R/R-4.0.3/library</span></span></code></pre></div>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="co">#&gt;  assertthat    0.2.1   2019-03-21 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="co">#&gt;  backports     1.2.1   2020-12-09 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="co">#&gt;  broom         0.7.3   2020-12-16 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="co">#&gt;  cellranger    1.1.0   2016-07-27 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="co">#&gt;  cli           2.2.0   2020-11-20 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="co">#&gt;  colorspace    2.0-0   2020-11-11 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="co">#&gt;  crayon        1.3.4   2017-09-16 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="co">#&gt;  data.table    1.13.6  2020-12-30 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-24"><a href="#cb12-24"></a><span class="co">#&gt;  DBI           1.1.0   2019-12-15 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-25"><a href="#cb12-25"></a><span class="co">#&gt;  dbplyr        2.0.0   2020-11-03 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-26"><a href="#cb12-26"></a><span class="co">#&gt;  desc          1.2.0   2018-05-01 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-27"><a href="#cb12-27"></a><span class="co">#&gt;  digest        0.6.27  2020-10-24 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-28"><a href="#cb12-28"></a><span class="co">#&gt;  dplyr       * 1.0.2   2020-08-18 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-29"><a href="#cb12-29"></a><span class="co">#&gt;  ellipsis      0.3.1   2020-05-15 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-30"><a href="#cb12-30"></a><span class="co">#&gt;  evaluate      0.14    2019-05-28 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-31"><a href="#cb12-31"></a><span class="co">#&gt;  fansi         0.4.1   2020-01-08 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-32"><a href="#cb12-32"></a><span class="co">#&gt;  flatxml       0.1.1   2020-12-01 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-33"><a href="#cb12-33"></a><span class="co">#&gt;  forcats     * 0.5.0   2020-03-01 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-34"><a href="#cb12-34"></a><span class="co">#&gt;  fs            1.5.0   2020-07-31 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-35"><a href="#cb12-35"></a><span class="co">#&gt;  generics      0.1.0   2020-10-31 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-36"><a href="#cb12-36"></a><span class="co">#&gt;  ggplot2     * 3.3.3   2020-12-30 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-37"><a href="#cb12-37"></a><span class="co">#&gt;  glue          1.4.2   2020-08-27 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-38"><a href="#cb12-38"></a><span class="co">#&gt;  gtable        0.3.0   2019-03-25 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-39"><a href="#cb12-39"></a><span class="co">#&gt;  haven         2.3.1   2020-06-01 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-40"><a href="#cb12-40"></a><span class="co">#&gt;  hms           0.5.3   2020-01-08 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-41"><a href="#cb12-41"></a><span class="co">#&gt;  htmltools     0.5.0   2020-06-16 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-42"><a href="#cb12-42"></a><span class="co">#&gt;  httr          1.4.2   2020-07-20 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-43"><a href="#cb12-43"></a><span class="co">#&gt;  igraph        1.2.6   2020-10-06 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-44"><a href="#cb12-44"></a><span class="co">#&gt;  jsonlite      1.7.2   2020-12-09 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-45"><a href="#cb12-45"></a><span class="co">#&gt;  knitr         1.30    2020-09-22 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-46"><a href="#cb12-46"></a><span class="co">#&gt;  lifecycle     0.2.0   2020-03-06 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-47"><a href="#cb12-47"></a><span class="co">#&gt;  lubridate     1.7.9.2 2020-11-13 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-48"><a href="#cb12-48"></a><span class="co">#&gt;  magrittr      2.0.1   2020-11-17 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-49"><a href="#cb12-49"></a><span class="co">#&gt;  MASS          7.3-53  2020-09-09 [3] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-50"><a href="#cb12-50"></a><span class="co">#&gt;  memoise       1.1.0   2017-04-21 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-51"><a href="#cb12-51"></a><span class="co">#&gt;  modelr        0.1.8   2020-05-19 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-52"><a href="#cb12-52"></a><span class="co">#&gt;  munsell       0.5.0   2018-06-12 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-53"><a href="#cb12-53"></a><span class="co">#&gt;  pillar        1.4.7   2020-11-20 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-54"><a href="#cb12-54"></a><span class="co">#&gt;  pipian      * 0.2.3-2 2021-01-10 [2] local                         </span></span>
+<span id="cb12-55"><a href="#cb12-55"></a><span class="co">#&gt;  pkgconfig     2.0.3   2019-09-22 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-56"><a href="#cb12-56"></a><span class="co">#&gt;  pkgdown       1.4.1   2020-09-23 [2] Github (r-lib/pkgdown@cdd8340)</span></span>
+<span id="cb12-57"><a href="#cb12-57"></a><span class="co">#&gt;  ps            1.5.0   2020-12-05 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-58"><a href="#cb12-58"></a><span class="co">#&gt;  purrr       * 0.3.4   2020-04-17 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-59"><a href="#cb12-59"></a><span class="co">#&gt;  R.cache       0.14.0  2019-12-06 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-60"><a href="#cb12-60"></a><span class="co">#&gt;  R.methodsS3   1.8.1   2020-08-26 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-61"><a href="#cb12-61"></a><span class="co">#&gt;  R.oo          1.24.0  2020-08-26 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-62"><a href="#cb12-62"></a><span class="co">#&gt;  R.utils       2.10.1  2020-08-26 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-63"><a href="#cb12-63"></a><span class="co">#&gt;  R6            2.5.0   2020-10-28 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-64"><a href="#cb12-64"></a><span class="co">#&gt;  Rcpp          1.0.5   2020-07-06 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-65"><a href="#cb12-65"></a><span class="co">#&gt;  readr       * 1.4.0   2020-10-05 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-66"><a href="#cb12-66"></a><span class="co">#&gt;  readtext    * 0.80    2020-09-22 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-67"><a href="#cb12-67"></a><span class="co">#&gt;  readxl        1.3.1   2019-03-13 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-68"><a href="#cb12-68"></a><span class="co">#&gt;  reprex        0.3.0   2019-05-16 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-69"><a href="#cb12-69"></a><span class="co">#&gt;  rlang         0.4.10  2020-12-30 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-70"><a href="#cb12-70"></a><span class="co">#&gt;  rmarkdown     2.6     2020-12-14 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-71"><a href="#cb12-71"></a><span class="co">#&gt;  rprojroot     2.0.2   2020-11-15 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-72"><a href="#cb12-72"></a><span class="co">#&gt;  rstudioapi    0.13    2020-11-12 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-73"><a href="#cb12-73"></a><span class="co">#&gt;  rvest         0.3.6   2020-07-25 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-74"><a href="#cb12-74"></a><span class="co">#&gt;  scales        1.1.1   2020-05-11 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-75"><a href="#cb12-75"></a><span class="co">#&gt;  sessioninfo   1.1.1   2018-11-05 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-76"><a href="#cb12-76"></a><span class="co">#&gt;  stringi       1.5.3   2020-09-09 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-77"><a href="#cb12-77"></a><span class="co">#&gt;  stringr     * 1.4.0   2019-02-10 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-78"><a href="#cb12-78"></a><span class="co">#&gt;  styler        1.3.2   2020-02-23 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-79"><a href="#cb12-79"></a><span class="co">#&gt;  tibble      * 3.0.4   2020-10-12 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-80"><a href="#cb12-80"></a><span class="co">#&gt;  tidyr       * 1.1.2   2020-08-27 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-81"><a href="#cb12-81"></a><span class="co">#&gt;  tidyselect    1.1.0   2020-05-11 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-82"><a href="#cb12-82"></a><span class="co">#&gt;  tidyverse   * 1.3.0   2019-11-21 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-83"><a href="#cb12-83"></a><span class="co">#&gt;  utf8          1.1.4   2018-05-24 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-84"><a href="#cb12-84"></a><span class="co">#&gt;  vctrs         0.3.6   2020-12-17 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-85"><a href="#cb12-85"></a><span class="co">#&gt;  withr         2.3.0   2020-09-22 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-86"><a href="#cb12-86"></a><span class="co">#&gt;  xfun          0.19    2020-10-30 [2] CRAN (R 4.0.3)                </span></span>
+<span id="cb12-87"><a href="#cb12-87"></a><span class="co">#&gt;  xml2          1.3.2   2020-04-23 [2] CRAN (R 4.0.2)                </span></span>
+<span id="cb12-88"><a href="#cb12-88"></a><span class="co">#&gt;  yaml          2.2.1   2020-02-01 [2] CRAN (R 4.0.0)                </span></span>
+<span id="cb12-89"><a href="#cb12-89"></a><span class="co">#&gt; </span></span>
+<span id="cb12-90"><a href="#cb12-90"></a><span class="co">#&gt; [1] C:/Users/user/AppData/Local/Temp/RtmpkPjQFl/temp_libpath1b5c3f945006</span></span>
+<span id="cb12-91"><a href="#cb12-91"></a><span class="co">#&gt; [2] C:/Users/user/Documents/R/win-library/4.0</span></span>
+<span id="cb12-92"><a href="#cb12-92"></a><span class="co">#&gt; [3] C:/Program Files/R/R-4.0.3/library</span></span></code></pre></div>
 </div>
   </div>
 

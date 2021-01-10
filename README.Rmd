@@ -13,16 +13,15 @@ knitr::opts_chunk$set(
 )
 
 stopifnot(
-  require(magrittr),
   require(pipian)
 )
 ```
 
-# pipian <a href='https://paithiov909.github.io/pipian'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# pipian <a href='https://paithiov909.github.io/pipian'><img src='https://raw.githack.com/paithiov909/pipian/master/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Build Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
 [![Codecov test coverage](https://codecov.io/gh/paithiov909/pipian/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=master)
 <!-- badges: end -->
@@ -33,12 +32,12 @@ pipian is a tiny interface to [CaboCha](https://taku910.github.io/cabocha/); a J
 
 ## System Requirements
 
-- MeCab (>= 0.996)
-- CaboCha (>= 0.69)
+- MeCab
+- CaboCha
 
 ## Installation
 
-``` R
+```r
 remotes::install_github("paithiov909/pipian")
 ```
 
@@ -53,7 +52,7 @@ res$tbl
 
 ### Plotting
 
-``` R
+```r
 res$plot()
 ```
 

@@ -1,12 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pipian <a href='https://paithiov909.github.io/pipian'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# pipian <a href='https://paithiov909.github.io/pipian'><img src='https://raw.githack.com/paithiov909/pipian/master/man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Build
 Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
 [![Codecov test
@@ -21,8 +23,8 @@ structure parser.
 
 ## System Requirements
 
-  - MeCab (\>= 0.996)
-  - CaboCha (\>= 0.69)
+  - MeCab
+  - CaboCha
 
 ## Installation
 

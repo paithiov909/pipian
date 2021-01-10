@@ -35,10 +35,8 @@ vignettes/*.pdf
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
 
-packrat/lib*/
-packrat/src/
-
 doc
+inst/doc
 Meta
 *.log
-inst/doc
+
