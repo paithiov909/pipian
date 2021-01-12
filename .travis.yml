@@ -66,5 +66,4 @@ r_check_args: --no-build-vignettes --no-manual --timings
 after_success:
   - Rscript -e 'covr::codecov()'
 
-cache:
-  packages: true
+cache: packages
