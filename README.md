@@ -15,16 +15,14 @@ Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://tra
 coverage](https://codecov.io/gh/paithiov909/pipian/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=master)
 <!-- badges: end -->
 
-## About
-
 pipian is a tiny interface to
 [CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency
 structure parser.
 
 ## System Requirements
 
-  - MeCab
-  - CaboCha
+-   MeCab
+-   CaboCha
 
 ## Installation
 
@@ -37,7 +35,8 @@ remotes::install_github("paithiov909/pipian")
 ### Parsing dependency
 
 ``` r
-res <- pipian::CabochaTbl("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした")
+text <- stringi::stri_enc_toutf8("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした")
+res <- pipian::CabochaTbl(text, force.utf8 = TRUE)
 res$tbl
 #> # A tibble: 37 x 4
 #>    id    link  score     morphs      
@@ -66,7 +65,7 @@ res$plot()
 ### Getting dependency as flatXML
 
 ``` r
-head(pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"))
+head(pipian::cabochaFlatXML(text, force.utf8 = TRUE))
 #>       elem. elemid. attr. value.    level1   level2 level3 level4
 #> 1 sentences       1  <NA>   <NA> sentences     <NA>   <NA>   <NA>
 #> 2  sentence       2  <NA>   <NA> sentences sentence   <NA>   <NA>
@@ -79,32 +78,32 @@ head(pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がい
 ### Converting flatXML into tibble compatible with CabochaR
 
 ``` r
-res <- pipian::cabochaFlatXML("ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした") %>%
+res <- pipian::cabochaFlatXML(text, force.utf8 = TRUE) %>%
   pipian::CabochaR()
 ```
 
 ``` r
 res$morphs[[1]]
 #> # A tibble: 78 x 13
-#>    chunk_idx tok_idx ne_value word  POS1  POS2  POS3  POS4  X5StageUse1
-#>        <dbl>   <dbl> <chr>    <chr> <chr> <chr> <chr> <chr> <chr>      
-#>  1         3       0 O        ふと  副詞  一般  *     *     *          
-#>  2         5       1 O        振り向く~ 動詞  自立  *     *     五段・カ行イ音便~
-#>  3         5       2 O        と    助詞  接続助詞~ *     *     *          
-#>  4         5       3 O        、    記号  読点  *     *     *          
-#>  5         9       4 O        たくさん~ 名詞  副詞可能~ *     *     *          
-#>  6         9       5 O        の    助詞  連体化~ *     *     *          
-#>  7        12       6 O        味方  名詞  サ変接続~ *     *     *          
-#>  8        12       7 O        が    助詞  格助詞~ 一般  *     *          
-#>  9        15       8 O        い    動詞  自立  *     *     一段       
-#> 10        15       9 O        て    助詞  接続助詞~ *     *     *          
+#>    chunk_idx tok_idx ne_value Surface POS1  POS2  POS3  POS4  X5StageUse1
+#>        <dbl>   <dbl> <chr>    <chr>   <chr> <chr> <chr> <chr> <chr>      
+#>  1         3       0 O        ふと    副詞  一般  <NA>  <NA>  <NA>       
+#>  2         5       1 O        振り向く~ 動詞  自立  <NA>  <NA>  五段・カ行イ音便~
+#>  3         5       2 O        と      助詞  接続助詞~ <NA>  <NA>  <NA>       
+#>  4         5       3 O        、      記号  読点  <NA>  <NA>  <NA>       
+#>  5         9       4 O        たくさん~ 名詞  副詞可能~ <NA>  <NA>  <NA>       
+#>  6         9       5 O        の      助詞  連体化~ <NA>  <NA>  <NA>       
+#>  7        12       6 O        味方    名詞  サ変接続~ <NA>  <NA>  <NA>       
+#>  8        12       7 O        が      助詞  格助詞~ 一般  <NA>  <NA>       
+#>  9        15       8 O        い      動詞  自立  <NA>  <NA>  一段       
+#> 10        15       9 O        て      助詞  接続助詞~ <NA>  <NA>  <NA>       
 #> # ... with 68 more rows, and 4 more variables: X5StageUse2 <chr>,
 #> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
 ```
 
 ``` r
 res$as_tibble()
-#> # A tibble: 77 x 20
+#> # A tibble: 78 x 20
 #>    sentence_idx chunk_idx D1    D2    rel   score head  func  tok_idx ne_value
 #>           <int>     <dbl> <chr> <chr> <chr> <chr> <chr> <chr>   <dbl> <chr>   
 #>  1            1         3 0     1     D     1.28~ 0     0           0 O       
@@ -117,10 +116,36 @@ res$as_tibble()
 #>  8            1        12 3     4     D     0.83~ 6     7           7 O       
 #>  9            1        15 4     8     D     2.02~ 8     9           8 O       
 #> 10            1        15 4     8     D     2.02~ 8     9           9 O       
-#> # ... with 67 more rows, and 10 more variables: word <chr>, POS1 <chr>,
+#> # ... with 68 more rows, and 10 more variables: Surface <chr>, POS1 <chr>,
 #> #   POS2 <chr>, POS3 <chr>, POS4 <chr>, X5StageUse1 <chr>, X5StageUse2 <chr>,
 #> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
 ```
+
+The output has these columns (only when using IPA dictionary).
+
+-   sentence\_idx: 文番号
+-   chunk\_idx: 文節のインデックス
+-   D1: 文節番号
+-   D2: 係り先の文節の文節番号
+-   rel:（よくわからない値）
+-   score: 係り関係のスコア
+-   head: 主辞の形態素の番号
+-   func: 機能語の形態素の番号
+-   tok\_idx: 形態素の番号
+-   ne\_value: 固有表現解析の結果の値（`-n 1`オプションを使用している）
+-   Surface: 表層形
+-   POS1\~POS4: 品詞, 品詞細分類1, 品詞細分類2, 品詞細分類3
+-   X5StageUse1: 活用型（五段, 下二段…）
+-   X5StageUse2: 活用形（連用形, 基本形…）
+-   Original: 原形
+-   Yomi1\~Yomi2: 読み, 発音
+
+## References
+
+-   [RからCaboChaを呼ぶだけのパッケージ書いた -
+    Qiita](https://qiita.com/paithiov909/items/1534fafbbc1d7aef6d6b)
+-   [Rからおこなう係り受けを考慮したテキストの感情分析 -
+    Qiita](https://qiita.com/paithiov909/items/3cc9b63a988bd5c4252a)
 
 ## Code of Conduct
 
@@ -130,7 +155,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-Under the MIT license.
+MIT license.
 
 Icons made by [catkuro](https://www.flaticon.com/authors/catkuro) from
 [Flaticon](https://www.flaticon.com/).

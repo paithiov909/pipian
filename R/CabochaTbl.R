@@ -85,10 +85,7 @@ R6_CabochaTbl <- R6::R6Class("CabochaTbl",
 #'
 #' @export
 CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
-  ENC <- switch(.Platform$pkgType,
-    "win.binary" = "CP932",
-    "UTF-8"
-  )
+  ENC <- switch(.Platform$pkgType, "win.binary" = "CP932", "UTF-8")
   if (force.utf8) ENC <- "UTF-8"
 
   tmp_file_txt <- tempfile(fileext = ".txt")
@@ -114,7 +111,7 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
 
   out <- readLines(file.path(tempdir(), "data.xml"), encoding = ENC)
 
-  # Parse xml
+  ## Parse xml
   o <- xml2::read_xml(
     stringr::str_c(
       iconv(c("<sentences>", out, "</sentences>"), from = ENC, to = "UTF-8"),
@@ -123,10 +120,10 @@ CabochaTbl <- function(texts, rcpath = NULL, force.utf8 = FALSE) {
     )
   )
 
-  # Clean up
+  ## Clean up
   unlink(tmp_file_txt)
 
-  # xml2df
+  ## xml2df
   chunks <- o %>%
     xml2::xml_find_all(".//sentence") %>%
     xml2::xml_children()
