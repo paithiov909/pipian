@@ -1,7 +1,7 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha for R
-Version: 0.2.3-2
+Version: 0.2.4
 Authors@R: c(
     person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
@@ -25,8 +25,8 @@ Imports:
     dplyr,
     flatxml,
     igraph,
-    readr,
     purrr,
+    readr,
     rvest,
     stringr,
     tibble,
@@ -37,5 +37,4 @@ Suggests:
     rmarkdown,
     testthat,
     spelling,
-    sessioninfo,
-    readtext
+    sessioninfo

@@ -25,7 +25,7 @@ R6_CabochaR <- R6::R6Class(
             "func",
             "tok_idx",
             "ne_value",
-            "word",
+            "Surface",
             "POS1",
             "POS2",
             "POS3",
@@ -35,8 +35,7 @@ R6_CabochaR <- R6::R6Class(
             "Original",
             "Yomi1",
             "Yomi2"
-          ) %>%
-          tidyr::drop_na()
+          )
       })
     }
   )
@@ -83,10 +82,10 @@ CabochaR <- function(fxml) {
     dplyr::filter(elem. == "chunk") %>%
     dplyr::distinct(elemid.)
 
-  # Sentence level
+  ## Sentence level
   morphs <- purrr::imap(sentence_ids$elemid., function(sid, i) {
 
-    # Chunk level
+    ## Chunk level
     if (i < nrow(sentence_ids)) {
       targets_chunk_ids <- chunk_ids$elemid. %>%
         purrr::keep(sid <= .) %>%
@@ -98,7 +97,7 @@ CabochaR <- function(fxml) {
 
     purrr::imap_dfr(targets_chunk_ids, function(cid, idx) {
 
-      # Parse morphs
+      ## Parse morphs
       if (idx < length(targets_chunk_ids)) {
         df <- fxml %>%
           as.data.frame(stringsAsFactors = FALSE) %>%
@@ -160,13 +159,13 @@ CabochaR <- function(fxml) {
           })
       }
 
-      # Set colnames
+      ## Set colnames
       if (ncol(df) < 13) {
         df <- dplyr::bind_cols(
           df,
           data.frame(
-            a = c(NA),
-            b = c(NA),
+            a = c(NA_character_),
+            b = c(NA_character_),
             stringsAsFactors = FALSE
           )
         )
@@ -176,7 +175,7 @@ CabochaR <- function(fxml) {
           "chunk_idx",
           "tok_idx",
           "ne_value",
-          "word",
+          "Surface",
           "POS1",
           "POS2",
           "POS3",
@@ -187,11 +186,11 @@ CabochaR <- function(fxml) {
           "Yomi1",
           "Yomi2"
         )
-      return(df)
+      return(dplyr::mutate(df, dplyr::across(where(is.character), ~ dplyr::na_if(., "*"))))
     })
   })
 
-  # Parse attributes of elements
+  ## Parse attributes of elements
   attributes <- purrr::map_dfr(chunk_ids$elemid., function(id) {
     chunk_ids <- fxml %>%
       as.data.frame(stringsAsFactors = FALSE) %>%

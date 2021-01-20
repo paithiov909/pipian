@@ -1,10 +1,8 @@
-pandoc: 2.9.2.1
+pandoc: 2.11.2
 pkgdown: 1.4.1
 pkgdown_sha: cdd834011ab1f0a8dd7d84428d19a4a63800c4d4
 articles:
-  00_readme_ja: 00_readme_ja.html
-  01_setup_for_colab: 01_setup_for_colab.html
-  03_100-knocks-2020: 03_100-knocks-2020.html
+  readme_ja: readme_ja.html
 urls:
   reference: https://paithiov909.github.io/pipian/reference
   article: https://paithiov909.github.io/pipian/articles
