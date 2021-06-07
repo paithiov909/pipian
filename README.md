@@ -12,7 +12,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![Build
 Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
 [![Codecov test
-coverage](https://codecov.io/gh/paithiov909/pipian/branch/master/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=master)
+coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
 
 pipian is a tiny interface to
@@ -139,13 +139,6 @@ The output has these columns (only when using IPA dictionary).
 -   X5StageUse2: 活用形（連用形, 基本形…）
 -   Original: 原形
 -   Yomi1\~Yomi2: 読み, 発音
-
-## References
-
--   [RからCaboChaを呼ぶだけのパッケージ書いた -
-    Qiita](https://qiita.com/paithiov909/items/1534fafbbc1d7aef6d6b)
--   [Rからおこなう係り受けを考慮したテキストの感情分析 -
-    Qiita](https://qiita.com/paithiov909/items/3cc9b63a988bd5c4252a)
 
 ## Code of Conduct
 
