@@ -9,8 +9,6 @@
 commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Build
-Status](https://travis-ci.com/paithiov909/pipian.svg?branch=master)](https://travis-ci.com/paithiov909/pipian)
 [![Codecov test
 coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
