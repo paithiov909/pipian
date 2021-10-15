@@ -4,16 +4,10 @@
     <loc>https://paithiov909.github.io/pipian/index.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/reference/cabochaFlatXML.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/CabochaR.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/CabochaTbl.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/pipian/reference/is_cabocha_available.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/parse_xml.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/pipian/reference/pipe.html</loc>
@@ -22,6 +16,21 @@
     <loc>https://paithiov909.github.io/pipian/reference/pipian.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/articles/readme_ja.html</loc>
+    <loc>https://paithiov909.github.io/pipian/reference/ppn_as_tokenindex.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/ppn_cabocha.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/ppn_parse_xml.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/ppn_plot_igraph.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/reset_encoding.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/tidyeval.html</loc>
   </url>
 </urlset>

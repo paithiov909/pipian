@@ -1,40 +1,37 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha for R
-Version: 0.2.4
+Version: 0.3.0.9000
 Authors@R: c(
-    person("Kato", "Akiru", email = "paithiov909@gmail.com", role = c("aut", "cre")))
+    person("Akiru", "Kato", email = "paithiov909@gmail.com", role = "cre"),
+    person("Marcin", "Kalicinski", comment = "Author of rapidxml", role = "aut"))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
-Description: Call CaboCha -f3 command via system().
-Depends:
-    R (>= 4.0.0)
-SystemRequirements:
-    MeCab,
-    CaboCha
+Description: A tiny parser of CaboCha output XML powered by 'Rcpp'.
+Depends: R (>= 4.0.0)
+SystemRequirements: MeCab, CaboCha, C++11
 License: MIT + file LICENSE
 URL: https://github.com/paithiov909/pipian
 BugReports: https://github.com/paithiov909/pipian/issues 
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Language: en-US
 Imports: 
-    R6,
-    graphics,
     dplyr,
-    flatxml,
     igraph,
+    processx,
     purrr,
+    Rcpp,
+    rlang (>= 0.1.2),
     readr,
-    rvest,
-    stringr,
-    tibble,
-    tidyr,
-    xml2,
+    rsyntax,
+    stringi,
+    tidyr
 Suggests:
+    roxygen2,
     knitr,
-    rmarkdown,
-    testthat,
-    spelling,
-    sessioninfo
+    rmarkdown
+LinkingTo: 
+    Rcpp,
+    RcppThread

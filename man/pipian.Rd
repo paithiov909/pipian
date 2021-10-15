@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Call CaboCha -f3 command via system().
+A tiny parser of CaboCha output XML powered by 'Rcpp'.
 }
 \seealso{
 Useful links:
@@ -19,7 +19,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Kato Akiru \email{paithiov909@gmail.com}
+\strong{Maintainer}: Akiru Kato \email{paithiov909@gmail.com}
+
+Authors:
+\itemize{
+  \item Marcin Kalicinski (Author of rapidxml)
+}
 
 }
 \keyword{internal}

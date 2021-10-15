@@ -1,216 +1,124 @@
-#' @noRd
-#' @keywords internal
-R6_CabochaR <- R6::R6Class(
-  "CabochaR",
-  public = list(
-    attributes = NULL,
-    morphs = NULL,
-    initialize = function(attributes, morphs) {
-      self$attributes <- attributes
-      self$morphs <- morphs
-    },
-    as_tibble = function(attr = self$attributes, dfs = self$morphs) {
-      purrr::imap_dfr(dfs, function(df, idx) {
-        df %>%
-          dplyr::mutate(sentence_idx = idx) %>%
-          dplyr::right_join(attr, by = "chunk_idx") %>%
-          dplyr::select(
-            "sentence_idx",
-            "chunk_idx",
-            "D1",
-            "D2",
-            "rel",
-            "score",
-            "head",
-            "func",
-            "tok_idx",
-            "ne_value",
-            "Surface",
-            "POS1",
-            "POS2",
-            "POS3",
-            "POS4",
-            "X5StageUse1",
-            "X5StageUse2",
-            "Original",
-            "Yomi1",
-            "Yomi2"
-          )
-      })
-    }
-  )
-)
-
-
-#' Utility for parsing CaboCha output
-#'
-#' converts flat XML into CabochaR compatible output.
-#'
-#' @param fxml flat XML that comes from \code{cabochaFlatXML(as.tibble = FALSE)}
-#'
-#' @return R6 class object having fields and methods below.
-#' \itemize{
-#'   \item attributes: tibble. Each rows consist of the element id and attributes of chunk.
-#'   \item morphs: list of tibbles. Each rows represent morphemes of which the chunk is made.
-#'   \item as_tibble(): return a tibble compatible with CabochaR output.
-#' }
-#'
-#' @seealso \url{https://minowalab.org/cabochar/}
-#'
-#' @import R6
-#' @import dplyr
-#' @importFrom purrr imap
-#' @importFrom purrr map_dfr
-#' @importFrom purrr imap_dfr
-#' @importFrom purrr keep
-#' @importFrom tidyr drop_na
-#' @importFrom flatxml fxml_getChildren
-#' @importFrom flatxml fxml_getAttribute
-#' @importFrom flatxml fxml_getAttributesAll
-#' @importFrom stringr str_split
-#' @importFrom tibble tibble
-#' @importFrom tidyr drop_na
+#' Cast xml as data.table
+#' @param path Character vector came from \code{ppn_cabocha}.
+#' @return data.table retured from \code{rsyntax::as_tokenindex}.
 #' @export
-CabochaR <- function(fxml) {
-  sentence_ids <- fxml %>%
-    as.data.frame(stringsAsFactors = FALSE) %>%
-    dplyr::filter(elem. == "sentence") %>%
-    dplyr::distinct(elemid.)
+ppn_as_tokenindex <- function(path) {
+  tokens <- ppn_parse_xml(path)
 
-  chunk_ids <- fxml %>%
-    as.data.frame(stringsAsFactors = FALSE) %>%
-    dplyr::filter(elem. == "chunk") %>%
-    dplyr::distinct(elemid.)
+  res <-
+    dplyr::group_by(tokens, doc_id, sentence_id, chunk_id) %>%
+    dplyr::mutate(
+      doc_id = doc_id,
+      sentence_id = sentence_id,
+      token_id = stringi::stri_join(doc_id, sentence_id, chunk_id, token_id),
+      pos = POS1,
+      parent = stringi::stri_join(doc_id, sentence_id, chunk_id, chunk_func)
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(-c("chunk_id", "chunk_link", "chunk_head", "chunk_func")) %>%
+    dplyr::mutate(
+      token_id = as.integer(token_id),
+      parent = as.integer(parent)
+    )
 
-  ## Sentence level
-  morphs <- purrr::imap(sentence_ids$elemid., function(sid, i) {
+  return(
+    rsyntax::as_tokenindex(
+      res,
+      doc_id = "doc_id",
+      sentence = "sentence_id",
+      token_id = "token_id",
+      parent = "parent",
+      relation = "pos"
+    )
+  )
+}
 
-    ## Chunk level
-    if (i < nrow(sentence_ids)) {
-      targets_chunk_ids <- chunk_ids$elemid. %>%
-        purrr::keep(sid <= .) %>%
-        purrr::keep(. < sentence_ids$elemid.[i + 1])
-    } else {
-      targets_chunk_ids <- chunk_ids$elemid. %>%
-        purrr::keep(sid <= .)
-    }
-
-    purrr::imap_dfr(targets_chunk_ids, function(cid, idx) {
-
-      ## Parse morphs
-      if (idx < length(targets_chunk_ids)) {
-        df <- fxml %>%
-          as.data.frame(stringsAsFactors = FALSE) %>%
-          flatxml::fxml_getChildren(cid) %>%
-          purrr::keep(cid <= .) %>%
-          purrr::keep(. < targets_chunk_ids[idx + 1]) %>%
-          purrr::map_dfr(function(morph_ids) {
-            tok_id <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getAttribute(morph_ids, "id")
-            ne_value <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getAttribute(morph_ids, "ne")
-            surface_form <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getValue(morph_ids)
-            morph <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getAttribute(morph_ids, "feature") %>%
-              stringr::str_split(",", simplify = TRUE) %>%
-              as.data.frame(stringsAsFactors = FALSE)
-            tibble::tibble(
-              chunk_id = cid,
-              tok_id = as.numeric(tok_id),
-              ne_value = ne_value,
-              surface_form = surface_form,
-            ) %>%
-              dplyr::bind_cols(morph) %>%
-              return()
-          })
-      } else {
-        df <- fxml %>%
-          as.data.frame(stringsAsFactors = FALSE) %>%
-          flatxml::fxml_getChildren(cid) %>%
-          purrr::keep(cid <= .) %>%
-          purrr::map_dfr(function(morph_ids) {
-            tok_id <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getAttribute(morph_ids, "id")
-            ne_value <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getAttribute(morph_ids, "ne")
-            surface_form <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getValue(morph_ids)
-            morph <- fxml %>%
-              as.data.frame(stringsAsFactors = FALSE) %>%
-              flatxml::fxml_getAttribute(morph_ids, "feature") %>%
-              stringr::str_split(",", simplify = TRUE) %>%
-              as.data.frame(stringsAsFactors = FALSE)
-            tibble::tibble(
-              chunk_id = cid,
-              tok_id = as.numeric(tok_id),
-              ne_value = ne_value,
-              surface_form = surface_form,
-            ) %>%
-              dplyr::bind_cols(morph) %>%
-              return()
-          })
-      }
-
-      ## Set colnames
-      if (ncol(df) < 13) {
-        df <- dplyr::bind_cols(
-          df,
-          data.frame(
-            a = c(NA_character_),
-            b = c(NA_character_),
-            stringsAsFactors = FALSE
-          )
-        )
-      }
-      colnames(df) <-
-        c(
-          "chunk_idx",
-          "tok_idx",
-          "ne_value",
-          "Surface",
-          "POS1",
-          "POS2",
-          "POS3",
-          "POS4",
-          "X5StageUse1",
-          "X5StageUse2",
-          "Original",
-          "Yomi1",
-          "Yomi2"
-        )
-      return(dplyr::mutate(df, dplyr::across(where(is.character), ~ dplyr::na_if(., "*"))))
+#' Parse xml output of CaboCha
+#' @param path Character vector came from \code{ppn_cabocha}.
+#' @param into Character vector. Feature names of output.
+#' @return data.frame
+#' @export
+ppn_parse_xml <- function(path,
+                          into = c(
+                            "POS1",
+                            "POS2",
+                            "POS3",
+                            "POS4",
+                            "X5StageUse1",
+                            "X5StageUse2",
+                            "Original",
+                            "Yomi1",
+                            "Yomi2"
+                          )) {
+  tokens <-
+    imap_dfr(path, function(.x, .y) {
+      parse_xml(.x) %>%
+        dplyr::mutate(
+          doc_id = .y, # 1-origin
+          sentence_id = as.integer(sentence_id) + 1L, ## coerce to 1-origin
+          chunk_id = as.integer(chunk_id),
+          token_id = as.integer(token_id),
+          token = reset_encoding(token),
+          chunk_link = as.integer(chunk_link),
+          chunk_score = as.numeric(chunk_score),
+          chunk_head = as.integer(chunk_head),
+          chunk_func = as.integer(chunk_func),
+          token_feature = reset_encoding(token_feature),
+          token_entity = dplyr::na_if(reset_encoding(token_entity), "O")
+        ) %>%
+        tidyr::separate(
+          token_feature,
+          into = into,
+          sep = ",",
+          fill = "right"
+        ) %>%
+        dplyr::mutate(across(where(is.character), ~ dplyr::na_if(., "*"))) %>%
+        dplyr::rename(entity = token_entity) %>%
+        dplyr::relocate(doc_id, everything())
     })
-  })
+  return(tokens)
+}
 
-  ## Parse attributes of elements
-  attributes <- purrr::map_dfr(chunk_ids$elemid., function(id) {
-    chunk_ids <- fxml %>%
-      as.data.frame(stringsAsFactors = FALSE) %>%
-      tidyr::drop_na(elem., elemid., attr., value.) %>%
-      dplyr::distinct(elemid.) %>%
-      dplyr::filter(elemid. == id)
-    value <- fxml %>%
-      as.data.frame(stringsAsFactors = FALSE) %>%
-      tidyr::drop_na(elem., elemid., attr., value.) %>%
-      flatxml::fxml_getAttributesAll(id)
-    return(tibble::tibble(
-      chunk_idx = chunk_ids$elemid.,
-      D1 = value[["id"]],
-      D2 = value[["link"]],
-      rel = value[["rel"]],
-      score = value[["score"]],
-      head = value[["head"]],
-      func = value[["func"]]
-    ))
-  })
+#' Plot dependency strutcure using igraph
+#' @param df Output of \code{ppn_parse_xml}.
+#' @param sentence_id Sentence id to be kept in igraph.
+#' @export
+ppn_plot_igraph <- function(df, sentence_id) {
+  df <- df %>%
+    dplyr::filter(sentence_id == sentence_id) %>%
+    dplyr::mutate(chunk_link = dplyr::na_if(chunk_link, -1L)) %>%
+    dplyr::group_by(doc_id, sentence_id, chunk_id) %>%
+    dplyr::transmute(
+      name = stringi::stri_join(doc_id, sentence_id, chunk_id),
+      from = stringi::stri_join(doc_id, sentence_id, chunk_id),
+      to = stringi::stri_join(doc_id, sentence_id, chunk_link),
+      tokens = stringi::stri_c(token, collapse = " "),
+      score = chunk_score
+    ) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(name, from, to, tokens, score) %>%
+    dplyr::distinct() %>%
+    dplyr::mutate(to = tidyr::replace_na(to, "EOS")) %>%
+    dplyr::bind_rows(data.frame(name = "EOS", from = "EOS", to = "EOS", tokens = "EOS", score = 1))
 
-  return(R6_CabochaR$new(attributes, morphs))
+  g <- igraph::graph_from_data_frame(
+    dplyr::select(df, from, to, score),
+    dplyr::select(df, name, tokens),
+    directed = TRUE
+  )
+
+  pagerank <- igraph::page.rank(g, directed = TRUE)
+
+  plot(
+    g,
+    vertex.size = pagerank$vector * 50,
+    vertex.color = "steelblue",
+    vertex.label = igraph::V(g)$tokens,
+    vertex.label.cex = 0.8,
+    vertex.label.color = "black",
+    edge.width = 0.4,
+    edge.arrow.size = 0.4,
+    edge.color = "gray80",
+    layout = igraph::layout_as_tree(g, mode = "in", flip.y = FALSE)
+  )
 }
