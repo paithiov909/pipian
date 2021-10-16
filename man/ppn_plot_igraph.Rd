@@ -4,10 +4,12 @@
 \alias{ppn_plot_igraph}
 \title{Plot dependency strutcure using igraph}
 \usage{
-ppn_plot_igraph(df, sentence_id)
+ppn_plot_igraph(df, doc_id = 1L, sentence_id = 1L)
 }
 \arguments{
 \item{df}{Output of \code{ppn_parse_xml}.}
+
+\item{doc_id}{Document id to be kept in igraph.}
 
 \item{sentence_id}{Sentence id to be kept in igraph.}
 }

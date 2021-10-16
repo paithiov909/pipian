@@ -98,47 +98,48 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"paithiov909/pipian"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="cast-cabocha-output-xml-as-datatable" class="section level3">
+<div id="plot-dependency-structure" class="section level3">
 <h3 class="hasAnchor">
-<a href="#cast-cabocha-output-xml-as-datatable" class="anchor"></a>Cast CaboCha output XML as data.table</h3>
+<a href="#plot-dependency-structure" class="anchor"></a>Plot dependency structure</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sentence</span> <span class="op">&lt;-</span> <span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>
 
 <span class="va">sentence</span> <span class="op">%&gt;%</span> 
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_as_tokenindex.html">ppn_as_tokenindex</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;    doc_id sentence token_id    token chunk_score POS1     POS2 POS3 POS4</span>
-<span class="co">#&gt; 1:      1        1     1100     ふと    1.287564 副詞     一般 &lt;NA&gt; &lt;NA&gt;</span>
-<span class="co">#&gt; 2:      1        1     1111 振り向く   -2.336376 動詞     自立 &lt;NA&gt; &lt;NA&gt;</span>
-<span class="co">#&gt; 3:      1        1     1112       と   -2.336376 助詞 接続助詞 &lt;NA&gt; &lt;NA&gt;</span>
-<span class="co">#&gt; 4:      1        1     1113       、   -2.336376 記号     読点 &lt;NA&gt; &lt;NA&gt;</span>
-<span class="co">#&gt; 5:      1        1     1124 たくさん    1.927252 名詞 副詞可能 &lt;NA&gt; &lt;NA&gt;</span>
-<span class="co">#&gt; 6:      1        1     1125       の    1.927252 助詞   連体化 &lt;NA&gt; &lt;NA&gt;</span>
-<span class="co">#&gt;         X5StageUse1 X5StageUse2 Original    Yomi1    Yomi2 entity relation</span>
-<span class="co">#&gt; 1:             &lt;NA&gt;        &lt;NA&gt;     ふと     フト     フト   &lt;NA&gt;     ROOT</span>
-<span class="co">#&gt; 2: 五段・カ行イ音便      基本形 振り向く フリムク フリムク   &lt;NA&gt;     動詞</span>
-<span class="co">#&gt; 3:             &lt;NA&gt;        &lt;NA&gt;       と       ト       ト   &lt;NA&gt;     ROOT</span>
-<span class="co">#&gt; 4:             &lt;NA&gt;        &lt;NA&gt;       、       、       、   &lt;NA&gt;     記号</span>
-<span class="co">#&gt; 5:             &lt;NA&gt;        &lt;NA&gt; たくさん タクサン タクサン   &lt;NA&gt;     名詞</span>
-<span class="co">#&gt; 6:             &lt;NA&gt;        &lt;NA&gt;       の       ノ       ノ   &lt;NA&gt;     ROOT</span>
-<span class="co">#&gt;    parent</span>
-<span class="co">#&gt; 1:     NA</span>
-<span class="co">#&gt; 2:   1112</span>
-<span class="co">#&gt; 3:     NA</span>
-<span class="co">#&gt; 4:   1112</span>
-<span class="co">#&gt; 5:   1125</span>
-<span class="co">#&gt; 6:     NA</span></code></pre></div>
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_plot_igraph.html">ppn_plot_igraph</a></span><span class="op">(</span>sentence_id <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-deps-1.png" width="100%"></p>
 </div>
-<div id="plot-dependency-structure" class="section level3">
+<div id="cast-cabocha-output-xml-as-datatable" class="section level3">
 <h3 class="hasAnchor">
-<a href="#plot-dependency-structure" class="anchor"></a>Plot dependency structure</h3>
+<a href="#cast-cabocha-output-xml-as-datatable" class="anchor"></a>Cast CaboCha output XML as data.table</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_plot_igraph.html">ppn_plot_igraph</a></span><span class="op">(</span>sentence_id <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-deps-1.png" width="100%"></p>
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_as_tokenindex.html">ppn_as_tokenindex</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt;    doc_id sentence token_id    token chunk_score POS1     POS2 POS3 POS4</span>
+<span class="co">#&gt; 1:      1        1     1100      EOS          NA ROOT     &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">#&gt; 2:      1        1     1110     ふと    1.287564 副詞     一般 &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">#&gt; 3:      1        1     1121 振り向く   -2.336376 動詞     自立 &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">#&gt; 4:      1        1     1122       と   -2.336376 助詞 接続助詞 &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">#&gt; 5:      1        1     1123       、   -2.336376 記号     読点 &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">#&gt; 6:      1        1     1134 たくさん    1.927252 名詞 副詞可能 &lt;NA&gt; &lt;NA&gt;</span>
+<span class="co">#&gt;         X5StageUse1 X5StageUse2 Original    Yomi1    Yomi2 entity relation</span>
+<span class="co">#&gt; 1:             &lt;NA&gt;        &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;     ROOT</span>
+<span class="co">#&gt; 2:             &lt;NA&gt;        &lt;NA&gt;     ふと     フト     フト   &lt;NA&gt;     ROOT</span>
+<span class="co">#&gt; 3: 五段・カ行イ音便      基本形 振り向く フリムク フリムク   &lt;NA&gt;     動詞</span>
+<span class="co">#&gt; 4:             &lt;NA&gt;        &lt;NA&gt;       と       ト       ト   &lt;NA&gt;     ROOT</span>
+<span class="co">#&gt; 5:             &lt;NA&gt;        &lt;NA&gt;       、       、       、   &lt;NA&gt;     記号</span>
+<span class="co">#&gt; 6:             &lt;NA&gt;        &lt;NA&gt; たくさん タクサン タクサン   &lt;NA&gt;     名詞</span>
+<span class="co">#&gt;    parent</span>
+<span class="co">#&gt; 1:     NA</span>
+<span class="co">#&gt; 2:     NA</span>
+<span class="co">#&gt; 3:   1122</span>
+<span class="co">#&gt; 4:     NA</span>
+<span class="co">#&gt; 5:   1122</span>
+<span class="co">#&gt; 6:   1135</span></code></pre></div>
 </div>
 </div>
 <div id="license" class="section level2">

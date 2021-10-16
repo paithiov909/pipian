@@ -7,7 +7,7 @@
 ppn_cabocha(text, rcpath = NULL)
 }
 \arguments{
-\item{text}{Characters vector to be analyzed by CaboCha.}
+\item{text}{Character vector to be analyzed by CaboCha.}
 
 \item{rcpath}{String scalar that path to the `mecabrc` file if any.}
 }

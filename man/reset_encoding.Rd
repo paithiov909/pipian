@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{reset_encoding}
 \alias{reset_encoding}
-\title{Format Character Vector}
+\title{Format character vector}
 \usage{
 reset_encoding(vec, enc = "UTF-8")
 }
@@ -12,6 +12,6 @@ reset_encoding(vec, enc = "UTF-8")
 \item{enc}{Encoding of vec.}
 }
 \description{
-Format Character Vector
+Format character vector
 }
 \keyword{internal}
