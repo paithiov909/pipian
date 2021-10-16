@@ -4,10 +4,10 @@
 \alias{ppn_as_tokenindex}
 \title{Cast xml as data.table}
 \usage{
-ppn_as_tokenindex(path)
+ppn_as_tokenindex(tokens)
 }
 \arguments{
-\item{path}{Character vector came from \code{ppn_cabocha}.}
+\item{tokens}{Output from \code{ppn_parse_xml}.}
 }
 \value{
 data.table retured from \code{rsyntax::as_tokenindex}.

@@ -1,12 +1,9 @@
 #' Cast xml as data.table
-#' @param path Character vector came from \code{ppn_cabocha}.
+#' @param tokens Output from \code{ppn_parse_xml}.
 #' @return data.table retured from \code{rsyntax::as_tokenindex}.
 #' @export
-ppn_as_tokenindex <- function(path) {
-  tokens <- ppn_parse_xml(path)
-
-  res <-
-    dplyr::group_by(tokens, doc_id, sentence_id, chunk_id) %>%
+ppn_as_tokenindex <- function(tokens) {
+  res <- tokens %>%
     dplyr::mutate(
       doc_id = doc_id,
       sentence_id = sentence_id,
@@ -55,13 +52,13 @@ ppn_parse_xml <- function(path,
       parse_xml(.x) %>%
         dplyr::mutate(
           doc_id = .y, # 1-origin
-          sentence_id = as.integer(sentence_id) + 1L, ## coerce to 1-origin
-          chunk_id = as.integer(chunk_id),
+          sentence_id = as.integer(sentence_id) + 1L,
+          chunk_id = as.integer(chunk_id) + 1L,
           token_id = as.integer(token_id),
           token = reset_encoding(token),
-          chunk_link = as.integer(chunk_link),
+          chunk_link = as.integer(chunk_link) + 1L,
           chunk_score = as.numeric(chunk_score),
-          chunk_head = as.integer(chunk_head),
+          chunk_head = as.integer(chunk_head) + 1L,
           chunk_func = as.integer(chunk_func),
           token_feature = reset_encoding(token_feature),
           token_entity = dplyr::na_if(reset_encoding(token_entity), "O")
@@ -86,7 +83,6 @@ ppn_parse_xml <- function(path,
 ppn_plot_igraph <- function(df, sentence_id) {
   df <- df %>%
     dplyr::filter(sentence_id == sentence_id) %>%
-    dplyr::mutate(chunk_link = dplyr::na_if(chunk_link, -1L)) %>%
     dplyr::group_by(doc_id, sentence_id, chunk_id) %>%
     dplyr::transmute(
       name = stringi::stri_join(doc_id, sentence_id, chunk_id),
@@ -97,9 +93,7 @@ ppn_plot_igraph <- function(df, sentence_id) {
     ) %>%
     dplyr::ungroup() %>%
     dplyr::select(name, from, to, tokens, score) %>%
-    dplyr::distinct() %>%
-    dplyr::mutate(to = tidyr::replace_na(to, "EOS")) %>%
-    dplyr::bind_rows(data.frame(name = "EOS", from = "EOS", to = "EOS", tokens = "EOS", score = 1))
+    dplyr::distinct()
 
   g <- igraph::graph_from_data_frame(
     dplyr::select(df, from, to, score),

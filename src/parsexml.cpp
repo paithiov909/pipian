@@ -27,7 +27,7 @@ DataFrame parse_xml(const std::string path) {
 
     rapidxml::xml_node<>* node = doc.first_node(); // root node
 
-    std::vector< std::uint_fast32_t > sentence_id;
+    std::vector< std::uint_fast16_t > sentence_id;
     std::vector< std::string > chunk_id;
     std::vector< std::string > token_id;
     std::vector< std::string > token;
@@ -38,13 +38,12 @@ DataFrame parse_xml(const std::string path) {
     std::vector< std::string > token_feature;
     std::vector< std::string > token_entity;
 
-    std::uint_fast32_t sentenceCount = 0;
-
     for ( rapidxml::xml_node<>* sentence = node->first_node("sentence");
           sentence != nullptr;
           sentence = sentence->next_sibling() ) {
 
-        std::uint_fast32_t tokCount = 0;
+        std::uint_fast16_t sentenceCount = 0;
+        std::uint_fast16_t tokenCount = 0;
 
         for ( rapidxml::xml_node<>* chunk = sentence->first_node("chunk");
               chunk != nullptr;
@@ -75,12 +74,23 @@ DataFrame parse_xml(const std::string path) {
                 token_feature.push_back(feature->value());
                 token_entity.push_back(ne->value());
 
-                tokCount++;
+                tokenCount++;
             }
-
         }
         // check user interrupt.
         if (sentenceCount % 1000 == 0) checkUserInterrupt();
+
+        // Add ROOT node
+        sentence_id.push_back(sentenceCount);
+        chunk_id.push_back(std::to_string(-1));
+        token_id.push_back(std::to_string(tokenCount));
+        token.push_back("EOS");
+        chunk_link.push_back(std::to_string(-1));
+        chunk_score.push_back("");
+        chunk_head.push_back(std::to_string(tokenCount + 1));
+        chunk_func.push_back(std::to_string(tokenCount));
+        token_feature.push_back("ROOT,*,*,*,*,*,*,*,*");
+        token_entity.push_back("O");
 
         sentenceCount++;
     }

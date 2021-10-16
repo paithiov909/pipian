@@ -38,5 +38,7 @@ rsconnect/
 doc
 inst/doc
 Meta
+
 *.log
+*.pdf
 

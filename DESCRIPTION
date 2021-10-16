@@ -23,7 +23,6 @@ Imports:
     processx,
     purrr,
     Rcpp,
-    rlang (>= 0.1.2),
     readr,
     rsyntax,
     stringi,
