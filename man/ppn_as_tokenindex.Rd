@@ -7,7 +7,7 @@
 ppn_as_tokenindex(tokens)
 }
 \arguments{
-\item{tokens}{Output from \code{ppn_parse_xml}.}
+\item{tokens}{Output from \code{pipian::ppn_parse_xml}.}
 }
 \value{
 data.table retured from \code{rsyntax::as_tokenindex}.

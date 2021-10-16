@@ -9,7 +9,7 @@
 #'
 #' @export
 ppn_cabocha <- function(text, rcpath = NULL) {
-  map_chr(text, function(elem) {
+  map_chr(stringi::stri_enc_toutf8(text), function(elem) {
     data <- tempfile(fileext = ".xml")
     tmp_file_txt <- tempfile(fileext = ".txt")
 

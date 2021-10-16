@@ -27,7 +27,7 @@ DataFrame parse_xml(const std::string path) {
 
     rapidxml::xml_node<>* node = doc.first_node(); // root node
 
-    std::vector< std::uint_fast16_t > sentence_id;
+    std::vector< std::uint16_t > sentence_id;
     std::vector< std::string > chunk_id;
     std::vector< std::string > token_id;
     std::vector< std::string > token;
@@ -74,8 +74,7 @@ DataFrame parse_xml(const std::string path) {
                 token_feature.push_back(feature->value());
                 token_entity.push_back(ne->value());
 
-                tokenCount++;
-            }
+        }
         }
         // check user interrupt.
         if (sentenceCount % 1000 == 0) checkUserInterrupt();

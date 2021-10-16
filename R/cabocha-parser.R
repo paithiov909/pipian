@@ -1,5 +1,5 @@
 #' Cast xml as data.table
-#' @param tokens Output from \code{ppn_parse_xml}.
+#' @param tokens Output from \code{pipian::ppn_parse_xml}.
 #' @return data.table retured from \code{rsyntax::as_tokenindex}.
 #' @export
 ppn_as_tokenindex <- function(tokens) {
@@ -78,11 +78,12 @@ ppn_parse_xml <- function(path,
 
 #' Plot dependency strutcure using igraph
 #' @param df Output of \code{ppn_parse_xml}.
+#' @param doc_id Document id to be kept in igraph.
 #' @param sentence_id Sentence id to be kept in igraph.
 #' @export
-ppn_plot_igraph <- function(df, sentence_id) {
+ppn_plot_igraph <- function(df, doc_id = 1L, sentence_id = 1L) {
   df <- df %>%
-    dplyr::filter(sentence_id == sentence_id) %>%
+    dplyr::filter(doc_id == doc_id, sentence_id == sentence_id) %>%
     dplyr::group_by(doc_id, sentence_id, chunk_id) %>%
     dplyr::transmute(
       name = stringi::stri_join(doc_id, sentence_id, chunk_id),

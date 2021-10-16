@@ -125,7 +125,7 @@
     <p>Plot dependency strutcure using igraph</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>sentence_id</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>df</span>, doc_id <span class='op'>=</span> <span class='fl'>1L</span>, sentence_id <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,6 +133,10 @@
     <tr>
       <th>df</th>
       <td><p>Output of <code>ppn_parse_xml</code>.</p></td>
+    </tr>
+    <tr>
+      <th>doc_id</th>
+      <td><p>Document id to be kept in igraph.</p></td>
     </tr>
     <tr>
       <th>sentence_id</th>
