@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cast xml as data.table — ppn_as_tokenindex • pipian</title>
+<title>Cast XML as data.table — ppn_as_tokenindex • pipian</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Cast xml as data.table — ppn_as_tokenindex" />
-<meta property="og:description" content="Cast xml as data.table" />
+<meta property="og:title" content="Cast XML as data.table — ppn_as_tokenindex" />
+<meta property="og:description" content="Cast XML as data.table" />
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipian</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -94,6 +94,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -116,13 +119,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Cast xml as data.table</h1>
+    <h1>Cast XML as data.table</h1>
     <small class="dont-index">Source: <a href='https://github.com/paithiov909/pipian/blob/master/R/cabocha-parser.R'><code>R/cabocha-parser.R</code></a></small>
     <div class="hidden name"><code>ppn_as_tokenindex.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Cast xml as data.table</p>
+    <p>Cast XML as data.table</p>
     </div>
 
     <pre class="usage"><span class='fu'>ppn_as_tokenindex</span><span class='op'>(</span><span class='va'>tokens</span><span class='op'>)</span></pre>
@@ -138,8 +141,95 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.table retured from <code><a href='https://rdrr.io/pkg/rsyntax/man/as_tokenindex.html'>rsyntax::as_tokenindex</a></code>.</p>
+    <p>A data.table casted with <code><a href='https://rdrr.io/pkg/rsyntax/man/as_tokenindex.html'>rsyntax::as_tokenindex</a></code> is returned.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>xml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ppn_parse_xml.html'>ppn_parse_xml</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>ppn_as_tokenindex</span><span class='op'>(</span><span class='va'>xml</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       doc_id sentence token_id                    token chunk_score
+#&gt;    1:      1        1     1100                      EOS          NA
+#&gt;    2:      1        1     1110         &lt;U+3042&gt;&lt;U+308B&gt;    1.386597
+#&gt;    3:      1        1     1121                 &lt;U+65E5&gt;    1.386597
+#&gt;    4:      1        1     1122                 &lt;U+306E&gt;    1.386597
+#&gt;    5:      1        1     1133                 &lt;U+4E8B&gt;    0.000000
+#&gt;   ---                                                              
+#&gt; 1865:      1       61    16159                 &lt;U+3067&gt;    0.000000
+#&gt; 1866:      1       61   161510 &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;    0.000000
+#&gt; 1867:      1       61   161511 &lt;U+307E&gt;&lt;U+3057&gt;&lt;U+3087&gt;    0.000000
+#&gt; 1868:      1       61   161512                 &lt;U+3046&gt;    0.000000
+#&gt; 1869:      1       61   161513                 &lt;U+3002&gt;    0.000000
+#&gt;                           POS1                     POS2
+#&gt;    1:                     ROOT                     &lt;NA&gt;
+#&gt;    2: &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+8A5E&gt;                     &lt;NA&gt;
+#&gt;    3:         &lt;U+540D&gt;&lt;U+8A5E&gt; &lt;U+975E&gt;&lt;U+81EA&gt;&lt;U+7ACB&gt;
+#&gt;    4:         &lt;U+52A9&gt;&lt;U+8A5E&gt; &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt;
+#&gt;    5:         &lt;U+540D&gt;&lt;U+8A5E&gt; &lt;U+975E&gt;&lt;U+81EA&gt;&lt;U+7ACB&gt;
+#&gt;   ---                                                  
+#&gt; 1865: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;                     &lt;NA&gt;
+#&gt; 1866: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;                     &lt;NA&gt;
+#&gt; 1867: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;                     &lt;NA&gt;
+#&gt; 1868: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;                     &lt;NA&gt;
+#&gt; 1869:         &lt;U+8A18&gt;&lt;U+53F7&gt;         &lt;U+53E5&gt;&lt;U+70B9&gt;
+#&gt;                                   POS3 POS4
+#&gt;    1:                             &lt;NA&gt; &lt;NA&gt;
+#&gt;    2:                             &lt;NA&gt; &lt;NA&gt;
+#&gt;    3: &lt;U+526F&gt;&lt;U+8A5E&gt;&lt;U+53EF&gt;&lt;U+80FD&gt; &lt;NA&gt;
+#&gt;    4:                             &lt;NA&gt; &lt;NA&gt;
+#&gt;    5:                 &lt;U+4E00&gt;&lt;U+822C&gt; &lt;NA&gt;
+#&gt;   ---                                      
+#&gt; 1865:                             &lt;NA&gt; &lt;NA&gt;
+#&gt; 1866:                             &lt;NA&gt; &lt;NA&gt;
+#&gt; 1867:                             &lt;NA&gt; &lt;NA&gt;
+#&gt; 1868:                             &lt;NA&gt; &lt;NA&gt;
+#&gt; 1869:                             &lt;NA&gt; &lt;NA&gt;
+#&gt;                                             X5StageUse1
+#&gt;    1:                                              &lt;NA&gt;
+#&gt;    2:                                              &lt;NA&gt;
+#&gt;    3:                                              &lt;NA&gt;
+#&gt;    4:                                              &lt;NA&gt;
+#&gt;    5:                                              &lt;NA&gt;
+#&gt;   ---                                                  
+#&gt; 1865:                         &lt;U+7279&gt;&lt;U+6B8A&gt;·&lt;U+30C0&gt;
+#&gt; 1866: &lt;U+4E94&gt;&lt;U+6BB5&gt;·&lt;U+30E9&gt;&lt;U+884C&gt;&lt;U+7279&gt;&lt;U+6B8A&gt;
+#&gt; 1867:                 &lt;U+7279&gt;&lt;U+6B8A&gt;·&lt;U+30DE&gt;&lt;U+30B9&gt;
+#&gt; 1868:                  &lt;U+4E0D&gt;&lt;U+5909&gt;&lt;U+5316&gt;&lt;U+578B&gt;
+#&gt; 1869:                                              &lt;NA&gt;
+#&gt;                                    X5StageUse2                 Original
+#&gt;    1:                                     &lt;NA&gt;                     &lt;NA&gt;
+#&gt;    2:                                     &lt;NA&gt;         &lt;U+3042&gt;&lt;U+308B&gt;
+#&gt;    3:                                     &lt;NA&gt;                 &lt;U+65E5&gt;
+#&gt;    4:                                     &lt;NA&gt;                 &lt;U+306E&gt;
+#&gt;    5:                                     &lt;NA&gt;                 &lt;U+4E8B&gt;
+#&gt;   ---                                                                  
+#&gt; 1865:                 &lt;U+9023&gt;&lt;U+7528&gt;&lt;U+5F62&gt;                 &lt;U+3060&gt;
+#&gt; 1866:                 &lt;U+9023&gt;&lt;U+7528&gt;&lt;U+5F62&gt; &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+308B&gt;
+#&gt; 1867: &lt;U+672A&gt;&lt;U+7136&gt;&lt;U+30A6&gt;&lt;U+63A5&gt;&lt;U+7D9A&gt;         &lt;U+307E&gt;&lt;U+3059&gt;
+#&gt; 1868:                 &lt;U+57FA&gt;&lt;U+672C&gt;&lt;U+5F62&gt;                 &lt;U+3046&gt;
+#&gt; 1869:                                     &lt;NA&gt;                 &lt;U+3002&gt;
+#&gt;                          Yomi1                    Yomi2 entity
+#&gt;    1:                     &lt;NA&gt;                     &lt;NA&gt;   &lt;NA&gt;
+#&gt;    2:         &lt;U+30A2&gt;&lt;U+30EB&gt;         &lt;U+30A2&gt;&lt;U+30EB&gt;   &lt;NA&gt;
+#&gt;    3:                 &lt;U+30D2&gt;                 &lt;U+30D2&gt;   &lt;NA&gt;
+#&gt;    4:                 &lt;U+30CE&gt;                 &lt;U+30CE&gt;   &lt;NA&gt;
+#&gt;    5:         &lt;U+30B3&gt;&lt;U+30C8&gt;         &lt;U+30B3&gt;&lt;U+30C8&gt;   &lt;NA&gt;
+#&gt;   ---                                                         
+#&gt; 1865:                 &lt;U+30C7&gt;                 &lt;U+30C7&gt;   &lt;NA&gt;
+#&gt; 1866: &lt;U+30B4&gt;&lt;U+30B6&gt;&lt;U+30A4&gt; &lt;U+30B4&gt;&lt;U+30B6&gt;&lt;U+30A4&gt;   &lt;NA&gt;
+#&gt; 1867: &lt;U+30DE&gt;&lt;U+30B7&gt;&lt;U+30E7&gt; &lt;U+30DE&gt;&lt;U+30B7&gt;&lt;U+30E7&gt;   &lt;NA&gt;
+#&gt; 1868:                 &lt;U+30A6&gt;                 &lt;U+30A6&gt;   &lt;NA&gt;
+#&gt; 1869:                 &lt;U+3002&gt;                 &lt;U+3002&gt;   &lt;NA&gt;
+#&gt;                       relation parent
+#&gt;    1:                     ROOT     NA
+#&gt;    2:                     ROOT     NA
+#&gt;    3:         &lt;U+540D&gt;&lt;U+8A5E&gt;   1122
+#&gt;    4:                     ROOT     NA
+#&gt;    5:         &lt;U+540D&gt;&lt;U+8A5E&gt;   1136
+#&gt;   ---                                
+#&gt; 1865: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt; 161512
+#&gt; 1866: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt; 161512
+#&gt; 1867: &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt; 161512
+#&gt; 1868:                     ROOT     NA
+#&gt; 1869:         &lt;U+8A18&gt;&lt;U+53F7&gt; 161512</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

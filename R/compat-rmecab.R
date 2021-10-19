@@ -1,10 +1,11 @@
 #' Gibasa functions family
-#' @description
+#'
 #' These functions are compact RMeCab alternatives
 #' based on \href{https://quanteda.io/}{quanteda}.
+#'
+#' @seealso gbs_freq, gbs_c, gbs_as_tokens, gbs_dfm, gbs_collocate
 #' @rdname gibasa
 #' @name gibasa
-#' @seealso gbs_freq, gbs_c, gbs_as_tokens, gbs_dfm, gbs_collocate
 #' @keywords internal
 NULL
 
@@ -13,7 +14,7 @@ NULL
 #' @param df A prettified data.frame of tokenized sentences.
 #' @param ... Other arguments are passed to \code{dplyr::tally()}.
 #' @param .name_repair Logical:
-#' If true, then rename column names to RMecabFreq compatible style.
+#' If true, then rename the column names as RMecabFreq-compatible style.
 #' @returns A data.frame.
 #' @family gibasa
 #' @export
@@ -38,7 +39,7 @@ gbs_freq <- function(df, ..., .name_repair = TRUE) {
 
 #' An alternative of RMeCabC
 #'
-#' @param df Prettified data.frame of tokenized sentences.
+#' @param df A prettified data.frame of tokenized sentences.
 #' @param pull A column name of `df`.
 #' @param names A column name of `df`.
 #' @return A list of named vectors.

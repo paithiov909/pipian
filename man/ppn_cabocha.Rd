@@ -7,16 +7,16 @@
 ppn_cabocha(text, rcpath = NULL)
 }
 \arguments{
-\item{text}{A character vector to be analyzed by CaboCha.}
+\item{text}{A character vector to be parsed with CaboCha.}
 
 \item{rcpath}{String; path to the `mecabrc` file if any.}
 }
 \value{
-The paths to result xml files is returned.
+Paths to the CaboCha XML output are returned.
 }
 \description{
 Execute cabocha -f3 -n1 command using \code{processx::run},
-then return path to the result temporary xml files.
+then return the paths to the temporary XML files.
 }
 \examples{
 \dontrun{

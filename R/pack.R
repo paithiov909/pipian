@@ -1,11 +1,11 @@
 #' Pack prettified data.frame of tokens
 #'
-#' Pack prettified data.frame of tokens into a new data.frame of corpus
-#' compatible with the Text Interchange Formats.
+#' Pack a prettified data.frame of tokens into a new data.frame of corpus,
+#' which is compatible with the Text Interchange Formats.
 #'
 #' @section Text Interchange Formats (TIF):
 #'
-#' The Text Interchange Formats are a set of standards
+#' The Text Interchange Formats (TIF) are a set of standards
 #' that allows R text analysis packages to target defined inputs and outputs
 #' for corpora, tokens, and document-term matrices.
 #'
@@ -14,9 +14,9 @@
 #' The prettified data.frame of tokens here is a data.frame object
 #' compatible with the TIF.
 #'
-#' A valid TIF data.frame of tokens are expected to have one unique key column (named `doc_id`)
+#' A TIF valid data.frame of tokens are expected to have one unique key column (named `doc_id`)
 #' of each text and several feature columns of each tokens.
-#' Feature columns must include at least `token` itself.
+#' The feature columns must contain at least `token` itself.
 #'
 #' @seealso \url{https://github.com/ropensci/tif}
 #'

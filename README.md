@@ -15,11 +15,11 @@ coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)]
 
 pipian is a tiny interface to
 [CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency
-structure parser.
+structure parser. The main goal of pipian is to implement a CaboCha
+parser for that XML output.
 
 ## System Requirements
 
--   MeCab
 -   CaboCha
 -   C++11
 
@@ -39,7 +39,7 @@ sentence <- "ふと振り向くと、たくさんの味方がいてたくさん�
 sentence %>% 
   pipian::ppn_cabocha() %>% 
   pipian::ppn_parse_xml() %>% 
-  pipian::ppn_plot_igraph(sentence_id = 1L)
+  pipian::ppn_plot_igraph()
 ```
 
 <img src="man/figures/README-deps-1.png" width="100%" />

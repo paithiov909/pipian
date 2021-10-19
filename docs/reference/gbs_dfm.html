@@ -82,7 +82,7 @@ pipian::gbs_as_tokens() and then quatenda::dfm()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipian</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -96,6 +96,9 @@ pipian::gbs_as_tokens() and then quatenda::dfm()." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -136,7 +139,7 @@ This function is a shorthand of
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>Prettified data.frame of tokens.</p></td>
+      <td><p>A prettified data.frame of tokens.</p></td>
     </tr>
     <tr>
       <th>pull</th>
@@ -144,7 +147,7 @@ This function is a shorthand of
     </tr>
     <tr>
       <th>n</th>
-      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams</a></code>.</p></td>
+      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams()</a></code>.</p></td>
     </tr>
     <tr>
       <th>sep</th>
@@ -153,7 +156,7 @@ inside <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda
     </tr>
     <tr>
       <th>what</th>
-      <td><p>Character scalar. Which tokenizer to use in <code><a href='https://quanteda.io/reference/tokens.html'>quanteda::tokens()</a></code>.</p></td>
+      <td><p>Character scalar; which tokenizer to use in <code><a href='https://quanteda.io/reference/tokens.html'>quanteda::tokens()</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -163,7 +166,7 @@ inside <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>quanteda dfm object</p>
+    <p>A quanteda 'dfm' object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other gibasa: 
@@ -172,6 +175,20 @@ inside <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda
 <code><a href='gbs_c.html'>gbs_c</a>()</code>,
 <code><a href='gbs_freq.html'>gbs_freq</a>()</code></p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>xml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ppn_parse_xml.html'>ppn_parse_xml</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>gbs_dfm</span><span class='op'>(</span><span class='va'>xml</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Document-feature matrix of: 1 document, 456 features (0.00% sparse) and 0 docvars.
+#&gt;     features
+#&gt; docs             &lt;U+3042&gt;&lt;U+308B&gt;       &lt;U+65E5&gt;       &lt;U+306E&gt;       &lt;U+4E8B&gt;       &lt;U+3067&gt;
+#&gt;    1               10        1      117       15       33
+#&gt;     features
+#&gt; docs                   &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;             &lt;U+307E&gt;&lt;U+3059&gt;       &lt;U+3002&gt;       &lt;U+5FA1&gt;
+#&gt;    1                       25               28       61       19
+#&gt;     features
+#&gt; docs             &lt;U+91C8&gt;&lt;U+8FE6&gt;
+#&gt;    1                7
+#&gt; [ reached max_nfeat ... 446 more features ]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

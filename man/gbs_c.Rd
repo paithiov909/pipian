@@ -7,7 +7,7 @@
 gbs_c(df, pull = "token", names = "POS1")
 }
 \arguments{
-\item{df}{Prettified data.frame of tokenized sentences.}
+\item{df}{A prettified data.frame of tokenized sentences.}
 
 \item{pull}{A column name of `df`.}
 

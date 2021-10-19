@@ -1,6 +1,6 @@
-#' Cast xml as data.table
+#' Cast XML as data.table
 #' @param tokens Output from \code{pipian::ppn_parse_xml}.
-#' @returns data.table returned from \code{rsyntax::as_tokenindex}.
+#' @returns A data.table casted with \code{rsyntax::as_tokenindex} is returned.
 #' @examples
 #' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
 #' ppn_as_tokenindex(xml)
@@ -131,4 +131,5 @@ ppn_plot_igraph <- function(df) {
     edge.color = "gray80",
     layout = igraph::layout_as_tree(g, mode = "in", flip.y = FALSE)
   )
+  return(invisible(g))
 }

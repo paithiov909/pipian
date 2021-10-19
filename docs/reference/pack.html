@@ -47,8 +47,8 @@
 
 
 <meta property="og:title" content="Pack prettified data.frame of tokens — pack" />
-<meta property="og:description" content="Pack prettified data.frame of tokens into a new data.frame of corpus
-compatible with the Text Interchange Formats." />
+<meta property="og:description" content="Pack a prettified data.frame of tokens into a new data.frame of corpus,
+which is compatible with the Text Interchange Formats." />
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png" />
 
 
@@ -81,7 +81,7 @@ compatible with the Text Interchange Formats." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipian</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -95,6 +95,9 @@ compatible with the Text Interchange Formats." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -123,8 +126,8 @@ compatible with the Text Interchange Formats." />
     </div>
 
     <div class="ref-description">
-    <p>Pack prettified data.frame of tokens into a new data.frame of corpus
-compatible with the Text Interchange Formats.</p>
+    <p>Pack a prettified data.frame of tokens into a new data.frame of corpus,
+which is compatible with the Text Interchange Formats.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pack</span><span class='op'>(</span><span class='va'>df</span>, n <span class='op'>=</span> <span class='fl'>1L</span>, skip <span class='op'>=</span> <span class='fl'>0L</span>, pull <span class='op'>=</span> <span class='st'>"token"</span>, sep <span class='op'>=</span> <span class='st'>"_"</span>, .collapse <span class='op'>=</span> <span class='st'>" "</span><span class='op'>)</span></pre>
@@ -134,15 +137,15 @@ compatible with the Text Interchange Formats.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>Prettified data.frame of tokens.</p></td>
+      <td><p>A prettified data.frame of tokens.</p></td>
     </tr>
     <tr>
       <th>n</th>
-      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams</a></code>.</p></td>
+      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams()</a></code>.</p></td>
     </tr>
     <tr>
       <th>skip</th>
-      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams</a></code>.</p></td>
+      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams()</a></code>.</p></td>
     </tr>
     <tr>
       <th>pull</th>
@@ -155,19 +158,19 @@ inside <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda
     </tr>
     <tr>
       <th>.collapse</th>
-      <td><p>Character scalar passed to <code><a href='https://rdrr.io/pkg/stringi/man/stri_join.html'>stringi::stri_c()</a></code>.</p></td>
+      <td><p>This argument is passed to <code><a href='https://rdrr.io/pkg/stringi/man/stri_join.html'>stringi::stri_c()</a></code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
+    <p>A data.frame.</p>
     <h2 class="hasAnchor" id="text-interchange-formats-tif-"><a class="anchor" href="#text-interchange-formats-tif-"></a>Text Interchange Formats (TIF)</h2>
 
     
 
 
-<p>The Text Interchange Formats are a set of standards
+<p>The Text Interchange Formats (TIF) are a set of standards
 that allows R text analysis packages to target defined inputs and outputs
 for corpora, tokens, and document-term matrices.</p>
     <h2 class="hasAnchor" id="valid-data-frame-of-tokens"><a class="anchor" href="#valid-data-frame-of-tokens"></a>Valid data.frame of tokens</h2>
@@ -177,9 +180,9 @@ for corpora, tokens, and document-term matrices.</p>
 
 <p>The prettified data.frame of tokens here is a data.frame object
 compatible with the TIF.</p>
-<p>A valid TIF data.frame of tokens are expected to have one unique key column (named `doc_id`)
+<p>A TIF valid data.frame of tokens are expected to have one unique key column (named `doc_id`)
 of each text and several feature columns of each tokens.
-Feature columns must include at least `token` itself.</p>
+The feature columns must contain at least `token` itself.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://github.com/ropensci/tif'>https://github.com/ropensci/tif</a></p></div>

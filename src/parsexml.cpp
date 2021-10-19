@@ -9,10 +9,6 @@
 
 using namespace Rcpp;
 
-//' Parse XML output of CaboCha
-//' @param path String scalar.
-//' @returns data.frame.
-//' @keywords internal
 // [[Rcpp::interfaces(r, cpp)]]
 // [[Rcpp::export]]
 DataFrame parse_xml(const std::string path) {
@@ -29,7 +25,7 @@ DataFrame parse_xml(const std::string path) {
 
     rapidxml::xml_node<>* node = doc.first_node(); // root node
 
-    std::vector< std::uint16_t > sentence_id;
+    std::vector< std::uint_fast16_t > sentence_id;
     std::vector< std::string > chunk_id;
     std::vector< std::string > token_id;
     std::vector< std::string > token;

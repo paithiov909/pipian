@@ -2,7 +2,7 @@
 % Please edit documentation in R/cabocha-parser.R
 \name{ppn_as_tokenindex}
 \alias{ppn_as_tokenindex}
-\title{Cast xml as data.table}
+\title{Cast XML as data.table}
 \usage{
 ppn_as_tokenindex(tokens)
 }
@@ -10,10 +10,10 @@ ppn_as_tokenindex(tokens)
 \item{tokens}{Output from \code{pipian::ppn_parse_xml}.}
 }
 \value{
-data.table returned from \code{rsyntax::as_tokenindex}.
+A data.table casted with \code{rsyntax::as_tokenindex} is returned.
 }
 \description{
-Cast xml as data.table
+Cast XML as data.table
 }
 \examples{
 xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))

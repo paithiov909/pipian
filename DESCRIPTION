@@ -1,16 +1,17 @@
 Package: pipian
 Type: Package
 Title: Tiny Interface to CaboCha for R
-Version: 0.3.0.9000
+Version: 0.3.0
 Authors@R: c(
     person("Akiru", "Kato", email = "paithiov909@gmail.com", role = "cre"),
     person("Marcin", "Kalicinski", comment = "Author of rapidxml", role = "aut"))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
-Description: A tiny parser of CaboCha output XML powered by 'Rcpp'.
+Description: A tiny interface to CaboCha; a Japanese dependency structure parser.
+    The main goal of pipian is to implement a CaboCha parser for that XML output.
 Depends: R (>= 4.0.0)
-SystemRequirements: MeCab, CaboCha, C++11
+SystemRequirements: CaboCha, C++11
 License: MIT + file LICENSE
-URL: https://github.com/paithiov909/pipian
+URL: https://github.com/paithiov909/pipian, https://paithiov909.github.io/pipian
 BugReports: https://github.com/paithiov909/pipian/issues 
 Encoding: UTF-8
 LazyData: true
@@ -24,8 +25,8 @@ Imports:
     purrr,
     quanteda,
     Rcpp,
-    rlang (>= 0.1.2),
     readr,
+    rlang (>= 0.1.2),
     rsyntax,
     stringi,
     tidyr
@@ -34,8 +35,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    spelling,
-    covr
+    spelling
 LinkingTo: 
     Rcpp,
     RcppThread

@@ -1,11 +1,11 @@
 #' Execute cabocha command
 #'
 #' Execute cabocha -f3 -n1 command using \code{processx::run},
-#' then return path to the result temporary xml files.
+#' then return the paths to the temporary XML files.
 #'
-#' @param text A character vector to be analyzed by CaboCha.
+#' @param text A character vector to be parsed with CaboCha.
 #' @param rcpath String; path to the `mecabrc` file if any.
-#' @return The paths to result xml files is returned.
+#' @return Paths to the CaboCha XML output are returned.
 #' @export
 #' @examples
 #' \dontrun{

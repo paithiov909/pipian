@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot dependency strutcure using igraph — ppn_plot_igraph • pipian</title>
+<title>Plot dependency structure using igraph — ppn_plot_igraph • pipian</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Plot dependency strutcure using igraph — ppn_plot_igraph" />
-<meta property="og:description" content="Plot dependency strutcure using igraph" />
+<meta property="og:title" content="Plot dependency structure using igraph — ppn_plot_igraph" />
+<meta property="og:description" content="Plot dependency structure using igraph" />
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipian</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -94,6 +94,9 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -116,16 +119,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot dependency strutcure using igraph</h1>
+    <h1>Plot dependency structure using igraph</h1>
     <small class="dont-index">Source: <a href='https://github.com/paithiov909/pipian/blob/master/R/cabocha-parser.R'><code>R/cabocha-parser.R</code></a></small>
     <div class="hidden name"><code>ppn_plot_igraph.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot dependency strutcure using igraph</p>
+    <p>Plot dependency structure using igraph</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>df</span>, doc_id <span class='op'>=</span> <span class='fl'>1L</span>, sentence_id <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,17 +137,18 @@
       <th>df</th>
       <td><p>Output of <code><a href='ppn_parse_xml.html'>pipian::ppn_parse_xml</a></code>.</p></td>
     </tr>
-    <tr>
-      <th>doc_id</th>
-      <td><p>Document id to be kept in igraph.</p></td>
-    </tr>
-    <tr>
-      <th>sentence_id</th>
-      <td><p>Sentence id to be kept in igraph.</p></td>
-    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>The graph object is returned invisibly.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>xml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ppn_parse_xml.html'>ppn_parse_xml</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>xml</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

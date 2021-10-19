@@ -8,12 +8,13 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-A tiny parser of CaboCha output XML powered by 'Rcpp'.
+A tiny interface to CaboCha; a Japanese dependency structure parser. The main goal of pipian is to implement a CaboCha parser for that XML output.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/paithiov909/pipian}
+  \item \url{https://paithiov909.github.io/pipian}
   \item Report bugs at \url{https://github.com/paithiov909/pipian/issues}
 }
 
