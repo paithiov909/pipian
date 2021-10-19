@@ -7,7 +7,7 @@ Authors@R: c(
     person("Marcin", "Kalicinski", comment = "Author of rapidxml", role = "aut"))
 Maintainer: Kato Akiru <paithiov909@gmail.com>
 Description: A tiny interface to CaboCha; a Japanese dependency structure parser.
-    The main goal of pipian is to implement a CaboCha parser for that XML output.
+    The main goal of pipian is to implement a parser for that XML output.
 Depends: R (>= 4.0.0)
 SystemRequirements: CaboCha, C++11
 License: MIT + file LICENSE

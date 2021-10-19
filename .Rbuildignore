@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^\.github$
 ^\.Rprofile$
+^\.covrignore$
 ^doc$
 ^Meta$
 ^docs$

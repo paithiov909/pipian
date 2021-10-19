@@ -15,8 +15,8 @@ coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)]
 
 pipian is a tiny interface to
 [CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency
-structure parser. The main goal of pipian is to implement a CaboCha
-parser for that XML output.
+structure parser. The main goal of pipian is to implement a parser for
+that XML output.
 
 ## System Requirements
 
