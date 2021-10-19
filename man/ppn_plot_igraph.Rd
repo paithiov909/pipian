@@ -7,7 +7,7 @@
 ppn_plot_igraph(df, doc_id = 1L, sentence_id = 1L)
 }
 \arguments{
-\item{df}{Output of \code{ppn_parse_xml}.}
+\item{df}{Output of \code{pipian::ppn_parse_xml}.}
 
 \item{doc_id}{Document id to be kept in igraph.}
 

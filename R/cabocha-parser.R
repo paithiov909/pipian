@@ -31,7 +31,7 @@ ppn_as_tokenindex <- function(tokens) {
 }
 
 #' Parse xml output of CaboCha
-#' @param path Character vector came from \code{ppn_cabocha}.
+#' @param path Character vector come from \code{pipian::ppn_cabocha}.
 #' @param into Character vector. Feature names of output.
 #' @return data.frame
 #' @export
@@ -77,7 +77,7 @@ ppn_parse_xml <- function(path,
 }
 
 #' Plot dependency strutcure using igraph
-#' @param df Output of \code{ppn_parse_xml}.
+#' @param df Output of \code{pipian::ppn_parse_xml}.
 #' @param doc_id Document id to be kept in igraph.
 #' @param sentence_id Sentence id to be kept in igraph.
 #' @export

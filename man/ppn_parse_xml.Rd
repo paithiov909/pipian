@@ -11,7 +11,7 @@ ppn_parse_xml(
 )
 }
 \arguments{
-\item{path}{Character vector came from \code{ppn_cabocha}.}
+\item{path}{Character vector come from \code{pipian::ppn_cabocha}.}
 
 \item{into}{Character vector. Feature names of output.}
 }

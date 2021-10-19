@@ -1,8 +1,6 @@
 #' pipian: Tiny Interface to CaboCha for R
-#' @docType package
-#' @name pipian
 #' @importFrom dplyr %>%
-#' @importFrom purrr map imap_dfr
+#' @importFrom purrr map_chr imap_dfr
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib pipian, .registration=TRUE
 #' @keywords internal
