@@ -40,8 +40,7 @@ ppn_as_tokenindex <- function(tokens) {
 #' @returns A data.frame.
 #' @export
 #' @examples
-#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' head(ppn_parse_xml(xml))
+#' head(ppn_parse_xml(system.file("sample.xml", package = "pipian")))
 ppn_parse_xml <- function(path,
                           into = c(
                             "POS1",

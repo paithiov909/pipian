@@ -22,6 +22,5 @@ A data.frame.
 Parse xml output of CaboCha
 }
 \examples{
-xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-head(ppn_parse_xml(xml))
+head(ppn_parse_xml(system.file("sample.xml", package = "pipian")))
 }
