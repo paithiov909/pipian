@@ -5,7 +5,7 @@
 #'
 #' @section Text Interchange Formats (TIF):
 #'
-#' The Text Interchange Formats (TIF) are a set of standards
+#' The Text Interchange Formats (TIF) is a set of standards
 #' that allows R text analysis packages to target defined inputs and outputs
 #' for corpora, tokens, and document-term matrices.
 #'
@@ -29,6 +29,9 @@
 #' @param .collapse This argument is passed to \code{stringi::stri_c()}.
 #' @returns A data.frame.
 #' @export
+#' @examples
+#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+#' head(pack(xml))
 pack <- function(df, n = 1L, skip = 0L, pull = "token", sep = "_", .collapse = " ") {
   res <- df %>%
     dplyr::filter(.data$token != "EOS") %>%

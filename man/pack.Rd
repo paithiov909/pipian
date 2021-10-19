@@ -30,7 +30,7 @@ which is compatible with the Text Interchange Formats.
 \section{Text Interchange Formats (TIF)}{
 
 
-The Text Interchange Formats (TIF) are a set of standards
+The Text Interchange Formats (TIF) is a set of standards
 that allows R text analysis packages to target defined inputs and outputs
 for corpora, tokens, and document-term matrices.
 }
@@ -46,6 +46,10 @@ of each text and several feature columns of each tokens.
 The feature columns must contain at least `token` itself.
 }
 
+\examples{
+xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+head(pack(xml))
+}
 \seealso{
 \url{https://github.com/ropensci/tif}
 }

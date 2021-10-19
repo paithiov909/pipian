@@ -3,7 +3,7 @@
 #' @returns A data.table casted with \code{rsyntax::as_tokenindex} is returned.
 #' @examples
 #' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' ppn_as_tokenindex(xml)
+#' head(ppn_as_tokenindex(xml))
 #' @export
 ppn_as_tokenindex <- function(tokens) {
   res <- tokens %>%
@@ -40,7 +40,8 @@ ppn_as_tokenindex <- function(tokens) {
 #' @returns A data.frame.
 #' @export
 #' @examples
-#' head(ppn_parse_xml(system.file("sample.xml", package = "pipian")))
+#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+#' head(ppn_parse_xml(xml))
 ppn_parse_xml <- function(path,
                           into = c(
                             "POS1",
@@ -93,8 +94,8 @@ ppn_parse_xml <- function(path,
 #' @returns The graph object is returned invisibly.
 #' @export
 #' @examples
-#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' if (FALSE) {
+#' \dontrun{
+#'   xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
 #'   ppn_plot_igraph(xml)
 #' }
 ppn_plot_igraph <- function(df) {

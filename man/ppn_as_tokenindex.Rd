@@ -17,5 +17,5 @@ Cast XML as data.table
 }
 \examples{
 xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-ppn_as_tokenindex(xml)
+head(ppn_as_tokenindex(xml))
 }

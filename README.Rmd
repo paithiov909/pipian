@@ -19,6 +19,7 @@ pkgload::load_all()
 <!-- badges: start -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-CMD-check](https://github.com/paithiov909/pipian/actions/workflows/check.yml/badge.svg)](https://github.com/paithiov909/pipian/actions/workflows/check.yml)
 [![Codecov test coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
 
@@ -48,7 +49,7 @@ sentence %>%
   pipian::ppn_plot_igraph()
 ```
 
-### Mimics of RMeCab functions (experimental)
+### Mimics of RMeCab functions
 
 #### Alternative of RMeCabC
 

@@ -18,6 +18,9 @@ NULL
 #' @returns A data.frame.
 #' @family gibasa
 #' @export
+#' @examples
+#' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+#' head(gbs_freq(xml))
 gbs_freq <- function(df, ..., .name_repair = TRUE) {
   df <- df %>%
     dplyr::filter(.data$token != "EOS") %>%
@@ -47,7 +50,7 @@ gbs_freq <- function(df, ..., .name_repair = TRUE) {
 #' @export
 #' @examples
 #' xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-#' gbs_c(xml)
+#' head(gbs_c(xml)[[1]])
 gbs_c <- function(df, pull = "token", names = "POS1") {
   pull <- rlang::arg_match(pull)
   re <- df %>%

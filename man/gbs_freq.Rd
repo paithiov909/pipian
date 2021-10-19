@@ -20,6 +20,10 @@ A data.frame.
 \description{
 An alternative of RMeCabFreq
 }
+\examples{
+xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+head(gbs_freq(xml))
+}
 \seealso{
 Other gibasa: 
 \code{\link{gbs_as_tokens}()},

@@ -16,8 +16,8 @@ The graph object is returned invisibly.
 Plot dependency structure using igraph
 }
 \examples{
-xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-if (FALSE) {
+\dontrun{
+  xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
   ppn_plot_igraph(xml)
 }
 }

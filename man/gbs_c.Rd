@@ -21,7 +21,7 @@ An alternative of RMeCabC
 }
 \examples{
 xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-gbs_c(xml)
+head(gbs_c(xml)[[1]])
 }
 \seealso{
 Other gibasa: 
