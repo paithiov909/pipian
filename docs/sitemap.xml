@@ -4,7 +4,28 @@
     <loc>https://paithiov909.github.io/pipian/index.html</loc>
   </url>
   <url>
+    <loc>https://paithiov909.github.io/pipian/reference/gbs_as_tokens.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/gbs_c.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/gbs_collocate.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/gbs_dfm.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/gbs_freq.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/gibasa.html</loc>
+  </url>
+  <url>
     <loc>https://paithiov909.github.io/pipian/reference/is_cabocha_available.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/pack.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/pipian/reference/parse_xml.html</loc>
@@ -13,7 +34,7 @@
     <loc>https://paithiov909.github.io/pipian/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/reference/pipian.html</loc>
+    <loc>https://paithiov909.github.io/pipian/reference/pipian-package.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/pipian/reference/ppn_as_tokenindex.html</loc>

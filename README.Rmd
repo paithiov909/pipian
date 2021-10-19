@@ -48,6 +48,44 @@ sentence %>%
   pipian::ppn_plot_igraph(sentence_id = 1L)
 ```
 
+### Mimics of RMeCab functions (experimental)
+
+#### Alternative of RMeCabC
+
+```{r gbs-c}
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_c()
+```
+
+#### Alternative of RMeCabFreq
+
+```{r gbs-freq}
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_freq()
+```
+
+#### Alternative of docDF family
+
+```{r gbs-dfm}
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_dfm()
+```
+
+#### Alternative of collocate family
+
+```{r gbs-col}
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_collocate()
+```
+
 ### Cast CaboCha output XML as data.table
 
 ```{r idx}

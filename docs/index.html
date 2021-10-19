@@ -110,10 +110,112 @@
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_plot_igraph.html">ppn_plot_igraph</a></span><span class="op">(</span>sentence_id <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-deps-1.png" width="100%"></p>
 </div>
+<div id="mimics-of-rmecab-functions-experimental" class="section level3">
+<h3 class="hasAnchor">
+<a href="#mimics-of-rmecab-functions-experimental" class="anchor"></a>Mimics of RMeCab functions (experimental)</h3>
+<div id="alternative-of-rmecabc" class="section level4">
+<h4 class="hasAnchor">
+<a href="#alternative-of-rmecabc" class="anchor"></a>Alternative of RMeCabC</h4>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_c.html">gbs_c</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt;         副詞         動詞         助詞         記号         名詞         助詞 </span>
+<span class="co">#&gt;       "ふと"   "振り向く"         "と"         "、"   "たくさん"         "の" </span>
+<span class="co">#&gt;         名詞         助詞         動詞         助詞         名詞         助詞 </span>
+<span class="co">#&gt;       "味方"         "が"         "い"         "て"   "たくさん"         "の" </span>
+<span class="co">#&gt;       形容詞         名詞         助詞         動詞         名詞         助詞 </span>
+<span class="co">#&gt;     "優しい"       "人間"         "が"       "いる"       "こと"         "を" </span>
+<span class="co">#&gt;         記号         副詞         名詞         助詞         名詞         名詞 </span>
+<span class="co">#&gt;         "、"   "わざわざ"       "自分"         "の"       "誕生"         "日" </span>
+<span class="co">#&gt;         助詞         動詞       助動詞         助詞         名詞       形容詞 </span>
+<span class="co">#&gt;         "が"         "来"       "ない"         "と"     "気付け"       "ない" </span>
+<span class="co">#&gt;         名詞         助詞         動詞         動詞         助詞         助詞 </span>
+<span class="co">#&gt;       "自分"         "を"   "奮い立た"         "せ"     "ながら"         "も" </span>
+<span class="co">#&gt;         記号         名詞       連体詞         記号         名詞         助詞 </span>
+<span class="co">#&gt;         "、"       "毎日"     "こんな"         "、"         "湖"         "の" </span>
+<span class="co">#&gt;         名詞       助動詞         名詞         助詞         名詞         助詞 </span>
+<span class="co">#&gt;       "よう"         "な"       "なん"         "の" "引っ掛かり"         "も" </span>
+<span class="co">#&gt;       形容詞         記号         名詞         動詞         記号         名詞 </span>
+<span class="co">#&gt;       "ない"         "、"   "落ちつき"       "倒し"         "、"         "音" </span>
+<span class="co">#&gt;         名詞         助詞         動詞         動詞       助動詞         名詞 </span>
+<span class="co">#&gt;       "一つ"         "も"       "感じ"       "させ"       "ない"       "人間" </span>
+<span class="co">#&gt;         助詞         動詞         名詞         助詞         動詞         助詞 </span>
+<span class="co">#&gt;         "で"     "いれる"         "方"         "に"       "憧れ"         "を" </span>
+<span class="co">#&gt;         動詞       助動詞       連体詞         名詞         名詞         助詞 </span>
+<span class="co">#&gt;       "持て"         "た"     "とある"         "25"         "歳"         "の" </span>
+<span class="co">#&gt;       形容詞         名詞         助詞         名詞       助動詞       助動詞 </span>
+<span class="co">#&gt;     "眩しき"         "朝"         "の"       "こと"       "でし"         "た" </span>
+<span class="co">#&gt;         ROOT </span>
+<span class="co">#&gt;        "EOS"</span></code></pre></div>
+</div>
+<div id="alternative-of-rmecabfreq" class="section level4">
+<h4 class="hasAnchor">
+<a href="#alternative-of-rmecabfreq" class="anchor"></a>Alternative of RMeCabFreq</h4>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_freq.html">gbs_freq</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 53 x 4</span>
+<span class="co">#&gt;    Term   Info1  Info2   Freq</span>
+<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;</span>
+<span class="co">#&gt;  1 、     記号   読点       6</span>
+<span class="co">#&gt;  2 25     名詞   数         1</span>
+<span class="co">#&gt;  3 い     動詞   自立       1</span>
+<span class="co">#&gt;  4 いる   動詞   自立       1</span>
+<span class="co">#&gt;  5 いれる 動詞   自立       1</span>
+<span class="co">#&gt;  6 が     助詞   格助詞     3</span>
+<span class="co">#&gt;  7 こと   名詞   非自立     2</span>
+<span class="co">#&gt;  8 こんな 連体詞 &lt;NA&gt;       1</span>
+<span class="co">#&gt;  9 させ   動詞   接尾       1</span>
+<span class="co">#&gt; 10 せ     動詞   接尾       1</span>
+<span class="co">#&gt; # ... with 43 more rows</span></code></pre></div>
+</div>
+<div id="alternative-of-docdf-family" class="section level4">
+<h4 class="hasAnchor">
+<a href="#alternative-of-docdf-family" class="anchor"></a>Alternative of docDF family</h4>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_dfm.html">gbs_dfm</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Document-feature matrix of: 1 document, 52 features (0.00% sparse) and 0 docvars.</span>
+<span class="co">#&gt;     features</span>
+<span class="co">#&gt; docs ふと 振り向く と 、 たくさん の 味方 が い て</span>
+<span class="co">#&gt;    1    1        1  2  6        2  7    1  3  1  1</span>
+<span class="co">#&gt; [ reached max_nfeat ... 42 more features ]</span></code></pre></div>
+</div>
+<div id="alternative-of-collocate-family" class="section level4">
+<h4 class="hasAnchor">
+<a href="#alternative-of-collocate-family" class="anchor"></a>Alternative of collocate family</h4>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_collocate.html">gbs_collocate</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Feature co-occurrence matrix of: 52 by 52 features.</span>
+<span class="co">#&gt;           features</span>
+<span class="co">#&gt; features   ふと 振り向く と 、 たくさん の 味方 が い て</span>
+<span class="co">#&gt;   ふと        0        1  2  6        2  7    1  3  1  1</span>
+<span class="co">#&gt;   振り向く    0        0  2  6        2  7    1  3  1  1</span>
+<span class="co">#&gt;   と          0        0  1 12        4 14    2  6  2  2</span>
+<span class="co">#&gt;   、          0        0  0 15       12 42    6 18  6  6</span>
+<span class="co">#&gt;   たくさん    0        0  0  0        1 14    2  6  2  2</span>
+<span class="co">#&gt;   の          0        0  0  0        0 21    7 21  7  7</span>
+<span class="co">#&gt;   味方        0        0  0  0        0  0    0  3  1  1</span>
+<span class="co">#&gt;   が          0        0  0  0        0  0    0  3  3  3</span>
+<span class="co">#&gt;   い          0        0  0  0        0  0    0  0  0  1</span>
+<span class="co">#&gt;   て          0        0  0  0        0  0    0  0  0  0</span>
+<span class="co">#&gt; [ reached max_feat ... 42 more features, reached max_nfeat ... 42 more features ]</span></code></pre></div>
+</div>
+</div>
 <div id="cast-cabocha-output-xml-as-datatable" class="section level3">
 <h3 class="hasAnchor">
 <a href="#cast-cabocha-output-xml-as-datatable" class="anchor"></a>Cast CaboCha output XML as data.table</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 

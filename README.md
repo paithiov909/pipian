@@ -42,6 +42,106 @@ sentence %>%
 
 <img src="man/figures/README-deps-1.png" width="100%" />
 
+### Mimics of RMeCab functions (experimental)
+
+#### Alternative of RMeCabC
+
+``` r
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_c()
+#> [[1]]
+#>         副詞         動詞         助詞         記号         名詞         助詞 
+#>       "ふと"   "振り向く"         "と"         "、"   "たくさん"         "の" 
+#>         名詞         助詞         動詞         助詞         名詞         助詞 
+#>       "味方"         "が"         "い"         "て"   "たくさん"         "の" 
+#>       形容詞         名詞         助詞         動詞         名詞         助詞 
+#>     "優しい"       "人間"         "が"       "いる"       "こと"         "を" 
+#>         記号         副詞         名詞         助詞         名詞         名詞 
+#>         "、"   "わざわざ"       "自分"         "の"       "誕生"         "日" 
+#>         助詞         動詞       助動詞         助詞         名詞       形容詞 
+#>         "が"         "来"       "ない"         "と"     "気付け"       "ない" 
+#>         名詞         助詞         動詞         動詞         助詞         助詞 
+#>       "自分"         "を"   "奮い立た"         "せ"     "ながら"         "も" 
+#>         記号         名詞       連体詞         記号         名詞         助詞 
+#>         "、"       "毎日"     "こんな"         "、"         "湖"         "の" 
+#>         名詞       助動詞         名詞         助詞         名詞         助詞 
+#>       "よう"         "な"       "なん"         "の" "引っ掛かり"         "も" 
+#>       形容詞         記号         名詞         動詞         記号         名詞 
+#>       "ない"         "、"   "落ちつき"       "倒し"         "、"         "音" 
+#>         名詞         助詞         動詞         動詞       助動詞         名詞 
+#>       "一つ"         "も"       "感じ"       "させ"       "ない"       "人間" 
+#>         助詞         動詞         名詞         助詞         動詞         助詞 
+#>         "で"     "いれる"         "方"         "に"       "憧れ"         "を" 
+#>         動詞       助動詞       連体詞         名詞         名詞         助詞 
+#>       "持て"         "た"     "とある"         "25"         "歳"         "の" 
+#>       形容詞         名詞         助詞         名詞       助動詞       助動詞 
+#>     "眩しき"         "朝"         "の"       "こと"       "でし"         "た" 
+#>         ROOT 
+#>        "EOS"
+```
+
+#### Alternative of RMeCabFreq
+
+``` r
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_freq()
+#> # A tibble: 53 x 4
+#>    Term   Info1  Info2   Freq
+#>    <chr>  <chr>  <chr>  <int>
+#>  1 、     記号   読点       6
+#>  2 25     名詞   数         1
+#>  3 い     動詞   自立       1
+#>  4 いる   動詞   自立       1
+#>  5 いれる 動詞   自立       1
+#>  6 が     助詞   格助詞     3
+#>  7 こと   名詞   非自立     2
+#>  8 こんな 連体詞 <NA>       1
+#>  9 させ   動詞   接尾       1
+#> 10 せ     動詞   接尾       1
+#> # ... with 43 more rows
+```
+
+#### Alternative of docDF family
+
+``` r
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_dfm()
+#> Document-feature matrix of: 1 document, 52 features (0.00% sparse) and 0 docvars.
+#>     features
+#> docs ふと 振り向く と 、 たくさん の 味方 が い て
+#>    1    1        1  2  6        2  7    1  3  1  1
+#> [ reached max_nfeat ... 42 more features ]
+```
+
+#### Alternative of collocate family
+
+``` r
+sentence %>% 
+  pipian::ppn_cabocha() %>% 
+  pipian::ppn_parse_xml() %>% 
+  pipian::gbs_collocate()
+#> Feature co-occurrence matrix of: 52 by 52 features.
+#>           features
+#> features   ふと 振り向く と 、 たくさん の 味方 が い て
+#>   ふと        0        1  2  6        2  7    1  3  1  1
+#>   振り向く    0        0  2  6        2  7    1  3  1  1
+#>   と          0        0  1 12        4 14    2  6  2  2
+#>   、          0        0  0 15       12 42    6 18  6  6
+#>   たくさん    0        0  0  0        1 14    2  6  2  2
+#>   の          0        0  0  0        0 21    7 21  7  7
+#>   味方        0        0  0  0        0  0    0  3  1  1
+#>   が          0        0  0  0        0  0    0  3  3  3
+#>   い          0        0  0  0        0  0    0  0  0  1
+#>   て          0        0  0  0        0  0    0  0  0  0
+#> [ reached max_feat ... 42 more features, reached max_nfeat ... 42 more features ]
+```
+
 ### Cast CaboCha output XML as data.table
 
 ``` r

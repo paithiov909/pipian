@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • pipian</title>
+<title>Pack prettified output as quanteda tokens — gbs_as_tokens • pipian</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Pack prettified output as quanteda tokens — gbs_as_tokens" />
+<meta property="og:description" content="Pack prettified output as quanteda tokens" />
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png" />
 
 
@@ -66,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,96 +114,61 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Pack prettified output as quanteda tokens</h1>
+    <small class="dont-index">Source: <a href='https://github.com/paithiov909/pipian/blob/master/R/compat-rmecab.R'><code>R/compat-rmecab.R</code></a></small>
+    <div class="hidden name"><code>gbs_as_tokens.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Pack prettified output as quanteda tokens</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>gbs_as_tokens</span><span class='op'>(</span><span class='va'>df</span>, pull <span class='op'>=</span> <span class='st'>"token"</span>, n <span class='op'>=</span> <span class='fl'>1L</span>, sep <span class='op'>=</span> <span class='st'>"-"</span>, what <span class='op'>=</span> <span class='st'>"fastestword"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="gbs_as_tokens.html">gbs_as_tokens()</a></code> </p>
-        </td>
-        <td><p>Pack prettified output as quanteda tokens</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gbs_c.html">gbs_c()</a></code> </p>
-        </td>
-        <td><p>An alternative of RMeCabC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gbs_collocate.html">gbs_collocate()</a></code> </p>
-        </td>
-        <td><p>A mimic of collocate</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gbs_dfm.html">gbs_dfm()</a></code> </p>
-        </td>
-        <td><p>An alternative of docDF family</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="gbs_freq.html">gbs_freq()</a></code> </p>
-        </td>
-        <td><p>An alternative of RMeCabFreq</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pack.html">pack()</a></code> </p>
-        </td>
-        <td><p>Pack prettified data.frame of tokens</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ppn_as_tokenindex.html">ppn_as_tokenindex()</a></code> </p>
-        </td>
-        <td><p>Cast xml as data.table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ppn_cabocha.html">ppn_cabocha()</a></code> </p>
-        </td>
-        <td><p>Execute cabocha command</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ppn_parse_xml.html">ppn_parse_xml()</a></code> </p>
-        </td>
-        <td><p>Parse xml output of CaboCha</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ppn_plot_igraph.html">ppn_plot_igraph()</a></code> </p>
-        </td>
-        <td><p>Plot dependency strutcure using igraph</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>Prettified data.frame of tokens.</p></td>
+    </tr>
+    <tr>
+      <th>pull</th>
+      <td><p>Column to be packed into text or ngrams body. Default value is `token`.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>Integer passed to <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>Character scalar internally used as the concatenator of ngrams
+inside <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda::char_ngrams</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>what</th>
+      <td><p>Character scalar. Which tokenizer to use in <code><a href='https://quanteda.io/reference/tokens.html'>quanteda::tokens()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments are passed to <code><a href='https://quanteda.io/reference/tokens.html'>quanteda::tokens()</a></code>.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>quanteda token class object</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other gibasa: 
+<code><a href='gbs_collocate.html'>gbs_collocate</a>()</code>,
+<code><a href='gbs_c.html'>gbs_c</a>()</code>,
+<code><a href='gbs_dfm.html'>gbs_dfm</a>()</code>,
+<code><a href='gbs_freq.html'>gbs_freq</a>()</code></p></div>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
