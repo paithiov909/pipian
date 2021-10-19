@@ -9,6 +9,8 @@
 commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
 
 pipian is a tiny interface to

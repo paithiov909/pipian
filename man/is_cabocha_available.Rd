@@ -4,10 +4,7 @@
 \alias{is_cabocha_available}
 \title{Check if cabocha command is available}
 \usage{
-is_cabocha_available(version = "0.69")
-}
-\arguments{
-\item{version}{Version number of CaboCha.}
+is_cabocha_available()
 }
 \value{
 Logical.

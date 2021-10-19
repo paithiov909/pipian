@@ -7,15 +7,15 @@
 gbs_freq(df, ..., .name_repair = TRUE)
 }
 \arguments{
-\item{df}{Prettified data.frame of tokenized sentences.}
+\item{df}{A prettified data.frame of tokenized sentences.}
 
 \item{...}{Other arguments are passed to \code{dplyr::tally()}.}
 
-\item{.name_repair}{Logical.
+\item{.name_repair}{Logical:
 If true, then rename column names to RMecabFreq compatible style.}
 }
 \value{
-tibble
+A data.frame.
 }
 \description{
 An alternative of RMeCabFreq

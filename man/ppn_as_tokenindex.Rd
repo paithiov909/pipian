@@ -10,8 +10,12 @@ ppn_as_tokenindex(tokens)
 \item{tokens}{Output from \code{pipian::ppn_parse_xml}.}
 }
 \value{
-data.table retured from \code{rsyntax::as_tokenindex}.
+data.table returned from \code{rsyntax::as_tokenindex}.
 }
 \description{
 Cast xml as data.table
+}
+\examples{
+xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+ppn_as_tokenindex(xml)
 }

@@ -2,17 +2,22 @@
 % Please edit documentation in R/cabocha-parser.R
 \name{ppn_plot_igraph}
 \alias{ppn_plot_igraph}
-\title{Plot dependency strutcure using igraph}
+\title{Plot dependency structure using igraph}
 \usage{
-ppn_plot_igraph(df, doc_id = 1L, sentence_id = 1L)
+ppn_plot_igraph(df)
 }
 \arguments{
 \item{df}{Output of \code{pipian::ppn_parse_xml}.}
-
-\item{doc_id}{Document id to be kept in igraph.}
-
-\item{sentence_id}{Sentence id to be kept in igraph.}
+}
+\value{
+The graph object is returned invisibly.
 }
 \description{
-Plot dependency strutcure using igraph
+Plot dependency structure using igraph
+}
+\examples{
+xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+if (FALSE) {
+  ppn_plot_igraph(xml)
+}
 }

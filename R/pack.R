@@ -20,20 +20,19 @@
 #'
 #' @seealso \url{https://github.com/ropensci/tif}
 #'
-#' @param df Prettified data.frame of tokens.
-#' @param n Integer passed to \code{quanteda::char_ngrams}.
-#' @param skip Integer passed to \code{quanteda::char_ngrams}.
+#' @param df A prettified data.frame of tokens.
+#' @param n Integer passed to \code{quanteda::char_ngrams()}.
+#' @param skip Integer passed to \code{quanteda::char_ngrams()}.
 #' @param pull Column to be packed into text or ngrams body. Default value is `token`.
 #' @param sep Character scalar internally used as the concatenator of ngrams
 #' inside \code{quanteda::char_ngrams}.
-#' @param .collapse Character scalar passed to \code{stringi::stri_c()}.
-#' @return data.frame
-#'
+#' @param .collapse This argument is passed to \code{stringi::stri_c()}.
+#' @returns A data.frame.
 #' @export
 pack <- function(df, n = 1L, skip = 0L, pull = "token", sep = "_", .collapse = " ") {
   res <- df %>%
-    dplyr::filter(token != "EOS") %>%
-    dplyr::group_by(!!sym("doc_id")) %>%
+    dplyr::filter(.data$token != "EOS") %>%
+    dplyr::group_by(.data$doc_id) %>%
     dplyr::group_map(
       ~ dplyr::pull(.x, {{ pull }}) %>%
         quanteda::char_ngrams(n = n, skip = skip, concatenator = sep) %>%

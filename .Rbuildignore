@@ -5,11 +5,9 @@
 ^doc$
 ^Meta$
 ^docs$
-^pkgdown$
-^_pkgdown\.yml$
-^\.travis\.yml$
 ^codecov\.yml$
-^CODE_OF_CONDUCT\.md$
 ^README\.Rmd$
 ^CRF\+\+\-0\.58$
 ^cabocha\-0\.69$
+^mecab$
+^pkgdown$

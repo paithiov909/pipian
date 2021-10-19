@@ -7,26 +7,30 @@
 gbs_collocate(df, pull = "token", n = 1L, sep = "-", what = "fastestword", ...)
 }
 \arguments{
-\item{df}{Prettified data.frame of tokens.}
+\item{df}{A prettified data.frame of tokens.}
 
 \item{pull}{Column to be packed into text or ngrams body. Default value is `token`.}
 
-\item{n}{Integer passed to \code{quanteda::char_ngrams}.}
+\item{n}{Integer passed to \code{quanteda::char_ngrams()}.}
 
 \item{sep}{Character scalar internally used as the concatenator of ngrams
 inside \code{quanteda::char_ngrams}.}
 
-\item{what}{Character scalar. Which tokenizer to use in \code{quanteda::tokens()}.}
+\item{what}{Character scalar; which tokenizer to use in \code{quanteda::tokens()}.}
 
 \item{...}{Other arguments are passed to \code{quanteda::tokens()}.}
 }
 \value{
-quanteda fcm object
+A quanteda 'fcm' object.
 }
 \description{
 Create a sparse feature co-occurrence matrix.
 This function is a shorthand of
 \code{pipian::gbs_dfm()} and then \code{quanteda::fcm()}.
+}
+\examples{
+xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+gbs_collocate(xml)
 }
 \seealso{
 Other gibasa: 

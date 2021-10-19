@@ -9,15 +9,19 @@ gbs_c(df, pull = "token", names = "POS1")
 \arguments{
 \item{df}{Prettified data.frame of tokenized sentences.}
 
-\item{pull}{A column name of df.}
+\item{pull}{A column name of `df`.}
 
-\item{names}{A column name of df.}
+\item{names}{A column name of `df`.}
 }
 \value{
-list of named vectors
+A list of named vectors.
 }
 \description{
 An alternative of RMeCabC
+}
+\examples{
+xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
+gbs_c(xml)
 }
 \seealso{
 Other gibasa: 

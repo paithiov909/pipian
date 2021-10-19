@@ -11,13 +11,16 @@ ppn_parse_xml(
 )
 }
 \arguments{
-\item{path}{Character vector come from \code{pipian::ppn_cabocha}.}
+\item{path}{String; output from \code{pipian::ppn_cabocha}.}
 
-\item{into}{Character vector. Feature names of output.}
+\item{into}{Character vector; the feature names of output.}
 }
 \value{
-data.frame
+A data.frame.
 }
 \description{
 Parse xml output of CaboCha
+}
+\examples{
+head(ppn_parse_xml(system.file("sample.xml", package = "pipian")))
 }

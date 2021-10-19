@@ -11,14 +11,16 @@ using namespace Rcpp;
 
 //' Parse XML output of CaboCha
 //' @param path String scalar.
-//' @return data.frame.
+//' @returns data.frame.
 //' @keywords internal
-// [[Rcpp::export(rng = false)]]
+// [[Rcpp::interfaces(r, cpp)]]
+// [[Rcpp::export]]
 DataFrame parse_xml(const std::string path) {
 
     std::ifstream file(R_ExpandFileName(path.c_str()), std::ios::in);
     if (!file) {
-      throw std::runtime_error("Failed to open " + path + ". Check file path.");
+      Rcerr << "Failed to open the specified file. Check file path." << std::endl;
+      return R_NilValue;
     }
     rapidxml::xml_document<> doc;
     rapidxml::file<> input(file);
@@ -38,11 +40,14 @@ DataFrame parse_xml(const std::string path) {
     std::vector< std::string > token_feature;
     std::vector< std::string > token_entity;
 
+    // sentence_id
+    std::uint_fast16_t sentenceCount = 0;
+
     for ( rapidxml::xml_node<>* sentence = node->first_node("sentence");
           sentence != nullptr;
           sentence = sentence->next_sibling() ) {
 
-        std::uint_fast16_t sentenceCount = 0;
+        // token_id
         std::uint_fast16_t tokenCount = 0;
 
         for ( rapidxml::xml_node<>* chunk = sentence->first_node("chunk");
@@ -73,8 +78,7 @@ DataFrame parse_xml(const std::string path) {
                 chunk_func.push_back(func->value());
                 token_feature.push_back(feature->value());
                 token_entity.push_back(ne->value());
-
-        }
+          }
         }
         // check user interrupt.
         if (sentenceCount % 1000 == 0) checkUserInterrupt();

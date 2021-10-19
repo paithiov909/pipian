@@ -7,21 +7,21 @@
 pack(df, n = 1L, skip = 0L, pull = "token", sep = "_", .collapse = " ")
 }
 \arguments{
-\item{df}{Prettified data.frame of tokens.}
+\item{df}{A prettified data.frame of tokens.}
 
-\item{n}{Integer passed to \code{quanteda::char_ngrams}.}
+\item{n}{Integer passed to \code{quanteda::char_ngrams()}.}
 
-\item{skip}{Integer passed to \code{quanteda::char_ngrams}.}
+\item{skip}{Integer passed to \code{quanteda::char_ngrams()}.}
 
 \item{pull}{Column to be packed into text or ngrams body. Default value is `token`.}
 
 \item{sep}{Character scalar internally used as the concatenator of ngrams
 inside \code{quanteda::char_ngrams}.}
 
-\item{.collapse}{Character scalar passed to \code{stringi::stri_c()}.}
+\item{.collapse}{This argument is passed to \code{stringi::stri_c()}.}
 }
 \value{
-data.frame
+A data.frame.
 }
 \description{
 Pack prettified data.frame of tokens into a new data.frame of corpus

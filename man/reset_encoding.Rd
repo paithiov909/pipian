@@ -9,7 +9,10 @@ reset_encoding(vec, enc = "UTF-8")
 \arguments{
 \item{vec}{Character vector.}
 
-\item{enc}{Encoding of vec.}
+\item{enc}{Encoding of `vec`.}
+}
+\value{
+Formatted character vector is returned.
 }
 \description{
 Format character vector

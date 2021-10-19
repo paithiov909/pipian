@@ -1,0 +1,68 @@
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+
+name: R-CMD-check
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+        r-version: ['release']
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: false
+      - name: Set up R ${{ matrix.r-version }}
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.r-version }}
+          use-public-rspm: true
+      - name: Install libraries
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
+        run: |
+          sudo apt install libcurl4-openssl-dev
+          sudo apt install mecab libmecab-dev mecab-ipadic-utf8
+          sudo ldconfig
+          echo `mecab-config --libexecdir` >> $GITHUB_PATH
+          wget "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ" -O CRF++-0.58.tar.gz
+          tar -zxvf CRF++-0.58.tar.gz CRF++-0.58/
+          cd CRF++-0.58/
+          ./configure
+          make
+          sudo make install
+          sudo ldconfig
+          cd ../
+          curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU" > /dev/null
+          CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
+          curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=0B4y35FiV1wh7SDd1Q1dUQkZQaUU" -o cabocha-0.69.tar.bz2
+          tar -jxvf cabocha-0.69.tar.bz2 cabocha-0.69/
+          cd cabocha-0.69/
+          ./configure --with-charset=UTF8 --enable-utf8-only
+          make
+          make check
+          sudo make install
+          sudo ldconfig
+          cd ../
+          echo `cabocha-config --libexecdir` >> $GITHUB_PATH
+      - name: Install dependencies
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          install.packages(c("remotes", "rcmdcheck", "covr"))
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Check
+        run: |
+          rcmdcheck::rcmdcheck(args = c("--no-vignettes", "--no-manual"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
+        shell: Rscript {0}
+      - name: Codecov
+        run: covr::codecov()
+        shell: Rscript {0}
