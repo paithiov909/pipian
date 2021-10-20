@@ -14,7 +14,7 @@ A tiny interface to CaboCha; a Japanese dependency structure parser. The main go
 Useful links:
 \itemize{
   \item \url{https://github.com/paithiov909/pipian}
-  \item \url{https://paithiov909.github.io/pipian}
+  \item \url{https://paithiov909.github.io/pipian/}
   \item Report bugs at \url{https://github.com/paithiov909/pipian/issues}
 }
 

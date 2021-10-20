@@ -10,19 +10,12 @@ reset_encoding <- function(vec, enc = "UTF-8") {
   }, USE.NAMES = FALSE)
 }
 
-#' Check if cabocha command is available
+#' Check if CaboCha command is available
 #' @returns Logical.
 #' @keywords internal
 is_cabocha_available <- function() {
-  intern <- tryCatch(
-    {
-      system("cabocha --version", intern = TRUE)
-    },
-    error = function(e) {
-      NULL
-    }
-  )
-  return(!rlang::is_empty(intern))
+  wh <- Sys.which("cabocha")
+  return(!identical(purrr::set_names(wh, NULL), ""))
 }
 
 #' Pipe operator

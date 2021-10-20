@@ -13,7 +13,7 @@ jobs:
   check:
     strategy:
       matrix:
-        platform: [ubuntu-latest]
+        platform: [ubuntu-latest, macos-10.15]
         r-version: ['release']
     runs-on: ${{ matrix.platform }}
     steps:
@@ -61,8 +61,9 @@ jobs:
         shell: Rscript {0}
       - name: Check
         run: |
-          rcmdcheck::rcmdcheck(args = c("--no-vignettes", "--no-manual"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
+          rcmdcheck::rcmdcheck(args = c("--no-vignettes", "--no-manual", "--as-cran"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
         shell: Rscript {0}
       - name: Codecov
+        if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: covr::codecov()
         shell: Rscript {0}

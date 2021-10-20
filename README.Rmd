@@ -18,9 +18,9 @@ pkgload::load_all()
 
 <!-- badges: start -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/paithiov909/pipian/actions/workflows/check.yml/badge.svg)](https://github.com/paithiov909/pipian/actions/workflows/check.yml)
-[![Codecov test coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://app.codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
 
 pipian is a tiny interface to [CaboCha](https://taku910.github.io/cabocha/); a Japanese dependency structure parser. The main goal of pipian is to implement a parser for that XML output.

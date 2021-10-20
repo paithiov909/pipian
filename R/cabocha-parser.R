@@ -44,7 +44,7 @@ ppn_parse_xml <- function(path,
             sep = ",",
             fill = "right"
           ) %>%
-          dplyr::mutate(dplyr::across(where(is.character), ~ dplyr::na_if(., "*"))) %>%
+          dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*")) %>%
           dplyr::rename(entity = .data$token_entity) %>%
           dplyr::relocate(.data$doc_id, dplyr::everything())
       }

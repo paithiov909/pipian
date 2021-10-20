@@ -14,7 +14,7 @@ NULL
 #' @param df A prettified data.frame of tokenized sentences.
 #' @param ... Other arguments are passed to \code{dplyr::tally()}.
 #' @param .name_repair Logical:
-#' If true, then rename the column names as RMecabFreq-compatible style.
+#' If true, then rename the column names as RMeCabFreq-compatible style.
 #' @returns A data.frame.
 #' @family gibasa
 #' @export

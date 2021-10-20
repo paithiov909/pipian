@@ -15,7 +15,7 @@ ppn_cabocha(text, rcpath = NULL)
 Paths to the CaboCha XML output are returned.
 }
 \description{
-Execute cabocha -f3 -n1 command using \code{processx::run},
+Execute `cabocha -f3 -n1` command using \code{processx::run},
 then return the paths to the temporary XML files.
 }
 \examples{

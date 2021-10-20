@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{is_cabocha_available}
 \alias{is_cabocha_available}
-\title{Check if cabocha command is available}
+\title{Check if CaboCha command is available}
 \usage{
 is_cabocha_available()
 }
@@ -10,6 +10,6 @@ is_cabocha_available()
 Logical.
 }
 \description{
-Check if cabocha command is available
+Check if CaboCha command is available
 }
 \keyword{internal}

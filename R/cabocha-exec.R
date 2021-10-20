@@ -1,6 +1,6 @@
 #' Execute cabocha command
 #'
-#' Execute cabocha -f3 -n1 command using \code{processx::run},
+#' Execute `cabocha -f3 -n1` command using \code{processx::run},
 #' then return the paths to the temporary XML files.
 #'
 #' @param text A character vector to be parsed with CaboCha.

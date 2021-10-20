@@ -12,3 +12,4 @@
 ^cabocha\-0\.69$
 ^mecab$
 ^pkgdown$
+^cran-comments\.md$

@@ -8,10 +8,10 @@
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/paithiov909/pipian/actions/workflows/check.yml/badge.svg)](https://github.com/paithiov909/pipian/actions/workflows/check.yml)
 [![Codecov test
-coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://codecov.io/gh/paithiov909/pipian?branch=main)
+coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://app.codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
 
 pipian is a tiny interface to
@@ -43,9 +43,9 @@ g <- sentence %>%
   pipian::ppn_make_graph()
 
 print(g)
-#> IGRAPH 6bbef74 DN-- 38 38 -- 
+#> IGRAPH fe3809f DN-- 38 38 -- 
 #> + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)
-#> + edges from 6bbef74 (vertex names):
+#> + edges from fe3809f (vertex names):
 #>  [1] 111 ->112  112 ->1137 113 ->114  114 ->115  115 ->119  116 ->118 
 #>  [7] 117 ->118  118 ->119  119 ->1110 1110->1114 1111->1114 1112->1113
 #> [13] 1113->1114 1114->1118 1115->1116 1116->1117 1117->1118 1118->1132
