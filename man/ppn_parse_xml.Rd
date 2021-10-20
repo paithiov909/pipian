@@ -2,7 +2,7 @@
 % Please edit documentation in R/cabocha-parser.R
 \name{ppn_parse_xml}
 \alias{ppn_parse_xml}
-\title{Parse xml output of CaboCha}
+\title{Parse XML output of CaboCha}
 \usage{
 ppn_parse_xml(
   path,
@@ -19,7 +19,7 @@ ppn_parse_xml(
 A data.frame.
 }
 \description{
-Parse xml output of CaboCha
+Parse XML output of CaboCha
 }
 \examples{
 head(ppn_parse_xml(system.file("sample.xml", package = "pipian")))

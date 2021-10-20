@@ -34,16 +34,13 @@
     <loc>https://paithiov909.github.io/pipian/reference/pipian-package.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/reference/ppn_as_tokenindex.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/pipian/reference/ppn_cabocha.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/reference/ppn_parse_xml.html</loc>
+    <loc>https://paithiov909.github.io/pipian/reference/ppn_make_graph.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/reference/ppn_plot_igraph.html</loc>
+    <loc>https://paithiov909.github.io/pipian/reference/ppn_parse_xml.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/pipian/reference/reset_encoding.html</loc>

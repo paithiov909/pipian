@@ -32,15 +32,44 @@ that XML output.
 remotes::install_github("paithiov909/pipian")
 ```
 
-### Plot dependency structure
+### Cast dependency structure as an igraph
 
 ``` r
 sentence <- "ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"
 
-sentence %>% 
+g <- sentence %>% 
   pipian::ppn_cabocha() %>% 
   pipian::ppn_parse_xml() %>% 
-  pipian::ppn_plot_igraph()
+  pipian::ppn_make_graph()
+
+print(g)
+#> IGRAPH 6bbef74 DN-- 38 38 -- 
+#> + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)
+#> + edges from 6bbef74 (vertex names):
+#>  [1] 111 ->112  112 ->1137 113 ->114  114 ->115  115 ->119  116 ->118 
+#>  [7] 117 ->118  118 ->119  119 ->1110 1110->1114 1111->1114 1112->1113
+#> [13] 1113->1114 1114->1118 1115->1116 1116->1117 1117->1118 1118->1132
+#> [19] 1119->1120 1120->1130 1121->1122 1122->1123 1123->1124 1124->1130
+#> [25] 1125->1127 1126->1127 1127->1128 1128->1129 1129->1130 1130->1132
+#> [31] 1131->1132 1132->1136 1133->1134 1134->1136 1135->1136 1136->1137
+#> [37] 1137->110  110 ->110
+```
+
+``` r
+pagerank <- igraph::page.rank(g, directed = TRUE)
+
+plot(
+  g,
+  vertex.size = pagerank$vector * 50,
+  vertex.color = "steelblue",
+  vertex.label = igraph::V(g)$tokens,
+  vertex.label.cex = 0.8,
+  vertex.label.color = "black",
+  edge.width = 0.4,
+  edge.arrow.size = 0.4,
+  edge.color = "gray80",
+  layout = igraph::layout_as_tree(g, mode = "in", flip.y = FALSE)
+)
 ```
 
 <img src="man/figures/README-deps-1.png" width="100%" />
@@ -143,37 +172,6 @@ sentence %>%
 #>   い          0        0  0  0        0  0    0  0  0  1
 #>   て          0        0  0  0        0  0    0  0  0  0
 #> [ reached max_feat ... 42 more features, reached max_nfeat ... 42 more features ]
-```
-
-### Cast CaboCha output XML as data.table
-
-``` r
-sentence %>% 
-  pipian::ppn_cabocha() %>% 
-  pipian::ppn_parse_xml() %>% 
-  pipian::ppn_as_tokenindex() %>% 
-  head()
-#>    doc_id sentence token_id    token chunk_score POS1     POS2 POS3 POS4
-#> 1:      1        1     1100      EOS          NA ROOT     <NA> <NA> <NA>
-#> 2:      1        1     1110     ふと    1.287564 副詞     一般 <NA> <NA>
-#> 3:      1        1     1121 振り向く   -2.336376 動詞     自立 <NA> <NA>
-#> 4:      1        1     1122       と   -2.336376 助詞 接続助詞 <NA> <NA>
-#> 5:      1        1     1123       、   -2.336376 記号     読点 <NA> <NA>
-#> 6:      1        1     1134 たくさん    1.927252 名詞 副詞可能 <NA> <NA>
-#>         X5StageUse1 X5StageUse2 Original    Yomi1    Yomi2 entity relation
-#> 1:             <NA>        <NA>     <NA>     <NA>     <NA>   <NA>     ROOT
-#> 2:             <NA>        <NA>     ふと     フト     フト   <NA>     ROOT
-#> 3: 五段・カ行イ音便      基本形 振り向く フリムク フリムク   <NA>     動詞
-#> 4:             <NA>        <NA>       と       ト       ト   <NA>     ROOT
-#> 5:             <NA>        <NA>       、       、       、   <NA>     記号
-#> 6:             <NA>        <NA> たくさん タクサン タクサン   <NA>     名詞
-#>    parent
-#> 1:     NA
-#> 2:     NA
-#> 3:   1122
-#> 4:     NA
-#> 5:   1122
-#> 6:   1135
 ```
 
 ## License

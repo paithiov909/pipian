@@ -178,44 +178,44 @@ inside <code><a href='https://quanteda.io/reference/tokens_ngrams.html'>quanteda
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>xml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ppn_parse_xml.html'>ppn_parse_xml</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>gbs_collocate</span><span class='op'>(</span><span class='va'>xml</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Feature co-occurrence matrix of: 456 by 456 features.
-#&gt;         features
-#&gt; features             &lt;U+3042&gt;&lt;U+308B&gt;       &lt;U+65E5&gt;       &lt;U+306E&gt;       &lt;U+4E8B&gt;       &lt;U+3067&gt;
-#&gt;   &lt;U+3042&gt;&lt;U+308B&gt;                 45       10     1170      150      330
-#&gt;   &lt;U+65E5&gt;                    0        0      117       15       33
-#&gt;   &lt;U+306E&gt;                    0        0     6786     1755     3861
-#&gt;   &lt;U+4E8B&gt;                    0        0        0      105      495
-#&gt;   &lt;U+3067&gt;                    0        0        0        0      528
-#&gt;   &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;                0        0        0        0        0
-#&gt;   &lt;U+307E&gt;&lt;U+3059&gt;                  0        0        0        0        0
-#&gt;   &lt;U+3002&gt;                    0        0        0        0        0
-#&gt;   &lt;U+5FA1&gt;                    0        0        0        0        0
-#&gt;   &lt;U+91C8&gt;&lt;U+8FE6&gt;                  0        0        0        0        0
-#&gt;         features
-#&gt; features                   &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;             &lt;U+307E&gt;&lt;U+3059&gt;       &lt;U+3002&gt;       &lt;U+5FA1&gt;
-#&gt;   &lt;U+3042&gt;&lt;U+308B&gt;                        250              280      610      190
-#&gt;   &lt;U+65E5&gt;                           25               28       61       19
-#&gt;   &lt;U+306E&gt;                         2925             3276     7137     2223
-#&gt;   &lt;U+4E8B&gt;                          375              420      915      285
-#&gt;   &lt;U+3067&gt;                          825              924     2013      627
-#&gt;   &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;                      300              700     1525      475
-#&gt;   &lt;U+307E&gt;&lt;U+3059&gt;                          0              378     1708      532
-#&gt;   &lt;U+3002&gt;                            0                0     1830     1159
-#&gt;   &lt;U+5FA1&gt;                            0                0        0      171
-#&gt;   &lt;U+91C8&gt;&lt;U+8FE6&gt;                          0                0        0        0
-#&gt;         features
-#&gt; features             &lt;U+91C8&gt;&lt;U+8FE6&gt;
-#&gt;   &lt;U+3042&gt;&lt;U+308B&gt;                 70
-#&gt;   &lt;U+65E5&gt;                    7
-#&gt;   &lt;U+306E&gt;                  819
-#&gt;   &lt;U+4E8B&gt;                  105
-#&gt;   &lt;U+3067&gt;                  231
-#&gt;   &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;              175
-#&gt;   &lt;U+307E&gt;&lt;U+3059&gt;                196
-#&gt;   &lt;U+3002&gt;                  427
-#&gt;   &lt;U+5FA1&gt;                  133
-#&gt;   &lt;U+91C8&gt;&lt;U+8FE6&gt;                 21
-#&gt; [ reached max_feat ... 446 more features, reached max_nfeat ... 446 more features ]</div></pre>
+</div><div class='output co'>#&gt; Feature co-occurrence matrix of: 52 by 52 features.
+#&gt;           features
+#&gt; features               &lt;U+3075&gt;&lt;U+3068&gt;                         &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;       &lt;U+3068&gt;       &lt;U+3001&gt;
+#&gt;   &lt;U+3075&gt;&lt;U+3068&gt;                    0                                1        2        6
+#&gt;   &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;                0                                0        2        6
+#&gt;   &lt;U+3068&gt;                      0                                0        1       12
+#&gt;   &lt;U+3001&gt;                      0                                0        0       15
+#&gt;   &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;                0                                0        0        0
+#&gt;   &lt;U+306E&gt;                      0                                0        0        0
+#&gt;   &lt;U+5473&gt;&lt;U+65B9&gt;                    0                                0        0        0
+#&gt;   &lt;U+304C&gt;                      0                                0        0        0
+#&gt;   &lt;U+3044&gt;                      0                                0        0        0
+#&gt;   &lt;U+3066&gt;                      0                                0        0        0
+#&gt;           features
+#&gt; features                           &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;       &lt;U+306E&gt;             &lt;U+5473&gt;&lt;U+65B9&gt;       &lt;U+304C&gt;
+#&gt;   &lt;U+3075&gt;&lt;U+3068&gt;                                    2        7                1        3
+#&gt;   &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;                                2        7                1        3
+#&gt;   &lt;U+3068&gt;                                      4       14                2        6
+#&gt;   &lt;U+3001&gt;                                     12       42                6       18
+#&gt;   &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;                                1       14                2        6
+#&gt;   &lt;U+306E&gt;                                      0       21                7       21
+#&gt;   &lt;U+5473&gt;&lt;U+65B9&gt;                                    0        0                0        3
+#&gt;   &lt;U+304C&gt;                                      0        0                0        3
+#&gt;   &lt;U+3044&gt;                                      0        0                0        0
+#&gt;   &lt;U+3066&gt;                                      0        0                0        0
+#&gt;           features
+#&gt; features         &lt;U+3044&gt;       &lt;U+3066&gt;
+#&gt;   &lt;U+3075&gt;&lt;U+3068&gt;            1        1
+#&gt;   &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;        1        1
+#&gt;   &lt;U+3068&gt;              2        2
+#&gt;   &lt;U+3001&gt;              6        6
+#&gt;   &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;        2        2
+#&gt;   &lt;U+306E&gt;              7        7
+#&gt;   &lt;U+5473&gt;&lt;U+65B9&gt;            1        1
+#&gt;   &lt;U+304C&gt;              3        3
+#&gt;   &lt;U+3044&gt;              0        1
+#&gt;   &lt;U+3066&gt;              0        0
+#&gt; [ reached max_feat ... 42 more features, reached max_nfeat ... 42 more features ]</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

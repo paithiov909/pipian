@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot dependency structure using igraph — ppn_plot_igraph • pipian</title>
+<title>Cast dependency structure as an igraph — ppn_make_graph • pipian</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Plot dependency structure using igraph — ppn_plot_igraph" />
-<meta property="og:description" content="Plot dependency structure using igraph" />
+<meta property="og:title" content="Cast dependency structure as an igraph — ppn_make_graph" />
+<meta property="og:description" content="Cast dependency structure as an igraph" />
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png" />
 
 
@@ -119,16 +119,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot dependency structure using igraph</h1>
+    <h1>Cast dependency structure as an igraph</h1>
     <small class="dont-index">Source: <a href='https://github.com/paithiov909/pipian/blob/master/R/cabocha-parser.R'><code>R/cabocha-parser.R</code></a></small>
-    <div class="hidden name"><code>ppn_plot_igraph.Rd</code></div>
+    <div class="hidden name"><code>ppn_make_graph.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Plot dependency structure using igraph</p>
+    <p>Cast dependency structure as an igraph</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ppn_make_graph</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,14 +141,21 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The graph object is returned invisibly.</p>
+    <p>An 'igraph' object is returned.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>xml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ppn_parse_xml.html'>ppn_parse_xml</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'>ppn_plot_igraph</span><span class='op'>(</span><span class='va'>xml</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>xml</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ppn_parse_xml.html'>ppn_parse_xml</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>ppn_make_graph</span><span class='op'>(</span><span class='va'>xml</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; IGRAPH c56b47d DN-- 38 38 -- 
+#&gt; + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)
+#&gt; + edges from c56b47d (vertex names):
+#&gt;  [1] 111 -&gt;112  112 -&gt;1137 113 -&gt;114  114 -&gt;115  115 -&gt;119  116 -&gt;118 
+#&gt;  [7] 117 -&gt;118  118 -&gt;119  119 -&gt;1110 1110-&gt;1114 1111-&gt;1114 1112-&gt;1113
+#&gt; [13] 1113-&gt;1114 1114-&gt;1118 1115-&gt;1116 1116-&gt;1117 1117-&gt;1118 1118-&gt;1132
+#&gt; [19] 1119-&gt;1120 1120-&gt;1130 1121-&gt;1122 1122-&gt;1123 1123-&gt;1124 1124-&gt;1130
+#&gt; [25] 1125-&gt;1127 1126-&gt;1127 1127-&gt;1128 1128-&gt;1129 1129-&gt;1130 1130-&gt;1132
+#&gt; [31] 1131-&gt;1132 1132-&gt;1136 1133-&gt;1134 1134-&gt;1136 1135-&gt;1136 1136-&gt;1137
+#&gt; [37] 1137-&gt;110  110 -&gt;110 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

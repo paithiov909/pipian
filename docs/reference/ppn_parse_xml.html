@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse xml output of CaboCha — ppn_parse_xml • pipian</title>
+<title>Parse XML output of CaboCha — ppn_parse_xml • pipian</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Parse xml output of CaboCha — ppn_parse_xml" />
-<meta property="og:description" content="Parse xml output of CaboCha" />
+<meta property="og:title" content="Parse XML output of CaboCha — ppn_parse_xml" />
+<meta property="og:description" content="Parse XML output of CaboCha" />
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png" />
 
 
@@ -119,13 +119,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parse xml output of CaboCha</h1>
+    <h1>Parse XML output of CaboCha</h1>
     <small class="dont-index">Source: <a href='https://github.com/paithiov909/pipian/blob/master/R/cabocha-parser.R'><code>R/cabocha-parser.R</code></a></small>
     <div class="hidden name"><code>ppn_parse_xml.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Parse xml output of CaboCha</p>
+    <p>Parse XML output of CaboCha</p>
     </div>
 
     <pre class="usage"><span class='fu'>ppn_parse_xml</span><span class='op'>(</span>
@@ -153,48 +153,48 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>ppn_parse_xml</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   doc_id sentence_id chunk_id token_id                    token chunk_link
-#&gt; 1      1           1        1        0         &lt;U+3042&gt;&lt;U+308B&gt;          2
-#&gt; 2      1           1        2        1                 &lt;U+65E5&gt;          3
-#&gt; 3      1           1        2        2                 &lt;U+306E&gt;          3
-#&gt; 4      1           1        3        3                 &lt;U+4E8B&gt;          0
-#&gt; 5      1           1        3        4                 &lt;U+3067&gt;          0
-#&gt; 6      1           1        3        5 &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+3044&gt;          0
-#&gt;   chunk_score chunk_head chunk_func                     POS1
-#&gt; 1    1.386597          1          0 &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+8A5E&gt;
-#&gt; 2    1.386597          2          2         &lt;U+540D&gt;&lt;U+8A5E&gt;
-#&gt; 3    1.386597          2          2         &lt;U+52A9&gt;&lt;U+8A5E&gt;
-#&gt; 4    0.000000          4          6         &lt;U+540D&gt;&lt;U+8A5E&gt;
-#&gt; 5    0.000000          4          6 &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;
-#&gt; 6    0.000000          4          6 &lt;U+52A9&gt;&lt;U+52D5&gt;&lt;U+8A5E&gt;
-#&gt;                       POS2                             POS3 POS4
-#&gt; 1                     &lt;NA&gt;                             &lt;NA&gt; &lt;NA&gt;
-#&gt; 2 &lt;U+975E&gt;&lt;U+81EA&gt;&lt;U+7ACB&gt; &lt;U+526F&gt;&lt;U+8A5E&gt;&lt;U+53EF&gt;&lt;U+80FD&gt; &lt;NA&gt;
-#&gt; 3 &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt;                             &lt;NA&gt; &lt;NA&gt;
-#&gt; 4 &lt;U+975E&gt;&lt;U+81EA&gt;&lt;U+7ACB&gt;                 &lt;U+4E00&gt;&lt;U+822C&gt; &lt;NA&gt;
-#&gt; 5                     &lt;NA&gt;                             &lt;NA&gt; &lt;NA&gt;
-#&gt; 6                     &lt;NA&gt;                             &lt;NA&gt; &lt;NA&gt;
-#&gt;                                         X5StageUse1              X5StageUse2
-#&gt; 1                                              &lt;NA&gt;                     &lt;NA&gt;
-#&gt; 2                                              &lt;NA&gt;                     &lt;NA&gt;
-#&gt; 3                                              &lt;NA&gt;                     &lt;NA&gt;
-#&gt; 4                                              &lt;NA&gt;                     &lt;NA&gt;
-#&gt; 5                         &lt;U+7279&gt;&lt;U+6B8A&gt;·&lt;U+30C0&gt; &lt;U+9023&gt;&lt;U+7528&gt;&lt;U+5F62&gt;
-#&gt; 6 &lt;U+4E94&gt;&lt;U+6BB5&gt;·&lt;U+30E9&gt;&lt;U+884C&gt;&lt;U+7279&gt;&lt;U+6B8A&gt; &lt;U+9023&gt;&lt;U+7528&gt;&lt;U+5F62&gt;
-#&gt;                   Original                    Yomi1                    Yomi2
-#&gt; 1         &lt;U+3042&gt;&lt;U+308B&gt;         &lt;U+30A2&gt;&lt;U+30EB&gt;         &lt;U+30A2&gt;&lt;U+30EB&gt;
-#&gt; 2                 &lt;U+65E5&gt;                 &lt;U+30D2&gt;                 &lt;U+30D2&gt;
-#&gt; 3                 &lt;U+306E&gt;                 &lt;U+30CE&gt;                 &lt;U+30CE&gt;
-#&gt; 4                 &lt;U+4E8B&gt;         &lt;U+30B3&gt;&lt;U+30C8&gt;         &lt;U+30B3&gt;&lt;U+30C8&gt;
-#&gt; 5                 &lt;U+3060&gt;                 &lt;U+30C7&gt;                 &lt;U+30C7&gt;
-#&gt; 6 &lt;U+3054&gt;&lt;U+3056&gt;&lt;U+308B&gt; &lt;U+30B4&gt;&lt;U+30B6&gt;&lt;U+30A4&gt; &lt;U+30B4&gt;&lt;U+30B6&gt;&lt;U+30A4&gt;
-#&gt;   entity
-#&gt; 1   &lt;NA&gt;
-#&gt; 2   &lt;NA&gt;
-#&gt; 3   &lt;NA&gt;
-#&gt; 4   &lt;NA&gt;
-#&gt; 5   &lt;NA&gt;
-#&gt; 6   &lt;NA&gt;</div></pre>
+</div><div class='output co'>#&gt;   doc_id sentence_id chunk_id token_id                            token
+#&gt; 1      1           1        1        0                 &lt;U+3075&gt;&lt;U+3068&gt;
+#&gt; 2      1           1        2        1 &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;
+#&gt; 3      1           1        2        2                         &lt;U+3068&gt;
+#&gt; 4      1           1        2        3                         &lt;U+3001&gt;
+#&gt; 5      1           1        3        4 &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;
+#&gt; 6      1           1        3        5                         &lt;U+306E&gt;
+#&gt;   chunk_link chunk_score chunk_head chunk_func             POS1
+#&gt; 1          2    1.287564          1          0 &lt;U+526F&gt;&lt;U+8A5E&gt;
+#&gt; 2         37   -2.336376          2          2 &lt;U+52D5&gt;&lt;U+8A5E&gt;
+#&gt; 3         37   -2.336376          2          2 &lt;U+52A9&gt;&lt;U+8A5E&gt;
+#&gt; 4         37   -2.336376          2          2 &lt;U+8A18&gt;&lt;U+53F7&gt;
+#&gt; 5          4    1.927252          5          5 &lt;U+540D&gt;&lt;U+8A5E&gt;
+#&gt; 6          4    1.927252          5          5 &lt;U+52A9&gt;&lt;U+8A5E&gt;
+#&gt;                               POS2 POS3 POS4
+#&gt; 1                 &lt;U+4E00&gt;&lt;U+822C&gt; &lt;NA&gt; &lt;NA&gt;
+#&gt; 2                 &lt;U+81EA&gt;&lt;U+7ACB&gt; &lt;NA&gt; &lt;NA&gt;
+#&gt; 3 &lt;U+63A5&gt;&lt;U+7D9A&gt;&lt;U+52A9&gt;&lt;U+8A5E&gt; &lt;NA&gt; &lt;NA&gt;
+#&gt; 4                 &lt;U+8AAD&gt;&lt;U+70B9&gt; &lt;NA&gt; &lt;NA&gt;
+#&gt; 5 &lt;U+526F&gt;&lt;U+8A5E&gt;&lt;U+53EF&gt;&lt;U+80FD&gt; &lt;NA&gt; &lt;NA&gt;
+#&gt; 6         &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt; &lt;NA&gt; &lt;NA&gt;
+#&gt;                                                 X5StageUse1
+#&gt; 1                                                      &lt;NA&gt;
+#&gt; 2 &lt;U+4E94&gt;&lt;U+6BB5&gt;·&lt;U+30AB&gt;&lt;U+884C&gt;&lt;U+30A4&gt;&lt;U+97F3&gt;&lt;U+4FBF&gt;
+#&gt; 3                                                      &lt;NA&gt;
+#&gt; 4                                                      &lt;NA&gt;
+#&gt; 5                                                      &lt;NA&gt;
+#&gt; 6                                                      &lt;NA&gt;
+#&gt;                X5StageUse2                         Original
+#&gt; 1                     &lt;NA&gt;                 &lt;U+3075&gt;&lt;U+3068&gt;
+#&gt; 2 &lt;U+57FA&gt;&lt;U+672C&gt;&lt;U+5F62&gt; &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;
+#&gt; 3                     &lt;NA&gt;                         &lt;U+3068&gt;
+#&gt; 4                     &lt;NA&gt;                         &lt;U+3001&gt;
+#&gt; 5                     &lt;NA&gt; &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;
+#&gt; 6                     &lt;NA&gt;                         &lt;U+306E&gt;
+#&gt;                              Yomi1                            Yomi2 entity
+#&gt; 1                 &lt;U+30D5&gt;&lt;U+30C8&gt;                 &lt;U+30D5&gt;&lt;U+30C8&gt;   &lt;NA&gt;
+#&gt; 2 &lt;U+30D5&gt;&lt;U+30EA&gt;&lt;U+30E0&gt;&lt;U+30AF&gt; &lt;U+30D5&gt;&lt;U+30EA&gt;&lt;U+30E0&gt;&lt;U+30AF&gt;   &lt;NA&gt;
+#&gt; 3                         &lt;U+30C8&gt;                         &lt;U+30C8&gt;   &lt;NA&gt;
+#&gt; 4                         &lt;U+3001&gt;                         &lt;U+3001&gt;   &lt;NA&gt;
+#&gt; 5 &lt;U+30BF&gt;&lt;U+30AF&gt;&lt;U+30B5&gt;&lt;U+30F3&gt; &lt;U+30BF&gt;&lt;U+30AF&gt;&lt;U+30B5&gt;&lt;U+30F3&gt;   &lt;NA&gt;
+#&gt; 6                         &lt;U+30CE&gt;                         &lt;U+30CE&gt;   &lt;NA&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

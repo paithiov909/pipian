@@ -27,7 +27,6 @@ Imports:
     Rcpp,
     readr,
     rlang (>= 0.1.2),
-    rsyntax,
     stringi,
     tidyr
 Suggests:
