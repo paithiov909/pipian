@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-A tiny interface to CaboCha; a Japanese dependency structure parser. The main goal of pipian is to implement a parser for that XML output.
+A tiny interface to 'CaboCha'; a Japanese dependency structure parser. The main goal of this package is to implement a parser for that XML output.
 }
 \seealso{
 Useful links:

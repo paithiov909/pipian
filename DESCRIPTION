@@ -1,23 +1,20 @@
-Package: pipian
 Type: Package
+Package: pipian
 Title: Tiny Interface to CaboCha for R
 Version: 0.3.0
 Authors@R: c(
-    person("Akiru", "Kato", email = "paithiov909@gmail.com", role = c("aut", "cre")),
-    person("Marcin", "Kalicinski", comment = "Author of rapidxml", role = "aut"))
+    person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
+    person("Marcin", "Kalicinski", role = "aut", comment = "Author of rapidxml"))
 Maintainer: Akiru Kato <paithiov909@gmail.com>
-Description: A tiny interface to CaboCha; a Japanese dependency structure parser.
-    The main goal of pipian is to implement a parser for that XML output.
-Depends: R (>= 4.0.0)
-SystemRequirements: CaboCha, C++11
+Description: A tiny interface to 'CaboCha'; a Japanese dependency structure
+    parser. The main goal of this package is to implement a parser for that XML
+    output.
 License: MIT + file LICENSE
-URL: https://github.com/paithiov909/pipian, https://paithiov909.github.io/pipian/
-BugReports: https://github.com/paithiov909/pipian/issues 
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.2
-VignetteBuilder: knitr
-Language: en-US
+URL: https://github.com/paithiov909/pipian,
+    https://paithiov909.github.io/pipian/
+BugReports: https://github.com/paithiov909/pipian/issues
+Depends: 
+    R (>= 4.0.0)
 Imports: 
     dplyr,
     igraph,
@@ -30,12 +27,16 @@ Imports:
     stringi,
     tidyr
 Suggests:
-    roxygen2,
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0),
-    spelling
+    roxygen2,
+    spelling,
+    testthat (>= 3.0.0)
 LinkingTo: 
     Rcpp,
     RcppThread
+Encoding: UTF-8
+Language: en-US
+RoxygenNote: 7.1.2
+SystemRequirements: CaboCha, C++11
 Config/testthat/edition: 3

@@ -13,3 +13,5 @@
 ^mecab$
 ^pkgdown$
 ^cran-comments\.md$
+^CRAN-RELEASE$
+^LICENSE\.md$

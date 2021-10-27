@@ -6,9 +6,18 @@
 
 ## R CMD check results
 
-0 errors √ | 0 warnings √ | 1 note x
+'CaboCha' in DESCRIPTION is not a mis-spelled word. 
 
-* checking CRAN incoming feasibility ... NOTE
+> On ubuntu-gcc-release (r-release), debian-clang-devel (r-devel)
+  checking CRAN incoming feasibility ... NOTE
+  Maintainer: ‘Akiru Kato <paithiov909@gmail.com>’
+  
+  New submission
+  
+  Possibly mis-spelled words in DESCRIPTION:
+    CaboCha (3:26)
+
+0 errors √ | 0 warnings √ | 1 note x
 
 ## revdepcheck results
 
