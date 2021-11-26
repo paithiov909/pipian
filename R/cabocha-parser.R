@@ -67,8 +67,8 @@ ppn_make_graph <- function(df) {
       name = stringi::stri_join(.data$doc_id, .data$sentence_id, .data$chunk_id),
       from = stringi::stri_join(.data$doc_id, .data$sentence_id, .data$chunk_id),
       to = stringi::stri_join(.data$doc_id, .data$sentence_id, .data$chunk_link),
-      tokens = stringi::stri_c(.data$token, collapse = " "),
-      pos = stringi::stri_c(.data$POS1, collapse = ","),
+      tokens = stringi::stri_join(.data$token, collapse = " "),
+      pos = stringi::stri_join(.data$POS1, collapse = ","),
       score = .data$chunk_score
     ) %>%
     dplyr::ungroup() %>%

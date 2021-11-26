@@ -15,7 +15,7 @@ reset_encoding <- function(vec, enc = "UTF-8") {
 #' @keywords internal
 is_cabocha_available <- function() {
   wh <- Sys.which("cabocha")
-  return(!identical(purrr::set_names(wh, NULL), ""))
+  return(!identical(unname(wh), ""))
 }
 
 #' Pipe operator
