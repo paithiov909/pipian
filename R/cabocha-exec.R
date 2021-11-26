@@ -12,7 +12,7 @@
 #' ppn_cabocha(enc2utf8("\u96e8\u306b\u3082\u8ca0\u3051\u305a"))
 #' }
 ppn_cabocha <- function(text, rcpath = NULL) {
-  map_chr(stringi::stri_enc_toutf8(text), function(elem) {
+  purrr::map_chr(stringi::stri_enc_toutf8(text), function(elem) {
     data <- tempfile(fileext = ".xml")
     tmp_file_txt <- tempfile(fileext = ".txt")
 

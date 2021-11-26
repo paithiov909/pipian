@@ -19,7 +19,7 @@ ppn_parse_xml <- function(path,
                             "Yomi2"
                           )) {
   tokens <-
-    imap_dfr(path, function(.x, .y) {
+    purrr::imap_dfr(path, function(.x, .y) {
       df <- parse_xml(.x)
       if (rlang::is_empty(df)) {
         data.frame()
