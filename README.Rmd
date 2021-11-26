@@ -68,44 +68,6 @@ plot(
 )
 ```
 
-### Mimics of RMeCab functions
-
-#### Alternative of RMeCabC
-
-```{r gbs-c}
-sentence %>% 
-  pipian::ppn_cabocha() %>% 
-  pipian::ppn_parse_xml() %>% 
-  pipian::gbs_c()
-```
-
-#### Alternative of RMeCabFreq
-
-```{r gbs-freq}
-sentence %>% 
-  pipian::ppn_cabocha() %>% 
-  pipian::ppn_parse_xml() %>% 
-  pipian::gbs_freq()
-```
-
-#### Alternative of docDF family
-
-```{r gbs-dfm}
-sentence %>% 
-  pipian::ppn_cabocha() %>% 
-  pipian::ppn_parse_xml() %>% 
-  pipian::gbs_dfm()
-```
-
-#### Alternative of collocate family
-
-```{r gbs-col}
-sentence %>% 
-  pipian::ppn_cabocha() %>% 
-  pipian::ppn_parse_xml() %>% 
-  pipian::gbs_collocate()
-```
-
 ## License
 
 MIT license.

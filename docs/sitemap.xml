@@ -4,25 +4,10 @@
     <loc>https://paithiov909.github.io/pipian/index.html</loc>
   </url>
   <url>
-    <loc>https://paithiov909.github.io/pipian/reference/gbs_as_tokens.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/gbs_c.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/gbs_collocate.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/gbs_dfm.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/gbs_freq.html</loc>
-  </url>
-  <url>
-    <loc>https://paithiov909.github.io/pipian/reference/gibasa.html</loc>
-  </url>
-  <url>
     <loc>https://paithiov909.github.io/pipian/reference/is_cabocha_available.html</loc>
+  </url>
+  <url>
+    <loc>https://paithiov909.github.io/pipian/reference/ngram_tokenizer.html</loc>
   </url>
   <url>
     <loc>https://paithiov909.github.io/pipian/reference/pack.html</loc>

@@ -20,6 +20,6 @@ then return the paths to the temporary XML files.
 }
 \examples{
 \dontrun{
-  ppn_cabocha(enc2utf8("\u96e8\u306b\u3082\u8ca0\u3051\u305a"))
+ppn_cabocha(enc2utf8("\u96e8\u306b\u3082\u8ca0\u3051\u305a"))
 }
 }

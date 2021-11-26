@@ -18,8 +18,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Tiny Interface to CaboCha for R">
-<meta property="og:description" content="A tiny interface to CaboCha; a Japanese dependency structure parser.
-    The main goal of pipian is to implement a parser for that XML output.">
+<meta property="og:description" content="A tiny interface to CaboCha; a Japanese dependency structure
+    parser. The main goal of this package is to implement a parser for that XML
+    output.">
 <meta property="og:image" content="https://paithiov909.github.io/pipian/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -79,7 +80,7 @@
   <div class="contents col-md-9">
 <div id="pipian-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#pipian-" class="anchor"></a>pipian <a href="https://paithiov909.github.io/pipian"><img src="reference/figures/logo.png" align="right" height="139"></a>
+<a href="#pipian-" class="anchor"></a>pipian <a href="https://paithiov909.github.io/pipian/"><img src="reference/figures/logo.png" align="right" height="139"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -105,17 +106,17 @@
 <h3 class="hasAnchor">
 <a href="#cast-dependency-structure-as-an-igraph" class="anchor"></a>Cast dependency structure as an igraph</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence</span> <span class="op">&lt;-</span> <span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>
+<code class="sourceCode R"><span class="va">sentence</span> <span class="op">&lt;-</span> <span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>¥ãªã„ã¨æ°—ä»˜ã‘ãªã„è‡ªåˆ†ã‚’å¥®ã„ç«‹ãŸã›ãªãŒã‚‰ã‚‚ã€æ¯Žæ—¥ã“ã‚“ãªã€æ¹–ã®ã‚ˆã†ãªãªã‚“ã®å¼•ã£æŽ›ã‹ã‚Šã‚‚ãªã„ã€è½ã¡ã¤ãå€’ã—ã€éŸ³ä¸€ã¤ã‚‚æ„Ÿã˜ã•ã›ãªã„äººé–“ã§ã„ã‚Œã‚‹æ–¹ã«æ†§ã‚Œã‚’æŒã¦ãŸã¨ã‚ã‚‹25æ­³ã®çœ©ã—ãæœã®ã“ã¨ã§ã—ãŸ"
 
-<span class="va">g</span> <span class="op">&lt;-</span> <span class="va">sentence</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<span class="va">g</span> <span class="op">&lt;-</span> <span class="va">sentence</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> 
+  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/%&gt;%.html">%&gt;%</a></span> 
   <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_make_graph.html">ppn_make_graph</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span>
-<span class="co">#&gt; IGRAPH fe3809f DN-- 38 38 -- </span>
+<span class="co">#&gt; IGRAPH 570dd7c DN-- 38 38 -- </span>
 <span class="co">#&gt; + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)</span>
-<span class="co">#&gt; + edges from fe3809f (vertex names):</span>
+<span class="co">#&gt; + edges from 570dd7c (vertex names):</span>
 <span class="co">#&gt;  [1] 111 -&gt;112  112 -&gt;1137 113 -&gt;114  114 -&gt;115  115 -&gt;119  116 -&gt;118 </span>
 <span class="co">#&gt;  [7] 117 -&gt;118  118 -&gt;119  119 -&gt;1110 1110-&gt;1114 1111-&gt;1114 1112-&gt;1113</span>
 <span class="co">#&gt; [13] 1113-&gt;1114 1114-&gt;1118 1115-&gt;1116 1116-&gt;1117 1117-&gt;1118 1118-&gt;1132</span>
@@ -140,108 +141,6 @@
 <span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-deps-1.png" width="100%"></p>
 </div>
-<div id="mimics-of-rmecab-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mimics-of-rmecab-functions" class="anchor"></a>Mimics of RMeCab functions</h3>
-<div id="alternative-of-rmecabc" class="section level4">
-<h4 class="hasAnchor">
-<a href="#alternative-of-rmecabc" class="anchor"></a>Alternative of RMeCabC</h4>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_c.html">gbs_c</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt;         副詞         動詞         助詞         記号         名詞         助詞 </span>
-<span class="co">#&gt;       "ふと"   "振り向く"         "と"         "、"   "たくさん"         "の" </span>
-<span class="co">#&gt;         名詞         助詞         動詞         助詞         名詞         助詞 </span>
-<span class="co">#&gt;       "味方"         "が"         "い"         "て"   "たくさん"         "の" </span>
-<span class="co">#&gt;       形容詞         名詞         助詞         動詞         名詞         助詞 </span>
-<span class="co">#&gt;     "優しい"       "人間"         "が"       "いる"       "こと"         "を" </span>
-<span class="co">#&gt;         記号         副詞         名詞         助詞         名詞         名詞 </span>
-<span class="co">#&gt;         "、"   "わざわざ"       "自分"         "の"       "誕生"         "日" </span>
-<span class="co">#&gt;         助詞         動詞       助動詞         助詞         名詞       形容詞 </span>
-<span class="co">#&gt;         "が"         "来"       "ない"         "と"     "気付け"       "ない" </span>
-<span class="co">#&gt;         名詞         助詞         動詞         動詞         助詞         助詞 </span>
-<span class="co">#&gt;       "自分"         "を"   "奮い立た"         "せ"     "ながら"         "も" </span>
-<span class="co">#&gt;         記号         名詞       連体詞         記号         名詞         助詞 </span>
-<span class="co">#&gt;         "、"       "毎日"     "こんな"         "、"         "湖"         "の" </span>
-<span class="co">#&gt;         名詞       助動詞         名詞         助詞         名詞         助詞 </span>
-<span class="co">#&gt;       "よう"         "な"       "なん"         "の" "引っ掛かり"         "も" </span>
-<span class="co">#&gt;       形容詞         記号         名詞         動詞         記号         名詞 </span>
-<span class="co">#&gt;       "ない"         "、"   "落ちつき"       "倒し"         "、"         "音" </span>
-<span class="co">#&gt;         名詞         助詞         動詞         動詞       助動詞         名詞 </span>
-<span class="co">#&gt;       "一つ"         "も"       "感じ"       "させ"       "ない"       "人間" </span>
-<span class="co">#&gt;         助詞         動詞         名詞         助詞         動詞         助詞 </span>
-<span class="co">#&gt;         "で"     "いれる"         "方"         "に"       "憧れ"         "を" </span>
-<span class="co">#&gt;         動詞       助動詞       連体詞         名詞         名詞         助詞 </span>
-<span class="co">#&gt;       "持て"         "た"     "とある"         "25"         "歳"         "の" </span>
-<span class="co">#&gt;       形容詞         名詞         助詞         名詞       助動詞       助動詞 </span>
-<span class="co">#&gt;     "眩しき"         "朝"         "の"       "こと"       "でし"         "た" </span>
-<span class="co">#&gt;         ROOT </span>
-<span class="co">#&gt;        "EOS"</span></code></pre></div>
-</div>
-<div id="alternative-of-rmecabfreq" class="section level4">
-<h4 class="hasAnchor">
-<a href="#alternative-of-rmecabfreq" class="anchor"></a>Alternative of RMeCabFreq</h4>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_freq.html">gbs_freq</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 53 x 4</span>
-<span class="co">#&gt;    Term   Info1  Info2   Freq</span>
-<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;</span>
-<span class="co">#&gt;  1 、     記号   読点       6</span>
-<span class="co">#&gt;  2 25     名詞   数         1</span>
-<span class="co">#&gt;  3 い     動詞   自立       1</span>
-<span class="co">#&gt;  4 いる   動詞   自立       1</span>
-<span class="co">#&gt;  5 いれる 動詞   自立       1</span>
-<span class="co">#&gt;  6 が     助詞   格助詞     3</span>
-<span class="co">#&gt;  7 こと   名詞   非自立     2</span>
-<span class="co">#&gt;  8 こんな 連体詞 &lt;NA&gt;       1</span>
-<span class="co">#&gt;  9 させ   動詞   接尾       1</span>
-<span class="co">#&gt; 10 せ     動詞   接尾       1</span>
-<span class="co">#&gt; # ... with 43 more rows</span></code></pre></div>
-</div>
-<div id="alternative-of-docdf-family" class="section level4">
-<h4 class="hasAnchor">
-<a href="#alternative-of-docdf-family" class="anchor"></a>Alternative of docDF family</h4>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_dfm.html">gbs_dfm</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Document-feature matrix of: 1 document, 52 features (0.00% sparse) and 0 docvars.</span>
-<span class="co">#&gt;     features</span>
-<span class="co">#&gt; docs ふと 振り向く と 、 たくさん の 味方 が い て</span>
-<span class="co">#&gt;    1    1        1  2  6        2  7    1  3  1  1</span>
-<span class="co">#&gt; [ reached max_nfeat ... 42 more features ]</span></code></pre></div>
-</div>
-<div id="alternative-of-collocate-family" class="section level4">
-<h4 class="hasAnchor">
-<a href="#alternative-of-collocate-family" class="anchor"></a>Alternative of collocate family</h4>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/gbs_collocate.html">gbs_collocate</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Feature co-occurrence matrix of: 52 by 52 features.</span>
-<span class="co">#&gt;           features</span>
-<span class="co">#&gt; features   ふと 振り向く と 、 たくさん の 味方 が い て</span>
-<span class="co">#&gt;   ふと        0        1  2  6        2  7    1  3  1  1</span>
-<span class="co">#&gt;   振り向く    0        0  2  6        2  7    1  3  1  1</span>
-<span class="co">#&gt;   と          0        0  1 12        4 14    2  6  2  2</span>
-<span class="co">#&gt;   、          0        0  0 15       12 42    6 18  6  6</span>
-<span class="co">#&gt;   たくさん    0        0  0  0        1 14    2  6  2  2</span>
-<span class="co">#&gt;   の          0        0  0  0        0 21    7 21  7  7</span>
-<span class="co">#&gt;   味方        0        0  0  0        0  0    0  3  1  1</span>
-<span class="co">#&gt;   が          0        0  0  0        0  0    0  3  3  3</span>
-<span class="co">#&gt;   い          0        0  0  0        0  0    0  0  0  1</span>
-<span class="co">#&gt;   て          0        0  0  0        0  0    0  0  0  0</span>
-<span class="co">#&gt; [ reached max_feat ... 42 more features, reached max_nfeat ... 42 more features ]</span></code></pre></div>
-</div>
-</div>
 </div>
 <div id="license" class="section level2">
 <h2 class="hasAnchor">
@@ -258,16 +157,15 @@
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/paithiov909/pipian/">https://​github.com/​paithiov909/​pipian/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/paithiov909/pipian/issues%20">https://​github.com/​paithiov909/​pipian/​issues </a>
+<li>Report a bug at <br><a href="https://github.com/paithiov909/pipian/issues">https://​github.com/​paithiov909/​pipian/​issues</a>
 </li>
 </ul>
 </div>
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 <div class="developers">

@@ -152,49 +152,50 @@
     <p>A data.frame.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>ppn_parse_xml</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   doc_id sentence_id chunk_id token_id                            token
-#&gt; 1      1           1        1        0                 &lt;U+3075&gt;&lt;U+3068&gt;
-#&gt; 2      1           1        2        1 &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;
-#&gt; 3      1           1        2        2                         &lt;U+3068&gt;
-#&gt; 4      1           1        2        3                         &lt;U+3001&gt;
-#&gt; 5      1           1        3        4 &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;
-#&gt; 6      1           1        3        5                         &lt;U+306E&gt;
-#&gt;   chunk_link chunk_score chunk_head chunk_func             POS1
-#&gt; 1          2    1.287564          1          0 &lt;U+526F&gt;&lt;U+8A5E&gt;
-#&gt; 2         37   -2.336376          2          2 &lt;U+52D5&gt;&lt;U+8A5E&gt;
-#&gt; 3         37   -2.336376          2          2 &lt;U+52A9&gt;&lt;U+8A5E&gt;
-#&gt; 4         37   -2.336376          2          2 &lt;U+8A18&gt;&lt;U+53F7&gt;
-#&gt; 5          4    1.927252          5          5 &lt;U+540D&gt;&lt;U+8A5E&gt;
-#&gt; 6          4    1.927252          5          5 &lt;U+52A9&gt;&lt;U+8A5E&gt;
-#&gt;                               POS2 POS3 POS4
-#&gt; 1                 &lt;U+4E00&gt;&lt;U+822C&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; 2                 &lt;U+81EA&gt;&lt;U+7ACB&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; 3 &lt;U+63A5&gt;&lt;U+7D9A&gt;&lt;U+52A9&gt;&lt;U+8A5E&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; 4                 &lt;U+8AAD&gt;&lt;U+70B9&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; 5 &lt;U+526F&gt;&lt;U+8A5E&gt;&lt;U+53EF&gt;&lt;U+80FD&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt; 6         &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt; &lt;NA&gt; &lt;NA&gt;
-#&gt;                                                 X5StageUse1
-#&gt; 1                                                      &lt;NA&gt;
-#&gt; 2 &lt;U+4E94&gt;&lt;U+6BB5&gt;·&lt;U+30AB&gt;&lt;U+884C&gt;&lt;U+30A4&gt;&lt;U+97F3&gt;&lt;U+4FBF&gt;
-#&gt; 3                                                      &lt;NA&gt;
-#&gt; 4                                                      &lt;NA&gt;
-#&gt; 5                                                      &lt;NA&gt;
-#&gt; 6                                                      &lt;NA&gt;
-#&gt;                X5StageUse2                         Original
-#&gt; 1                     &lt;NA&gt;                 &lt;U+3075&gt;&lt;U+3068&gt;
-#&gt; 2 &lt;U+57FA&gt;&lt;U+672C&gt;&lt;U+5F62&gt; &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;
-#&gt; 3                     &lt;NA&gt;                         &lt;U+3068&gt;
-#&gt; 4                     &lt;NA&gt;                         &lt;U+3001&gt;
-#&gt; 5                     &lt;NA&gt; &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;
-#&gt; 6                     &lt;NA&gt;                         &lt;U+306E&gt;
-#&gt;                              Yomi1                            Yomi2 entity
-#&gt; 1                 &lt;U+30D5&gt;&lt;U+30C8&gt;                 &lt;U+30D5&gt;&lt;U+30C8&gt;   &lt;NA&gt;
-#&gt; 2 &lt;U+30D5&gt;&lt;U+30EA&gt;&lt;U+30E0&gt;&lt;U+30AF&gt; &lt;U+30D5&gt;&lt;U+30EA&gt;&lt;U+30E0&gt;&lt;U+30AF&gt;   &lt;NA&gt;
-#&gt; 3                         &lt;U+30C8&gt;                         &lt;U+30C8&gt;   &lt;NA&gt;
-#&gt; 4                         &lt;U+3001&gt;                         &lt;U+3001&gt;   &lt;NA&gt;
-#&gt; 5 &lt;U+30BF&gt;&lt;U+30AF&gt;&lt;U+30B5&gt;&lt;U+30F3&gt; &lt;U+30BF&gt;&lt;U+30AF&gt;&lt;U+30B5&gt;&lt;U+30F3&gt;   &lt;NA&gt;
-#&gt; 6                         &lt;U+30CE&gt;                         &lt;U+30CE&gt;   &lt;NA&gt;</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>ppn_parse_xml</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"sample.xml"</span>, package <span class='op'>=</span> <span class='st'>"pipian"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   doc_id sentence_id chunk_id token_id                            token</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1      1           1        1        0                 &lt;U+3075&gt;&lt;U+3068&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2      1           1        2        1 &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3      1           1        2        2                         &lt;U+3068&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4      1           1        2        3                         &lt;U+3001&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5      1           1        3        4 &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6      1           1        3        5                         &lt;U+306E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   chunk_link chunk_score chunk_head chunk_func             POS1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1          2    1.287564          1          0 &lt;U+526F&gt;&lt;U+8A5E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2         37   -2.336376          2          2 &lt;U+52D5&gt;&lt;U+8A5E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3         37   -2.336376          2          2 &lt;U+52A9&gt;&lt;U+8A5E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4         37   -2.336376          2          2 &lt;U+8A18&gt;&lt;U+53F7&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5          4    1.927252          5          5 &lt;U+540D&gt;&lt;U+8A5E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6          4    1.927252          5          5 &lt;U+52A9&gt;&lt;U+8A5E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                               POS2 POS3 POS4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                 &lt;U+4E00&gt;&lt;U+822C&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2                 &lt;U+81EA&gt;&lt;U+7ACB&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 &lt;U+63A5&gt;&lt;U+7D9A&gt;&lt;U+52A9&gt;&lt;U+8A5E&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4                 &lt;U+8AAD&gt;&lt;U+70B9&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 &lt;U+526F&gt;&lt;U+8A5E&gt;&lt;U+53EF&gt;&lt;U+80FD&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6         &lt;U+9023&gt;&lt;U+4F53&gt;&lt;U+5316&gt; &lt;NA&gt; &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                                                 X5StageUse1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                                                      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 &lt;U+4E94&gt;&lt;U+6BB5&gt;·&lt;U+30AB&gt;&lt;U+884C&gt;&lt;U+30A4&gt;&lt;U+97F3&gt;&lt;U+4FBF&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3                                                      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4                                                      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5                                                      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6                                                      &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                X5StageUse2                         Original</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                     &lt;NA&gt;                 &lt;U+3075&gt;&lt;U+3068&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 &lt;U+57FA&gt;&lt;U+672C&gt;&lt;U+5F62&gt; &lt;U+632F&gt;&lt;U+308A&gt;&lt;U+5411&gt;&lt;U+304F&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3                     &lt;NA&gt;                         &lt;U+3068&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4                     &lt;NA&gt;                         &lt;U+3001&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5                     &lt;NA&gt; &lt;U+305F&gt;&lt;U+304F&gt;&lt;U+3055&gt;&lt;U+3093&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6                     &lt;NA&gt;                         &lt;U+306E&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>                              Yomi1                            Yomi2 entity</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1                 &lt;U+30D5&gt;&lt;U+30C8&gt;                 &lt;U+30D5&gt;&lt;U+30C8&gt;   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 &lt;U+30D5&gt;&lt;U+30EA&gt;&lt;U+30E0&gt;&lt;U+30AF&gt; &lt;U+30D5&gt;&lt;U+30EA&gt;&lt;U+30E0&gt;&lt;U+30AF&gt;   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3                         &lt;U+30C8&gt;                         &lt;U+30C8&gt;   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4                         &lt;U+3001&gt;                         &lt;U+3001&gt;   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 &lt;U+30BF&gt;&lt;U+30AF&gt;&lt;U+30B5&gt;&lt;U+30F3&gt; &lt;U+30BF&gt;&lt;U+30AF&gt;&lt;U+30B5&gt;&lt;U+30F3&gt;   &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6                         &lt;U+30CE&gt;                         &lt;U+30CE&gt;   &lt;NA&gt;</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

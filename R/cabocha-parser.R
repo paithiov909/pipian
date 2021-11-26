@@ -78,7 +78,8 @@ ppn_make_graph <- function(df) {
       .data$to,
       .data$tokens,
       .data$pos,
-      .data$score) %>%
+      .data$score
+    ) %>%
     dplyr::distinct()
 
   g <- igraph::graph_from_data_frame(
