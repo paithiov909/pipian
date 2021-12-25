@@ -1,8 +1,8 @@
-pandoc: 2.14.0.3
-pkgdown: 1.6.1
+pandoc: 2.16.2
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-11-26T19:38Z
+last_built: 2021-12-25T03:08Z
 urls:
   reference: https://paithiov909.github.io/pipian/reference
   article: https://paithiov909.github.io/pipian/articles
