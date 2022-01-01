@@ -18,7 +18,7 @@ pkgload::load_all()
 
 <!-- badges: start -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![pipian status badge](https://paithiov909.r-universe.dev/badges/pipian)](https://paithiov909.r-universe.dev)
 [![R-CMD-check](https://github.com/paithiov909/pipian/actions/workflows/check.yml/badge.svg)](https://github.com/paithiov909/pipian/actions/workflows/check.yml)
 [![Codecov test coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://app.codecov.io/gh/paithiov909/pipian?branch=main)
 <!-- badges: end -->
