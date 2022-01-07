@@ -18,10 +18,22 @@
 
 ### インストール
 
-GitHubからインストールするため、Windowsでは[Rtools](https://cran.r-project.org/bin/windows/Rtools/)が必要です。
+GitHubからインストールする場合、Windowsでは[Rtools](https://cran.r-project.org/bin/windows/Rtools/)が必要です。
 
 ```r
 remotes::install_github("paithiov909/pipian")
+```
+
+自分でビルドしない場合、[R-universe](https://paithiov909.r-universe.dev/)からバイナリパッケージをインストールすることもできます。
+
+```r
+# Enable universe(s) by paithiov909
+options(repos = c(
+    paithiov909 = "https://paithiov909.r-universe.dev",
+    CRAN = "https://cloud.r-project.org"))
+
+# Install some packages
+install.packages("pipian")
 ```
 
 ### 係り受け構造のグラフ化
