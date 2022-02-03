@@ -18,7 +18,7 @@ ppn_cabocha <- function(text, rcpath = NULL) {
 
     readr::write_lines(elem, tmp_file_txt)
 
-    if (!missing(rcpath)) {
+    if (!is.null(rcpath)) {
       processx::run(
         "cabocha",
         args = c(
