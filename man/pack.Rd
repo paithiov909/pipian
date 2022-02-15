@@ -4,15 +4,15 @@
 \alias{pack}
 \title{Pack prettified data.frame of tokens}
 \usage{
-pack(df, n = 1L, pull = "token", sep = "_", .collapse = " ")
+pack(df, n = 1L, pull = "token", sep = "-", .collapse = " ")
 }
 \arguments{
 \item{df}{A prettified data.frame of tokens.}
 
 \item{n}{Integer internally passed to ngrams tokenizer function
-created of \code{pipian::ngram_tokenizer()}}
+created of \code{audubon::ngram_tokenizer()}}
 
-\item{pull}{Column to be packed into text or ngrams body. Default value is `token`.}
+\item{pull}{Column to be packed into text or ngrams body. Default value is \code{token}.}
 
 \item{sep}{Character scalar internally used as the concatenator of ngrams.}
 
@@ -28,26 +28,26 @@ which is compatible with the Text Interchange Formats.
 \section{Text Interchange Formats (TIF)}{
 
 
+
 The Text Interchange Formats (TIF) is a set of standards
 that allows R text analysis packages to target defined inputs and outputs
 for corpora, tokens, and document-term matrices.
+
 }
 
 \section{Valid data.frame of tokens}{
 
 
+
 The prettified data.frame of tokens here is a data.frame object
 compatible with the TIF.
 
-A TIF valid data.frame of tokens are expected to have one unique key column (named `doc_id`)
+A TIF valid data.frame of tokens are expected to have one unique key column (named \code{doc_id})
 of each text and several feature columns of each tokens.
-The feature columns must contain at least `token` itself.
+The feature columns must contain at least \code{token} itself.
+
 }
 
-\examples{
-xml <- ppn_parse_xml(system.file("sample.xml", package = "pipian"))
-head(pack(xml))
-}
 \seealso{
 \url{https://github.com/ropensci/tif}
 }

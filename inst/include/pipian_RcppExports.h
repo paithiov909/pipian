@@ -4,6 +4,7 @@
 #ifndef RCPP_pipian_RCPPEXPORTS_H_GEN_
 #define RCPP_pipian_RCPPEXPORTS_H_GEN_
 
+#include <RcppThread.h>
 #include <Rcpp.h>
 
 namespace pipian {

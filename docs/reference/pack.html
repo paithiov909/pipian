@@ -12,14 +12,14 @@ which is compatible with the Text Interchange Formats."><meta property="og:image
     
     <a class="navbar-brand me-2" href="../index.html">pipian</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
@@ -54,7 +54,7 @@ which is compatible with the Text Interchange Formats.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pack</span><span class="op">(</span><span class="va">df</span>, n <span class="op">=</span> <span class="fl">1L</span>, pull <span class="op">=</span> <span class="st">"token"</span>, sep <span class="op">=</span> <span class="st">"_"</span>, .collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pack</span><span class="op">(</span><span class="va">df</span>, n <span class="op">=</span> <span class="fl">1L</span>, pull <span class="op">=</span> <span class="st">"token"</span>, sep <span class="op">=</span> <span class="st">"-"</span>, .collapse <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -63,9 +63,9 @@ which is compatible with the Text Interchange Formats.</p>
 <dd><p>A prettified data.frame of tokens.</p></dd>
 <dt>n</dt>
 <dd><p>Integer internally passed to ngrams tokenizer function
-created of <code><a href="ngram_tokenizer.html">pipian::ngram_tokenizer()</a></code></p></dd>
+created of <code><a href="https://paithiov909.github.io/audubon/reference/ngram_tokenizer.html" class="external-link">audubon::ngram_tokenizer()</a></code></p></dd>
 <dt>pull</dt>
-<dd><p>Column to be packed into text or ngrams body. Default value is `token`.</p></dd>
+<dd><p>Column to be packed into text or ngrams body. Default value is <code>token</code>.</p></dd>
 <dt>sep</dt>
 <dd><p>Character scalar internally used as the concatenator of ngrams.</p></dd>
 <dt>.collapse</dt>
@@ -80,6 +80,7 @@ created of <code><a href="ngram_tokenizer.html">pipian::ngram_tokenizer()</a></c
     
 
 
+
 <p>The Text Interchange Formats (TIF) is a set of standards
 that allows R text analysis packages to target defined inputs and outputs
 for corpora, tokens, and document-term matrices.</p>
@@ -89,27 +90,18 @@ for corpora, tokens, and document-term matrices.</p>
     
 
 
+
 <p>The prettified data.frame of tokens here is a data.frame object
 compatible with the TIF.</p>
-<p>A TIF valid data.frame of tokens are expected to have one unique key column (named `doc_id`)
+<p>A TIF valid data.frame of tokens are expected to have one unique key column (named <code>doc_id</code>)
 of each text and several feature columns of each tokens.
-The feature columns must contain at least `token` itself.</p>
+The feature columns must contain at least <code>token</code> itself.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><a href="https://github.com/ropensci/tif" class="external-link">https://github.com/ropensci/tif</a></p></div>
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"sample.xml"</span>, package <span class="op">=</span> <span class="st">"pipian"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">pack</span><span class="op">(</span><span class="va">xml</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   doc_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                                                                                                                                                                                                                                                                                                                text</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 ふと 振り向く と 、 たくさん の 味方 が い て たくさん の 優しい 人間 が いる こと を 、 わざわざ 自分 の 誕生 日 が 来 ない と 気付け ない 自分 を 奮い立た せ ながら も 、 毎日 こんな 、 湖 の よう な なん の 引っ掛かり も ない 、 落ちつき 倒し 、 音 一つ も 感じ させ ない 人間 で いれる 方 に 憧れ を 持て た とある 25 歳 の 眩しき 朝 の こと でし た</span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
@@ -119,7 +111,7 @@ The feature columns must contain at least `token` itself.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer></div>

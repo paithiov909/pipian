@@ -1,14 +1,16 @@
 Type: Package
 Package: pipian
 Title: Tiny Interface to CaboCha for R
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
-    person("Marcin", "Kalicinski", role = "aut", comment = "Author of rapidxml"))
+    person("Marcin", "Kalicinski", role = "aut",
+           comment = "Author of rapidxml")
+  )
 Maintainer: Akiru Kato <paithiov909@gmail.com>
-Description: A tiny interface to 'CaboCha'; a Japanese dependency structure
-    parser. The main goal of this package is to implement a parser for that XML
-    output.
+Description: A tiny interface to 'CaboCha'; a Japanese dependency
+    structure parser. The main goal of this package is to implement a
+    parser for that XML output.
 License: MIT + file LICENSE
 URL: https://github.com/paithiov909/pipian,
     https://paithiov909.github.io/pipian/
@@ -16,6 +18,7 @@ BugReports: https://github.com/paithiov909/pipian/issues
 Depends: 
     R (>= 4.0.0)
 Imports: 
+    audubon,
     dplyr,
     igraph,
     processx,
@@ -34,8 +37,8 @@ Suggests:
 LinkingTo: 
     Rcpp,
     RcppThread
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 RoxygenNote: 7.1.2
 SystemRequirements: CaboCha, C++11
-Config/testthat/edition: 3
