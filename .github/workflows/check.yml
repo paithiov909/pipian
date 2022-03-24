@@ -41,7 +41,6 @@ jobs:
           cd ../
           git clone --depth 1 https://github.com/paithiov909/cabocha.git
           cd cabocha/
-          git checkout patch
           ./configure --with-charset=UTF8 --enable-utf8-only
           make
           make check
