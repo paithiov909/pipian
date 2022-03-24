@@ -28,7 +28,7 @@ jobs:
       - name: Install libraries
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: |
-          sudo apt install libcurl4-openssl-dev libglpk-dev
+          sudo apt install libcurl4-openssl-dev libglpk-dev shtool
           sudo apt install mecab libmecab-dev mecab-ipadic-utf8
           sudo ldconfig
           echo `mecab-config --libexecdir` >> $GITHUB_PATH
