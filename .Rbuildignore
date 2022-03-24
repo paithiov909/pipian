@@ -8,8 +8,8 @@
 ^docs$
 ^codecov\.yml$
 ^README\.Rmd$
-^CRF\+\+\-0\.58$
-^cabocha\-0\.69$
+^crfpp$
+^cabocha$
 ^mecab$
 ^pkgdown$
 ^cran-comments\.md$

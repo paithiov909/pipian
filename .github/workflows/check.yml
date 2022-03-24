@@ -32,14 +32,14 @@ jobs:
           sudo apt install mecab libmecab-dev mecab-ipadic-utf8
           sudo ldconfig
           echo `mecab-config --libexecdir` >> $GITHUB_PATH
-          git clone https://github.com/LonghronShen/crfpp.git
+          git clone --depth 1 https://github.com/paithiov909/crfpp.git
           cd crfpp/
           ./configure
           make
           sudo make install
           sudo ldconfig
           cd ../
-          git clone https://github.com/humem/cabocha.git
+          git clone --depth 1 https://github.com/paithiov909/cabocha.git
           cd cabocha/
           git checkout patch
           ./configure --with-charset=UTF8 --enable-utf8-only
