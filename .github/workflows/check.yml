@@ -28,13 +28,12 @@ jobs:
       - name: Install libraries
         if: ${{ matrix.platform == 'ubuntu-latest' }}
         run: |
-          sudo apt install libcurl4-openssl-dev libglpk-dev shtool
+          sudo apt install libcurl4-openssl-dev libglpk-dev
           sudo apt install mecab libmecab-dev mecab-ipadic-utf8
           sudo ldconfig
           echo `mecab-config --libexecdir` >> $GITHUB_PATH
-          wget "https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ" -O CRF++-0.58.tar.gz
-          tar -zxvf CRF++-0.58.tar.gz CRF++-0.58/
-          cd CRF++-0.58/
+          git clone https://github.com/LonghronShen/crfpp.git
+          cd crfpp/
           ./configure
           make
           sudo make install
