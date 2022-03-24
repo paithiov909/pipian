@@ -40,8 +40,9 @@ jobs:
           sudo make install
           sudo ldconfig
           cd ../
-          git clone --depth 1 https://github.com/taku910/cabocha.git
+          git clone https://github.com/humem/cabocha.git
           cd cabocha/
+          git checkout patch
           ./configure --with-charset=UTF8 --enable-utf8-only
           make
           make check
