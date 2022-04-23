@@ -27,7 +27,8 @@ Imports:
     readr,
     rlang (>= 0.1.2),
     stringi,
-    tidyr
+    tidyselect,
+    utils
 Suggests:
     knitr,
     rmarkdown,

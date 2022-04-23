@@ -7,7 +7,8 @@
 
 [![GitHub last
 commit](https://img.shields.io/github/last-commit/paithiov909/pipian)](#)
-[![pipian status badge](https://paithiov909.r-universe.dev/badges/pipian)](https://paithiov909.r-universe.dev)
+[![pipian status
+badge](https://paithiov909.r-universe.dev/badges/pipian)](https://paithiov909.r-universe.dev)
 [![R-CMD-check](https://github.com/paithiov909/pipian/actions/workflows/check.yml/badge.svg)](https://github.com/paithiov909/pipian/actions/workflows/check.yml)
 [![Codecov test
 coverage](https://codecov.io/gh/paithiov909/pipian/branch/main/graph/badge.svg)](https://app.codecov.io/gh/paithiov909/pipian?branch=main)
@@ -48,28 +49,28 @@ head(df)
 #> 4      1           1        2        3       、         37   -2.336376
 #> 5      1           1        3        4 たくさん          4    1.927252
 #> 6      1           1        3        5       の          4    1.927252
-#>   chunk_head chunk_func POS1     POS2 POS3 POS4      X5StageUse1 X5StageUse2
-#> 1          1          0 副詞     一般 <NA> <NA>             <NA>        <NA>
-#> 2          2          2 動詞     自立 <NA> <NA> 五段・カ行イ音便      基本形
-#> 3          2          2 助詞 接続助詞 <NA> <NA>             <NA>        <NA>
-#> 4          2          2 記号     読点 <NA> <NA>             <NA>        <NA>
-#> 5          5          5 名詞 副詞可能 <NA> <NA>             <NA>        <NA>
-#> 6          5          5 助詞   連体化 <NA> <NA>             <NA>        <NA>
-#>   Original    Yomi1    Yomi2 entity
-#> 1     ふと     フト     フト   <NA>
-#> 2 振り向く フリムク フリムク   <NA>
-#> 3       と       ト       ト   <NA>
-#> 4       、       、       、   <NA>
-#> 5 たくさん タクサン タクサン   <NA>
-#> 6       の       ノ       ノ   <NA>
+#>   chunk_head chunk_func entity POS1     POS2 POS3 POS4      X5StageUse1
+#> 1          1          0   <NA> 副詞     一般 <NA> <NA>             <NA>
+#> 2          2          2   <NA> 動詞     自立 <NA> <NA> 五段・カ行イ音便
+#> 3          2          2   <NA> 助詞 接続助詞 <NA> <NA>             <NA>
+#> 4          2          2   <NA> 記号     読点 <NA> <NA>             <NA>
+#> 5          5          5   <NA> 名詞 副詞可能 <NA> <NA>             <NA>
+#> 6          5          5   <NA> 助詞   連体化 <NA> <NA>             <NA>
+#>   X5StageUse2 Original    Yomi1    Yomi2
+#> 1        <NA>     ふと     フト     フト
+#> 2      基本形 振り向く フリムク フリムク
+#> 3        <NA>       と       ト       ト
+#> 4        <NA>       、       、       、
+#> 5        <NA> たくさん タクサン タクサン
+#> 6        <NA>       の       ノ       ノ
 
 g <- df %>% 
   pipian::ppn_make_graph()
 
 print(g)
-#> IGRAPH d102f78 DN-- 38 38 -- 
+#> IGRAPH e1fa649 DN-- 38 38 -- 
 #> + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)
-#> + edges from d102f78 (vertex names):
+#> + edges from e1fa649 (vertex names):
 #>  [1] 111 ->112  112 ->1137 113 ->114  114 ->115  115 ->119  116 ->118 
 #>  [7] 117 ->118  118 ->119  119 ->1110 1110->1114 1111->1114 1112->1113
 #> [13] 1113->1114 1114->1118 1115->1116 1116->1117 1117->1118 1118->1132

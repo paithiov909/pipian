@@ -7,13 +7,17 @@
 ppn_parse_xml(
   path,
   into = c("POS1", "POS2", "POS3", "POS4", "X5StageUse1", "X5StageUse2", "Original",
-    "Yomi1", "Yomi2")
+    "Yomi1", "Yomi2"),
+  col_select = seq_along(into)
 )
 }
 \arguments{
 \item{path}{String; output from \code{pipian::ppn_cabocha}.}
 
-\item{into}{Character vector; the feature names of output.}
+\item{into}{Character vector; feature names of output.}
+
+\item{col_select}{Character or integer vector; features that will be kept
+in the result.}
 }
 \value{
 A data.frame.

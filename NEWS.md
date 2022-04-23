@@ -1,8 +1,13 @@
+# pipian 0.3.2
+
+* Updated `ppn_parse_xml`. `ppn_parse_xml` now retrieves `col_select` argument
+that can control features to be parsed.
+
 # pipian 0.3.1
 
-* Update `pack` function call.
+* Updated `pack` function call.
 
 # pipian 0.3.0
 
 * Added a `NEWS.md` file to track changes to the package.
-* Refine the package structure.
+* Refined the package structure.

@@ -1,7 +1,9 @@
 #' Parse XML output of CaboCha
 #'
 #' @param path String; output from \code{pipian::ppn_cabocha}.
-#' @param into Character vector; the feature names of output.
+#' @param into Character vector; feature names of output.
+#' @param col_select Character or integer vector; features that will be kept
+#' in the result.
 #' @returns A data.frame.
 #' @export
 #' @examples
@@ -17,13 +19,39 @@ ppn_parse_xml <- function(path,
                             "Original",
                             "Yomi1",
                             "Yomi2"
-                          )) {
+                          ),
+                          col_select = seq_along(into)) {
+  if (is.numeric(col_select) && max(col_select) <= length(into)) {
+    col_select <- which(seq_along(into) %in% col_select, arr.ind = TRUE)
+  } else {
+    col_select <- which(into %in% col_select, arr.ind = TRUE)
+  }
+  if (rlang::is_empty(col_select)) {
+    rlang::abort("Invalid columns have been selected.")
+  }
   tokens <-
     purrr::imap_dfr(path, function(.x, .y) {
       df <- parse_xml(.x)
       if (rlang::is_empty(df)) {
         data.frame()
       } else {
+        suppressWarnings({
+          ## ignore warnings when there are missing columns.
+          features <-
+            c(
+              stringi::stri_c(into, collapse = ","),
+              dplyr::pull(df, "token_feature")
+            ) %>%
+            stringi::stri_c(collapse = "\n") %>%
+            I() %>%
+            readr::read_csv(
+              col_types = stringi::stri_c(rep("c", length(into)), collapse = ""),
+              col_select = tidyselect::all_of(col_select),
+              na = c("*"),
+              progress = FALSE,
+              show_col_types = FALSE
+            )
+        })
         df %>%
           dplyr::mutate(
             doc_id = .y,
@@ -35,16 +63,10 @@ ppn_parse_xml <- function(path,
             chunk_score = as.numeric(.data$chunk_score),
             chunk_head = as.integer(.data$chunk_head) + 1L,
             chunk_func = as.integer(.data$chunk_func),
-            token_feature = reset_encoding(.data$token_feature),
             token_entity = dplyr::na_if(reset_encoding(.data$token_entity), "O")
           ) %>%
-          tidyr::separate(
-            .data$token_feature,
-            into = into,
-            sep = ",",
-            fill = "right"
-          ) %>%
-          dplyr::mutate_if(is.character, ~ dplyr::na_if(., "*")) %>%
+          dplyr::select(!.data$token_feature) %>%
+          dplyr::bind_cols(features) %>%
           dplyr::rename(entity = .data$token_entity) %>%
           dplyr::relocate(.data$doc_id, dplyr::everything())
       }

@@ -6,6 +6,9 @@
 #' @keywords internal
 "_PACKAGE"
 
+#' @importFrom utils globalVariables
+utils::globalVariables("where")
+
 #' @noRd
 #' @param libpath libpath
 .onUnload <- function(libpath) {
