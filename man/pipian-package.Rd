@@ -6,7 +6,7 @@
 \alias{pipian-package}
 \title{pipian: Tiny Interface to CaboCha for R}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 A tiny interface to 'CaboCha'; a Japanese dependency structure parser. The main goal of this package is to implement a parser for that XML output.
 }

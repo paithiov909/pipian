@@ -1,3 +1,8 @@
+# pipian 0.3.4
+
+* Dropped `processx` dependency.
+* Updated `ppn_cabocha`.
+
 # pipian 0.3.3
 
 * Updated `ppn_parse_xml`. `ppn_parse_xml` now retrieves `col_select` argument

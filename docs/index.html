@@ -37,7 +37,7 @@
     
     <a class="navbar-brand me-2" href="index.html">pipian</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,16 +73,13 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="pipian-">pipian
-
+<img src="logo.png" class="logo" alt=""><h1 id="pipian-">pipian 
 <a class="anchor" aria-label="anchor" href="#pipian-"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
-<p>pipian is a tiny interface to <a href="https://taku910.github.io/cabocha/" class="external-link">CaboCha</a>; a Japanese
-dependency structure parser. The main goal of pipian is to implement a
-parser for that XML output.</p>
+<p>pipian is a tiny interface to <a href="https://taku910.github.io/cabocha/" class="external-link">CaboCha</a>; a Japanese dependency structure parser. The main goal of pipian is to implement a parser for that XML output.</p>
 <div class="section level2">
 <h2 id="system-requirements">System Requirements<a class="anchor" aria-label="anchor" href="#system-requirements"></a>
 </h2>
@@ -98,70 +95,70 @@ parser for that XML output.</p>
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"paithiov909/pipian"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"paithiov909/pipian"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="cast-dependency-structure-as-an-igraph">Cast dependency structure as an igraph<a class="anchor" aria-label="anchor" href="#cast-dependency-structure-as-an-igraph"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sentence</span> <span class="op">&lt;-</span> <span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span>
-
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">sentence</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
-<span class="co">#&gt;   doc_id sentence_id chunk_id token_id    token chunk_link chunk_score</span>
-<span class="co">#&gt; 1      1           1        1        0     ふと          2    1.287564</span>
-<span class="co">#&gt; 2      1           1        2        1 振り向く         37   -2.336376</span>
-<span class="co">#&gt; 3      1           1        2        2       と         37   -2.336376</span>
-<span class="co">#&gt; 4      1           1        2        3       、         37   -2.336376</span>
-<span class="co">#&gt; 5      1           1        3        4 たくさん          4    1.927252</span>
-<span class="co">#&gt; 6      1           1        3        5       の          4    1.927252</span>
-<span class="co">#&gt;   chunk_head chunk_func entity POS1     POS2 POS3 POS4      X5StageUse1</span>
-<span class="co">#&gt; 1          1          0   &lt;NA&gt; 副詞     一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span>
-<span class="co">#&gt; 2          2          2   &lt;NA&gt; 動詞     自立 &lt;NA&gt; &lt;NA&gt; 五段・カ行イ音便</span>
-<span class="co">#&gt; 3          2          2   &lt;NA&gt; 助詞 接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span>
-<span class="co">#&gt; 4          2          2   &lt;NA&gt; 記号     読点 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span>
-<span class="co">#&gt; 5          5          5   &lt;NA&gt; 名詞 副詞可能 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span>
-<span class="co">#&gt; 6          5          5   &lt;NA&gt; 助詞   連体化 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span>
-<span class="co">#&gt;   X5StageUse2 Original    Yomi1    Yomi2</span>
-<span class="co">#&gt; 1        &lt;NA&gt;     ふと     フト     フト</span>
-<span class="co">#&gt; 2      基本形 振り向く フリムク フリムク</span>
-<span class="co">#&gt; 3        &lt;NA&gt;       と       ト       ト</span>
-<span class="co">#&gt; 4        &lt;NA&gt;       、       、       、</span>
-<span class="co">#&gt; 5        &lt;NA&gt; たくさん タクサン タクサン</span>
-<span class="co">#&gt; 6        &lt;NA&gt;       の       ノ       ノ</span>
-
-<span class="va">g</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_make_graph.html">ppn_make_graph</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span>
-<span class="co">#&gt; IGRAPH e1fa649 DN-- 38 38 -- </span>
-<span class="co">#&gt; + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)</span>
-<span class="co">#&gt; + edges from e1fa649 (vertex names):</span>
-<span class="co">#&gt;  [1] 111 -&gt;112  112 -&gt;1137 113 -&gt;114  114 -&gt;115  115 -&gt;119  116 -&gt;118 </span>
-<span class="co">#&gt;  [7] 117 -&gt;118  118 -&gt;119  119 -&gt;1110 1110-&gt;1114 1111-&gt;1114 1112-&gt;1113</span>
-<span class="co">#&gt; [13] 1113-&gt;1114 1114-&gt;1118 1115-&gt;1116 1116-&gt;1117 1117-&gt;1118 1118-&gt;1132</span>
-<span class="co">#&gt; [19] 1119-&gt;1120 1120-&gt;1130 1121-&gt;1122 1122-&gt;1123 1123-&gt;1124 1124-&gt;1130</span>
-<span class="co">#&gt; [25] 1125-&gt;1127 1126-&gt;1127 1127-&gt;1128 1128-&gt;1129 1129-&gt;1130 1130-&gt;1132</span>
-<span class="co">#&gt; [31] 1131-&gt;1132 1132-&gt;1136 1133-&gt;1134 1134-&gt;1136 1135-&gt;1136 1136-&gt;1137</span>
-<span class="co">#&gt; [37] 1137-&gt;110  110 -&gt;110</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sentence</span> <span class="op">&lt;-</span> <span class="st">"ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">sentence</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_cabocha.html">ppn_cabocha</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_parse_xml.html">ppn_parse_xml</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   doc_id sentence_id chunk_id token_id    token chunk_link chunk_score</span></span>
+<span><span class="co">#&gt; 1      1           1        1        0     ふと          2    1.287564</span></span>
+<span><span class="co">#&gt; 2      1           1        2        1 振り向く         37   -2.336376</span></span>
+<span><span class="co">#&gt; 3      1           1        2        2       と         37   -2.336376</span></span>
+<span><span class="co">#&gt; 4      1           1        2        3       、         37   -2.336376</span></span>
+<span><span class="co">#&gt; 5      1           1        3        4 たくさん          4    1.927252</span></span>
+<span><span class="co">#&gt; 6      1           1        3        5       の          4    1.927252</span></span>
+<span><span class="co">#&gt;   chunk_head chunk_func entity POS1     POS2 POS3 POS4      X5StageUse1</span></span>
+<span><span class="co">#&gt; 1          1          0   &lt;NA&gt; 副詞     一般 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2          2          2   &lt;NA&gt; 動詞     自立 &lt;NA&gt; &lt;NA&gt; 五段・カ行イ音便</span></span>
+<span><span class="co">#&gt; 3          2          2   &lt;NA&gt; 助詞 接続助詞 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4          2          2   &lt;NA&gt; 記号     読点 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 5          5          5   &lt;NA&gt; 名詞 副詞可能 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 6          5          5   &lt;NA&gt; 助詞   連体化 &lt;NA&gt; &lt;NA&gt;             &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;   X5StageUse2 Original    Yomi1    Yomi2</span></span>
+<span><span class="co">#&gt; 1        &lt;NA&gt;     ふと     フト     フト</span></span>
+<span><span class="co">#&gt; 2      基本形 振り向く フリムク フリムク</span></span>
+<span><span class="co">#&gt; 3        &lt;NA&gt;       と       ト       ト</span></span>
+<span><span class="co">#&gt; 4        &lt;NA&gt;       、       、       、</span></span>
+<span><span class="co">#&gt; 5        &lt;NA&gt; たくさん タクサン タクサン</span></span>
+<span><span class="co">#&gt; 6        &lt;NA&gt;       の       ノ       ノ</span></span>
+<span></span>
+<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">pipian</span><span class="fu">::</span><span class="fu"><a href="reference/ppn_make_graph.html">ppn_make_graph</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span>
+<span><span class="co">#&gt; IGRAPH e1fa649 DN-- 38 38 -- </span></span>
+<span><span class="co">#&gt; + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)</span></span>
+<span><span class="co">#&gt; + edges from e1fa649 (vertex names):</span></span>
+<span><span class="co">#&gt;  [1] 111 -&gt;112  112 -&gt;1137 113 -&gt;114  114 -&gt;115  115 -&gt;119  116 -&gt;118 </span></span>
+<span><span class="co">#&gt;  [7] 117 -&gt;118  118 -&gt;119  119 -&gt;1110 1110-&gt;1114 1111-&gt;1114 1112-&gt;1113</span></span>
+<span><span class="co">#&gt; [13] 1113-&gt;1114 1114-&gt;1118 1115-&gt;1116 1116-&gt;1117 1117-&gt;1118 1118-&gt;1132</span></span>
+<span><span class="co">#&gt; [19] 1119-&gt;1120 1120-&gt;1130 1121-&gt;1122 1122-&gt;1123 1123-&gt;1124 1124-&gt;1130</span></span>
+<span><span class="co">#&gt; [25] 1125-&gt;1127 1126-&gt;1127 1127-&gt;1128 1128-&gt;1129 1129-&gt;1130 1130-&gt;1132</span></span>
+<span><span class="co">#&gt; [31] 1131-&gt;1132 1132-&gt;1136 1133-&gt;1134 1134-&gt;1136 1135-&gt;1136 1136-&gt;1137</span></span>
+<span><span class="co">#&gt; [37] 1137-&gt;110  110 -&gt;110</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pagerank</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/page_rank.html" class="external-link">page.rank</a></span><span class="op">(</span><span class="va">g</span>, directed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span>
-  <span class="va">g</span>,
-  vertex.size <span class="op">=</span> <span class="va">pagerank</span><span class="op">$</span><span class="va">vector</span> <span class="op">*</span> <span class="fl">50</span>,
-  vertex.color <span class="op">=</span> <span class="st">"steelblue"</span>,
-  vertex.label <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/V.html" class="external-link">V</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span><span class="op">$</span><span class="va">tokens</span>,
-  vertex.label.cex <span class="op">=</span> <span class="fl">0.8</span>,
-  vertex.label.color <span class="op">=</span> <span class="st">"black"</span>,
-  edge.width <span class="op">=</span> <span class="fl">0.4</span>,
-  edge.arrow.size <span class="op">=</span> <span class="fl">0.4</span>,
-  edge.color <span class="op">=</span> <span class="st">"gray80"</span>,
-  layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/layout_as_tree.html" class="external-link">layout_as_tree</a></span><span class="op">(</span><span class="va">g</span>, mode <span class="op">=</span> <span class="st">"in"</span>, flip.y <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">pagerank</span> <span class="op">&lt;-</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/page_rank.html" class="external-link">page.rank</a></span><span class="op">(</span><span class="va">g</span>, directed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">g</span>,</span>
+<span>  vertex.size <span class="op">=</span> <span class="va">pagerank</span><span class="op">$</span><span class="va">vector</span> <span class="op">*</span> <span class="fl">50</span>,</span>
+<span>  vertex.color <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>  vertex.label <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/V.html" class="external-link">V</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span><span class="op">$</span><span class="va">tokens</span>,</span>
+<span>  vertex.label.cex <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>  vertex.label.color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>  edge.width <span class="op">=</span> <span class="fl">0.4</span>,</span>
+<span>  edge.arrow.size <span class="op">=</span> <span class="fl">0.4</span>,</span>
+<span>  edge.color <span class="op">=</span> <span class="st">"gray80"</span>,</span>
+<span>  layout <span class="op">=</span> <span class="fu">igraph</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/igraph/man/layout_as_tree.html" class="external-link">layout_as_tree</a></span><span class="op">(</span><span class="va">g</span>, mode <span class="op">=</span> <span class="st">"in"</span>, flip.y <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-deps-1.png" width="100%"></p>
 </div>
 </div>
@@ -226,8 +223,7 @@ parser for that XML output.</p>
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>

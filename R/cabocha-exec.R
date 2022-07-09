@@ -1,6 +1,6 @@
 #' Execute cabocha command
 #'
-#' Execute `cabocha -f3 -n1` command using \code{processx::run},
+#' Execute `cabocha -f3 -n1` command using \code{system2},
 #' then return the paths to the temporary XML files.
 #'
 #' @param text A character vector to be parsed with CaboCha.
@@ -12,14 +12,15 @@
 #' ppn_cabocha(enc2utf8("\u96e8\u306b\u3082\u8ca0\u3051\u305a"))
 #' }
 ppn_cabocha <- function(text, rcpath = NULL) {
+  tmp_file_txt <- tempfile(fileext = ".txt")
+
   purrr::map_chr(stringi::stri_enc_toutf8(text), function(elem) {
     data <- tempfile(fileext = ".xml")
-    tmp_file_txt <- tempfile(fileext = ".txt")
 
-    readr::write_lines(elem, tmp_file_txt)
+    readr::write_lines(elem, tmp_file_txt, append = FALSE)
 
     if (!is.null(rcpath)) {
-      processx::run(
+      system2(
         "cabocha",
         args = c(
           "-f3",
@@ -32,7 +33,7 @@ ppn_cabocha <- function(text, rcpath = NULL) {
         )
       )
     } else {
-      processx::run(
+      system2(
         "cabocha",
         args = c(
           "-f3",
