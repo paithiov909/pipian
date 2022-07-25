@@ -9,7 +9,7 @@ pack(tbl, pull = "token", n = 1L, sep = "-", .collapse = " ")
 \arguments{
 \item{tbl}{A prettified data.frame of tokens.}
 
-\item{pull}{Column to be packed into text or ngrams body. Default value is \code{token}.}
+\item{pull}{Column to be packed into text or ngrams body. Default value is `token`.}
 
 \item{n}{Integer internally passed to ngrams tokenizer function
 created of \code{audubon::ngram_tokenizer()}}
@@ -28,26 +28,25 @@ which is compatible with the Text Interchange Formats.
 \section{Text Interchange Formats (TIF)}{
 
 
-
 The Text Interchange Formats (TIF) is a set of standards
 that allows R text analysis packages to target defined inputs and outputs
 for corpora, tokens, and document-term matrices.
-
 }
 
 \section{Valid data.frame of tokens}{
 
 
-
 The prettified data.frame of tokens here is a data.frame object
 compatible with the TIF.
 
-A TIF valid data.frame of tokens are expected to have one unique key column (named \code{doc_id})
+A TIF valid data.frame of tokens are expected to have one unique key column (named `doc_id`)
 of each text and several feature columns of each tokens.
-The feature columns must contain at least \code{token} itself.
-
+The feature columns must contain at least `token` itself.
 }
 
+\examples{
+pack(strj_tokenize(polano[1:5], format = "data.frame"))
+}
 \seealso{
 \url{https://github.com/ropensci/tif}
 }

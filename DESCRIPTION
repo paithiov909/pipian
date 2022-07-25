@@ -1,7 +1,7 @@
 Type: Package
 Package: pipian
 Title: Tiny Interface to CaboCha for R
-Version: 0.3.4
+Version: 0.3.5
 Authors@R: c(
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
     person("Marcin", "Kalicinski", role = "aut",
@@ -18,7 +18,6 @@ BugReports: https://github.com/paithiov909/pipian/issues
 Depends: 
     R (>= 4.0.0)
 Imports: 
-    audubon,
     dplyr,
     igraph,
     purrr,
