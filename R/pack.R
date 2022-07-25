@@ -28,8 +28,6 @@
 #' @param .collapse This argument is passed to \code{stringi::stri_join()}.
 #' @return A data.frame.
 #' @export
-#' @examples
-#' pack(strj_tokenize(polano[1:5], format = "data.frame"))
 pack <- function(tbl, pull = "token", n = 1L, sep = "-", .collapse = " ") {
   pull <- rlang::enquo(pull)
   if (n < 2L) {
