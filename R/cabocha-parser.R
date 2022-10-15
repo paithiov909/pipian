@@ -46,7 +46,7 @@ ppn_parse_xml <- function(path,
             I() %>%
             readr::read_csv(
               col_types = stringi::stri_c(rep("c", length(into)), collapse = ""),
-              col_select = tidyselect::all_of(col_select),
+              col_select = col_select,
               na = c("*"),
               progress = FALSE,
               show_col_types = FALSE
@@ -65,10 +65,10 @@ ppn_parse_xml <- function(path,
             chunk_func = as.integer(.data$chunk_func),
             token_entity = dplyr::na_if(reset_encoding(.data$token_entity), "O")
           ) %>%
-          dplyr::select(!.data$token_feature) %>%
+          dplyr::select(!"token_feature") %>%
           dplyr::bind_cols(features) %>%
           dplyr::rename(entity = .data$token_entity) %>%
-          dplyr::relocate(.data$doc_id, dplyr::everything())
+          dplyr::relocate("doc_id", dplyr::everything())
       }
     })
   return(tokens)
@@ -95,18 +95,18 @@ ppn_make_graph <- function(df) {
     ) %>%
     dplyr::ungroup() %>%
     dplyr::select(
-      .data$name,
-      .data$from,
-      .data$to,
-      .data$tokens,
-      .data$pos,
-      .data$score
+      "name",
+      "from",
+      "to",
+      "tokens",
+      "pos",
+      "score"
     ) %>%
     dplyr::distinct()
 
   g <- igraph::graph_from_data_frame(
-    dplyr::select(df, .data$from, .data$to, .data$score),
-    dplyr::select(df, .data$name, .data$tokens, .data$pos),
+    dplyr::select(df, "from", "to", "score"),
+    dplyr::select(df, "name", "tokens", "pos"),
     directed = TRUE
   )
   return(g)
