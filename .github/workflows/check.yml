@@ -13,20 +13,23 @@ jobs:
   check:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest]
-        r-version: ['release']
-    runs-on: ${{ matrix.platform }}
+        config:
+          - {os: macOS-latest,   r: 'release'}
+          - {os: ubuntu-latest,   r: 'release'}
+
+    runs-on: ${{ matrix.config.r }}
+
     steps:
       - uses: actions/checkout@v2
         with:
           lfs: false
-      - name: Set up R ${{ matrix.r-version }}
-        uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r@v2
         with:
-          r-version: ${{ matrix.r-version }}
+          r-version: ${{ matrix.config.r }}
           use-public-rspm: true
       - name: Install libraries
-        if: ${{ matrix.platform == 'ubuntu-latest' }}
+        if: ${{ matrix.config.r == 'ubuntu-latest' }}
         run: |
           sudo apt install libcurl4-openssl-dev libglpk-dev
           sudo apt install mecab libmecab-dev mecab-ipadic-utf8
@@ -48,18 +51,17 @@ jobs:
           sudo ldconfig
           cd ../
           echo `cabocha-config --libexecdir` >> $GITHUB_PATH
-      - name: Install dependencies
+      - uses: r-lib/actions/setup-r-dependencies@v2
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          install.packages(c("remotes", "rcmdcheck", "covr"))
-          remotes::install_deps(dependencies = TRUE)
-        shell: Rscript {0}
-      - name: Check
-        run: |
-          rcmdcheck::rcmdcheck(args = c("--no-vignettes", "--no-manual", "--as-cran"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error")
-        shell: Rscript {0}
+        with:
+          extra-packages: rcmdcheck, covr
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          args: 'c("--no-vignettes", "--no-manual", "--ignore-vignettes")'
+          build_args: 'c("--no-build-vignettes", "--no-manual")'
+          error-on: '"error"'
       - name: Codecov
-        if: ${{ matrix.platform == 'ubuntu-latest' }}
+        if: ${{ matrix.config.r == 'ubuntu-latest' }}
         run: covr::codecov()
         shell: Rscript {0}
