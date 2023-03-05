@@ -67,7 +67,7 @@ ppn_parse_xml <- function(path,
           ) %>%
           dplyr::select(!"token_feature") %>%
           dplyr::bind_cols(features) %>%
-          dplyr::rename(entity = .data$token_entity) %>%
+          dplyr::rename(entity = "token_entity") %>%
           dplyr::relocate("doc_id", dplyr::everything())
       }
     })

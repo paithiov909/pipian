@@ -1,4 +1,3 @@
-// [[Rcpp::plugins(cpp11)]]
 // [[Rcpp::depends(RcppThread)]]
 #define RCPPTHREAD_OVERRIDE_THREAD 1
 

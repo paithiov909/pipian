@@ -4,10 +4,10 @@
 #' @returns Formatted character vector is returned.
 #' @keywords internal
 reset_encoding <- function(vec, enc = "UTF-8") {
-  sapply(vec, function(elem) {
+  unlist(lapply(vec, function(elem) {
     Encoding(elem) <- enc
     return(elem)
-  }, USE.NAMES = FALSE)
+  }))
 }
 
 #' Check if CaboCha command is available

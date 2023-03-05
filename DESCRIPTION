@@ -1,7 +1,7 @@
 Type: Package
 Package: pipian
 Title: Tiny Interface to CaboCha for R
-Version: 0.3.6
+Version: 0.3.7
 Authors@R: c(
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
     person("Marcin", "Kalicinski", role = "aut",
@@ -38,5 +38,5 @@ LinkingTo:
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
-RoxygenNote: 7.2.1
-SystemRequirements: CaboCha, C++11
+RoxygenNote: 7.2.3
+SystemRequirements: CaboCha
