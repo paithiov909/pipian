@@ -58,12 +58,12 @@ ppn_parse_xml <- function(path,
             sentence_id = as.integer(.data$sentence_id) + 1L,
             chunk_id = as.integer(.data$chunk_id) + 1L,
             token_id = as.integer(.data$token_id),
-            token = reset_encoding(.data$token),
+            token = .data$token,
             chunk_link = as.integer(.data$chunk_link) + 1L,
             chunk_score = as.numeric(.data$chunk_score),
             chunk_head = as.integer(.data$chunk_head) + 1L,
             chunk_func = as.integer(.data$chunk_func),
-            token_entity = dplyr::na_if(reset_encoding(.data$token_entity), "O")
+            token_entity = dplyr::na_if(.data$token_entity, "O")
           ) %>%
           dplyr::select(!"token_feature") %>%
           dplyr::bind_cols(features) %>%

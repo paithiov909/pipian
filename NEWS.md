@@ -1,3 +1,7 @@
+# pipian 0.3.8
+
+* For performance, now skips resetting the output encodings to UTF-8.
+
 # pipian 0.3.4
 
 * Dropped `processx` dependency.

@@ -1,15 +1,3 @@
-#' Format character vector
-#' @param vec Character vector.
-#' @param enc Encoding of `vec`.
-#' @returns Formatted character vector is returned.
-#' @keywords internal
-reset_encoding <- function(vec, enc = "UTF-8") {
-  unlist(lapply(vec, function(elem) {
-    Encoding(elem) <- enc
-    return(elem)
-  }))
-}
-
 #' Check if CaboCha command is available
 #' @returns Logical.
 #' @keywords internal

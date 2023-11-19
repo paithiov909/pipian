@@ -1,12 +1,14 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^\.vscode$
 ^\.Rprofile$
 ^\.covrignore$
 ^doc$
 ^Meta$
 ^docs$
 ^codecov\.yml$
+^renovate\.json$
 ^README\.Rmd$
 ^crfpp$
 ^cabocha$

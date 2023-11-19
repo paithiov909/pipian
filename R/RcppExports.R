@@ -7,5 +7,5 @@ parse_xml <- function(path) {
 
 # Register entry points for exported C++ functions
 methods::setLoadAction(function(ns) {
-    .Call('_pipian_RcppExport_registerCCallable', PACKAGE = 'pipian')
+    .Call(`_pipian_RcppExport_registerCCallable`)
 })

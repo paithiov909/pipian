@@ -1,6 +1,3 @@
-// [[Rcpp::depends(RcppThread)]]
-#define RCPPTHREAD_OVERRIDE_THREAD 1
-
 #include <Rcpp.h>
 #include <fstream>
 #include "./rapidxml-1.13/rapidxml.hpp"

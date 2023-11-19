@@ -42,3 +42,4 @@ Meta
 *.log
 *.pdf
 
+.vscode
