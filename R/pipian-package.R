@@ -1,12 +1,11 @@
-#' pipian: Tiny Interface to CaboCha for R
 #' @importFrom dplyr %>%
 #' @importFrom rlang expr enquo enquos sym syms .data := as_name as_label
 #' @importFrom Rcpp sourceCpp
+#' @importFrom utils globalVariables
 #' @useDynLib pipian, .registration=TRUE
 #' @keywords internal
 "_PACKAGE"
 
-#' @importFrom utils globalVariables
 utils::globalVariables("where")
 
 #' @noRd

@@ -5,7 +5,7 @@
 #'
 #' @param text A character vector to be parsed with CaboCha.
 #' @param rcpath String; path to the `mecabrc` file if any.
-#' @return Paths to the CaboCha XML output are returned.
+#' @returns Paths to the CaboCha XML output are returned.
 #' @export
 #' @examples
 #' \dontrun{
