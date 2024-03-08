@@ -2,7 +2,7 @@
 
 ## これは何？
 
-[paithiov909/pipian](https://github.com/paithiov909/pipian)は、日本語係り受け解析器の[CaboCha](https://taku910.github.io/cabocha/)を利用するためのRパッケージです。
+[pipian](https://github.com/paithiov909/pipian)は、日本語係り受け解析器の[CaboCha](https://taku910.github.io/cabocha/)を利用するためのRパッケージです。
 
 内部的には、`cabocha -f3 -n1`コマンドを呼んで出力した一時ファイル（XML）を読み込み、Rcpp側でデータフレームにパースしています。
 
@@ -46,8 +46,8 @@ install.packages("pipian")
 ```r
 sentence <- "ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"
 
-df <- sentence %>% 
-  pipian::ppn_cabocha() %>% 
+df <- sentence %>%
+  pipian::ppn_cabocha() %>%
   pipian::ppn_parse_xml()
 
 head(df)
@@ -73,14 +73,14 @@ head(df)
 #> 5 たくさん タクサン タクサン   <NA>
 #> 6       の       ノ       ノ   <NA>
 
-g <- df %>% 
+g <- df %>%
   pipian::ppn_make_graph()
 
 print(g)
-#> IGRAPH d102f78 DN-- 38 38 -- 
+#> IGRAPH d102f78 DN-- 38 38 --
 #> + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)
 #> + edges from d102f78 (vertex names):
-#>  [1] 111 ->112  112 ->1137 113 ->114  114 ->115  115 ->119  116 ->118 
+#>  [1] 111 ->112  112 ->1137 113 ->114  114 ->115  115 ->119  116 ->118
 #>  [7] 117 ->118  118 ->119  119 ->1110 1110->1114 1111->1114 1112->1113
 #> [13] 1113->1114 1114->1118 1115->1116 1116->1117 1117->1118 1118->1132
 #> [19] 1119->1120 1120->1130 1121->1122 1122->1123 1123->1124 1124->1130
