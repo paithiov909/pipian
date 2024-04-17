@@ -1,3 +1,7 @@
+# pipian 0.3.9
+
+* Fixed a compilation issue under Windows.
+
 # pipian 0.3.8
 
 * For performance, now skips resetting the output encodings to UTF-8.
