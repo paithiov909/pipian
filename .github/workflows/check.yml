@@ -63,5 +63,7 @@ jobs:
           error-on: '"error"'
       - name: Codecov
         if: ${{ matrix.config.r == 'ubuntu-latest' }}
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: covr::codecov()
         shell: Rscript {0}
