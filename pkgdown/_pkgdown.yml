@@ -1,7 +1,9 @@
 destination: docs
-
-url: https://paithiov909.github.io/pipian
-
+url: https://paithiov909.github.io/pipian/
 template:
   bootstrap: 5
-
+  light-switch: true
+  opengraph:
+    twitter:
+      creator: "@paithiov909"
+      card: summary_large_image
