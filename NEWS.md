@@ -1,6 +1,7 @@
 # pipian 0.4.0
 
 * Refactored `ppn_parse_xml`. `ppn_parse_xml` now returns a tibble.
+* pipian now does not re-export `%>%`.
 
 # pipian 0.3.9
 

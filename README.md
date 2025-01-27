@@ -37,8 +37,8 @@ remotes::install_github("paithiov909/pipian")
 ``` r
 sentence <- "ふと振り向くと、たくさんの味方がいてたくさんの優しい人間がいることを、わざわざ自分の誕生日が来ないと気付けない自分を奮い立たせながらも、毎日こんな、湖のようななんの引っ掛かりもない、落ちつき倒し、音一つも感じさせない人間でいれる方に憧れを持てたとある25歳の眩しき朝のことでした"
 
-df <- sentence %>%
-  pipian::ppn_cabocha() %>%
+df <- sentence |>
+  pipian::ppn_cabocha() |>
   pipian::ppn_parse_xml()
 
 head(df)
@@ -55,13 +55,13 @@ head(df)
 #> #   POS3 <chr>, POS4 <chr>, X5StageUse1 <chr>, X5StageUse2 <chr>,
 #> #   Original <chr>, Yomi1 <chr>, Yomi2 <chr>
 
-g <- df %>%
+g <- df |>
   pipian::ppn_make_graph()
 
 print(g)
-#> IGRAPH 6848dce DN-- 37 37 -- 
+#> IGRAPH c1835b0 DN-- 37 37 -- 
 #> + attr: name (v/c), tokens (v/c), pos (v/c), score (e/n)
-#> + edges from 6848dce (vertex names):
+#> + edges from c1835b0 (vertex names):
 #>  [1] 111 ->112  112 ->1136 113 ->114  114 ->115  115 ->119  116 ->118 
 #>  [7] 117 ->118  118 ->119  119 ->1110 1110->1136 1111->1114 1112->1113
 #> [13] 1113->1114 1114->1117 1115->1116 1116->1117 1117->1131 1118->1119
