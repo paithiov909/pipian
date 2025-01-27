@@ -29,7 +29,7 @@ jobs:
           r-version: ${{ matrix.config.r }}
           use-public-rspm: true
       - name: Install libraries
-        if: ${{ matrix.config.r == 'ubuntu-latest' }}
+        if: ${{ matrix.config.os == 'ubuntu-latest' }}
         run: |
           sudo apt install libcurl4-openssl-dev libglpk-dev
           sudo apt install mecab libmecab-dev mecab-ipadic-utf8
@@ -62,7 +62,7 @@ jobs:
           build_args: 'c("--no-build-vignettes", "--no-manual")'
           error-on: '"error"'
       - name: Codecov
-        if: ${{ matrix.config.r == 'ubuntu-latest' }}
+        if: ${{ matrix.config.os == 'ubuntu-latest' }}
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: covr::codecov()
