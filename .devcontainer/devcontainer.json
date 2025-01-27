@@ -1,0 +1,20 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
+{
+	"name": "${localWorkspaceFolderBasename}",
+	"build": {
+			"dockerfile": "Dockerfile",
+			"args": { "VARIANT": "4" }
+	},
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+				"version": "none",
+				"installRadian": true,
+				"installVscDebugger": true
+		},
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+				"packages": "devtools,usethis,pkgdown,styler",
+				"installSystemRequirements": true
+		}
+	}
+}

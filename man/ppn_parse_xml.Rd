@@ -20,7 +20,7 @@ ppn_parse_xml(
 in the result.}
 }
 \value{
-A data.frame.
+A tibble.
 }
 \description{
 Parse XML output of CaboCha

@@ -1,3 +1,7 @@
+# pipian 0.4.0
+
+* Refactored `ppn_parse_xml`. `ppn_parse_xml` now returns a tibble.
+
 # pipian 0.3.9
 
 * Fixed a compilation issue under Windows.

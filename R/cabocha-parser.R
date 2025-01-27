@@ -4,7 +4,7 @@
 #' @param into Character vector; feature names of output.
 #' @param col_select Character or integer vector; features that will be kept
 #' in the result.
-#' @returns A data.frame.
+#' @returns A tibble.
 #' @export
 #' @examples
 #' head(ppn_parse_xml(system.file("sample.xml", package = "pipian")))
@@ -42,7 +42,6 @@ ppn_parse_xml <- function(path,
               stringi::stri_c(into, collapse = ","),
               dplyr::pull(df, "token_feature")
             ) %>%
-            stringi::stri_c(collapse = "\n") %>%
             I() %>%
             readr::read_csv(
               col_types = stringi::stri_c(rep("c", length(into)), collapse = ""),
@@ -71,7 +70,7 @@ ppn_parse_xml <- function(path,
           dplyr::relocate("doc_id", dplyr::everything())
       }
     })
-  return(tokens)
+  return(dplyr::as_tibble(tokens))
 }
 
 #' Cast dependency structure as an igraph
