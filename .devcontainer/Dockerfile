@@ -4,11 +4,12 @@ ARG VARIANT="4"
 FROM ghcr.io/rocker-org/devcontainer/r-ver:${VARIANT}
 
 RUN apt-get -y update && export DEBIAN_FRONTEND=noninteractive && apt-get -y --no-install-recommends install \
+  fonts-noto-cjk \
   fonts-ipafont-gothic \
   libmecab-dev \
   mecab \
   mecab-ipadic-utf8 && \
-  apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+  apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 WORKDIR /tmp
 RUN git clone --depth 1 https://github.com/paithiov909/crfpp.git && \
