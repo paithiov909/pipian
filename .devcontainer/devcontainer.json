@@ -14,7 +14,7 @@
 			"installRadian": true,
 			"installVscDebugger": false
 		},
-		"ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+		"ghcr.io/rocker-org/devcontainer-features/r-packages:2": {
 			"packages": "devtools,usethis,pkgdown,styler",
 			"installSystemRequirements": true
 		}
